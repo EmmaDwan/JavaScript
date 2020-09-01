@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		
+		JS面向对象中，class是ES6新增:
+
+			典型OOP语言(比如Java)，都存在类。———— 类是对象的模板，对象是类的实例
+
+			但JS中，ES6之前没有类的概念。———— 通过 构造函数和原型 模拟类的功能
+
+				<!-- ES6(ECMAScript 6.0) -->
+				<!-- 目前浏览器的JS是ES5版本，大部分高版本浏览器支持ES6的部分功能和特性 -->
+
+
+		一、构造函数: <!-- 特殊的一类函数 -->
+
+		   	(1).用构造函数 初始化对象，用new 实例化
+
+						1.首字母大写
+						2.配合new用才有意义 ———— 1)在内存中 创建 空对象
+												2)this指向空对象
+
+												3)执行构造函数里的代码添加属性和方法
+												4)返回这个新对象(所以构造函数不需要return)
+
+
+
+			(2).构造函数中添加的 成员
+
+				1.在构造函数本身添加 ———— 静态成员			  只能由构造函数本身访问
+
+				2.在构造函数内部的this添加 ———— 实例成员     只能由实例化的对象访问
+
+
+					<!-- 其实构造函数中的属性和方法就是 成员 -->
+
+
+			(3).构造函数的缺陷: 浪费内存
+
+					比如方法，是个函数，是复杂数据类型。
+					new一个实例对象，开辟一堆内存空间，其中还要给方法再单独开辟一个内存空间
+					new多个实例对象，浪费了多个内存空间存放同一个函数
+
+							|
+							|
+							|
+
+					构造函数原型prototype: 让多个对象 共享同一个函数
+
+
+
+
+
+		1.构造函数
+	<script type="text/javascript">
+
+// 1.利用new Object
+		var obj1 = new Object();
+
+// 2.利用字面量{}
+		var obj2 = {
+
+		}
+
+// 3.利用构造函数创建对象
+		function Star(name,age) {
+			this.userName = name;
+			this.userAge = age;
+			this.sing = function(song) {
+				console.log(this.userName + '唱' + song);
+			}
+			this.dance = function() {
+				console.log('跳舞');
+			}
+		}
+		
+
+		var oynn = new Star('欧阳娜娜',20);
+		var gxt = new Star('关晓彤', 20);
+
+
+//(2)成员
+	// 1 通过this创建的属性和方法，叫实例成员 ———— userName userAge sing都是实例成员
+	//   实例成员只能通过 实例化对象 访问
+		console.log(oynn.userName);
+		oynn.sing('夏天的风');
+		// console.log(Star.userName)错误
+
+
+	// 2 在构造函数本身上直接添加的，叫静态成员
+	//   静态成员只能通过 构造函数本身 访问
+		Star.sex = '女';
+		console.log(Star.sex);
+		// console.log(oynn.sex)错误
+		// 
+		
+
+//(3)构造函数的缺陷，浪费内存
+		console.log(oynn.dance == gxt.dance);   // false  比较的是地址，地址不同
+
+		
+	</script>
+	
+</body>
+</html>

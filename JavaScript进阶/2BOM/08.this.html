@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+		this的指向:  在函数定义时，确定不了。在函数执行时，才能确定this到底只想谁
+
+		            <!-- 一般情况下，this的最终指向时调用它的对象 -->
+
+		            1.全局作用域 或 普通函数中 或 定时器，this指向全局对象window   
+
+		            2.方法中
+		            		谁调用方法 this指向谁
+
+		            3.构造函数
+		                    this指向实例化的对象
+
+    <button>button</button>
+	<script type="text/javascript">
+//1 
+		//全局
+			console.log('全局');
+			console.log(this);
+
+	    //普通函数
+	 		fn1();
+			function fn1() {
+				console.log('普通函数');   //window调用的fn1，所以fn1里this指向window
+				console.log(this);
+
+
+			}
+	    //定时器
+			setTimeout(function() {
+				console.log('定时器');   //计时器是window下的方法，所以this还是指向window
+				console.log(this);
+
+
+			}, 2000)
+
+
+//2 方法
+		//自定义o对象里的方法
+			var o = {
+				sayHi: function() {
+					console.log('方法sayHi');           //指向对象o
+					console.log(this);
+
+				}
+			}
+			o.sayHi();
+
+
+	     //click事件
+			var btn = document.querySelector('button');
+			btn.onclick = function() {
+				console.log('btn的click事件');               //指向button
+				console.log(this);
+
+			}
+
+
+//3 构造函数
+			function fn2() {
+				console.log('构造函数');     //指向fn2的实例对象x
+				console.log(this);
+			}
+
+			var x = new fn2();    //加一个new，就会新开辟一个空间，创建一个空对象
+			                       //this指向这个空对象
+			                       //这个空对象实例化赋值给了x
+	</script>
+</body>
+</html>

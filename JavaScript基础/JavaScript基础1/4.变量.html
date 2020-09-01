@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+        // 1.
+		// 赋值内容是字符串，要加单引号
+		// 输出的是变量name，不加单引号
+		var nam = 'Gabrielle';
+		var address = '地球';
+		var age = 30;
+		var email = 'wahaha@itcast.cn';
+		var career = 'warrior';
+
+		alert(nam);
+		console.log(address);
+		console.log(age);
+		console.log(email);
+		console.log(career);
+		console.log(nam);
+
+		var question = '这是啥';
+		console.log(question);
+
+
+
+		// 2.
+		// 案例
+		// 用户输入姓名，存储到name变量
+		var myname = prompt('请输入您的姓名');
+		// 输出用户名
+		alert(myname);
+
+
+		// 3.
+		// 声明多个变量
+		//  逗号隔开！！！   分号表示声明结束！
+		var a = 1,
+		    b = 9,
+		    c = 'aha',
+		    d=2, f=6;
+
+
+
+		// 4.
+		// 声明变量的特殊情况
+		var sex;
+		console.log(sex);
+		// 不赋值，undefined
+		
+
+
+        title = '没声明的title';
+		console.log(title);
+		// 不声明，可以用
+
+
+		console.log(tel);
+		// 不声明不赋值，报错，接下来代码不执行
+		
+
+		
+
+
+	</script>
+</head>
+<body>
+	
+
+	1.变量本质：内存中用来存放数据的空间
+	           名称+空间
+
+	2.声明 + 赋值: 
+	             声明 var
+	             赋值 =
+
+	3.更新变量:
+	        被最后一次赋的值覆盖
+
+	4.声明变量的特殊情况
+	      (1)只声明不赋值: undefined
+	      (2)不声明不赋值: 报错
+	      (3)不声明只赋值: 可以用，不提倡
+
+	5.变量命名规范
+
+	     组成:字母，数字，_ ，$
+
+	    (1)严格区分大小写 app App
+	    (2)不能数字开头
+	    (3)不能和关键字、保留字相同 var
+	    (4)名称有语义
+	    (5)驼峰命名法  首字母小写，后面首字母大写
+	                  myUserName
+	    (6)尽量不要用name，很多浏览器这个词有特殊含义
+
+
+
+</body>
+</html>

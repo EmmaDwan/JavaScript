@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+		(1).事件：
+				被JS侦测到的行为
+				<!-- 触发...响应 -->
+
+
+			三要素包括：
+					1.事件源:       事件被触发的对象    “谁被触发了”
+
+				    2.事件类型:     什么事件            “怎么触发的”
+
+
+				    3.事件处理程序:  通过函数赋值完成    “触发以后要干什么”
+
+	    (2).执行事件步骤： 获取事件源
+	        			 绑定时间(注册时间)
+	        			 添加处理程序
+
+
+
+	    <button id="tbh">唐伯虎</button>
+
+	   
+
+	    <script>
+
+		//事件三要素
+	    	var tbh = document.getElementById('tbh');   //事件源 tbn按钮被触发
+
+	    	tbh.onclick = function() {                  //事件类型onclick
+	    		alert('秋香');                          //事件处理程序 由函数体现
+
+	    	}
+
+	    </script>
+	
+</body>
+</html>

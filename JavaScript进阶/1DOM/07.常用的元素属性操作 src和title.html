@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+
+		常用的元素属性操作
+			1.innerText   innerHTML
+
+			2.src哪张图片   href跳哪个页面
+
+			3.id  alt  title
+
+
+
+			<button id="sea">帆船大海</button>
+			<button id="sunset">月牙黄昏</button> <br>
+            <div>
+                <img src="帆船大海.jpg">
+            </div>
+			
+
+    <script type="text/javascript">
+    	//戳不同按钮，显示不同图片
+    	var sea = document.getElementById('sea');
+    	var sunset = document.getElementById('sunset');
+    	var img = document.getElementsByTagName('img');
+
+
+    	sea.onclick = function() {
+    		img[0].src = '帆船大海.jpg';
+    		img[0].title = '帆船大海';
+    	}
+    	sunset.onclick = function() {
+    		img[0].src = '月牙黄昏.jpg';
+    		img[0].title = '月牙黄昏';
+    	} 
+
+
+
+
+    	
+
+    </script>
+
+	
+</body>
+</html>

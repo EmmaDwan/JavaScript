@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		table {
+            width: 500px;
+            margin: 100px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        
+        td,
+        th {
+            border: 1px solid #333;
+        }
+        
+        thead tr {
+            height: 40px;
+            background-color: #ccc;
+        }
+
+	</style>
+</head>
+<body>
+	<table cellspacing="0">
+
+
+        <thead>    <!-- 表头不需要动，是固定的 -->
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+
+
+        <tbody>
+ 				<!-- 动态添加 -->
+        </tbody>
+
+
+    </table>
+
+    <script type="text/javascript">
+//这里以对象的形式，自行模拟数据
+//所有数据放进tbody的行，有几个人放几行(数组长度)
+//行里还要有单元格， =对象属性个数
+
+        // 1.准备好数据
+		var stu = [            // []作为数组，包括几个对象{}，逗号隔开
+			{
+			name: 'Tom',
+			subject: 'JavaScript',
+			score: 100
+		},{
+			name: 'John',
+			subject: 'JavaScript',
+			score: 93
+		},{
+			name: 'Jack',
+			subject: 'JavaScript',
+			score: 92
+		},{
+			name: 'Bob',
+			subject: 'JavaScript',
+			score: 97
+		}];
+
+
+
+        // 2.创建空行
+		var tbody = document.querySelector('tbody');
+		for (var i = 0; i < stu.length; i++) {
+
+			var tr = document.createElement('tr');
+			tbody.appendChild(tr);
+
+			// 3.创建单元格
+			for(var k in stu[i]) {   		 	// i 根据外围for循环确定
+
+				var td = document.createElement('td');
+				// 4.创建的同时赋值 (双层循环，一次一个地添加)
+				td.innerHTML = stu[i][k];    	// 存对象的数组stu 里的第i个对象 里的第k个属性值
+				tr.appendChild(td);          	// k是属性名，obj[k]是属性值
+
+			}
+			// 5.创建删除单元格
+			var td = document.createElement('td');
+			td.innerHTML = '<a href = "javascript:;">删除</a>';
+			tr.appendChild(td);
+		}
+
+
+		// 6.删除操作
+			var as = document.querySelectorAll('a');
+			for (var i = 0; i < as.length; i++) {
+				as[i].onclick = function() {
+
+					tbody.removeChild(this.parentNode.parentNode);   //要删除a在的一整行
+					                                                 //remove的操作者是 行的上级
+					                                                 
+				}
+			}
+		
+
+
+
+
+
+    </script>
+
+	
+</body>
+</html>

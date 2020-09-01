@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		// 1
+		// console.log(num);   
+		//报错
+
+
+
+        // 2
+		console.log(num1);            //undefined
+		var num1 = 10;
+		//相当于执行了
+		//var num1;
+		//console.log(num1);
+		//num1 = 10;
+
+
+
+		// 3 
+		fn();                         //fn在前，也正常调用
+
+		function fn() {
+			console.log('这是fn');        
+		}
+
+
+
+		//4
+		var fun = function() {
+			console.log('这是匿名函数，变量fun'); 
+		}
+		fun();                        //fun在后，可以调用
+
+
+		//5
+		fun1();                       //fun在前，报错
+		var fun1 = function() {
+			console.log('这是匿名函数，变量fun1');   
+		}
+		//相当于执行了
+		//var fun;
+        //fun1();                       
+		// var fun1 = function() {
+		// 	console.log('这是匿名函数，变量fun1');   
+		// }	 
+
+	</script>
+
+</head>
+
+<body>
+		(1)预解析 
+
+		    js引擎运行分为两步：
+
+		    	1.预解析：这时，js引擎会把js代码里所有的 var和function
+		    		     提到 “当前” 作用域最前面
+
+		    		  1).变量预解析(变量提升)
+                           只提升变量声明，不赋值(var num1;)
+
+		    		  2).函数预解析(函数提升)
+		    		       只提升函数的声明，不调用函数(整个function大括号都提走)
+
+		    	(用匿名函数方法声明函数，是按变量的那种，并没有把function里的全部提走)
+
+
+		        2.代码执行:按顺序从上往下
+
+
+	
+</body>
+</html>

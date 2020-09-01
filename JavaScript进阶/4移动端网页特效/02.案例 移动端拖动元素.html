@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+	</style>
+</head>
+
+<body>
+	<div></div>
+
+	<script type="text/javascript">
+//手指初始坐标 盒子原位置
+//手指移动距离
+		
+		var div = document.querySelector('div');
+
+// 1.两个事件里都要用的 全局变量  
+		var startX = 0;
+		var startY = 0;
+		var boxX = 0;
+		var boxY = 0;
+
+// 2.按下 获得 
+//   手指和盒子初位置 
+		div.addEventListener('touchstart', function(e) {
+
+            //手指初位置
+			startX = e.targetTouches[0].pageX;   
+			startY = e.targetTouches[0].pageY;
+
+            //盒子初位置
+			boxX = this.offsetLeft;
+			boxY = this.offsetTop;
+		})
+
+// 3.移动 获得
+// 		移动距离 = 移动位置 - 初位置
+		div.addEventListener('touchmove',function(e) {
+
+			var moveX = e.targetTouches[0].pageX - startX;
+			var moveY = e.targetTouches[0].pageY - startY;
+
+            //改变盒子定位
+			this.style.left = boxX + moveX + 'px';
+			this.style.top = boxY + moveY + 'px';
+
+			e.preventDefault();                         //阻止touchmove里的默认行为————屏幕滚动
+
+		})
+		
+		
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        
+        .current {
+            background-color: purple;
+        }
+	</style>
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+
+		(1).事件注册: 
+
+				单个事件注册: $("div").click(function() {
+
+						     })
+
+		(2).事件处理
+
+				1.事件处理函数  on(): 在元素上 绑定一个或多个事件
+
+								     element.on(  "事件",   子元素选择器,   fn)  
+								 	     <!-- 对象形式不加"" -->
+
+
+							1.同一元素 绑定多个事件(多个函数)
+
+							2.多个事件触发同一个函数
+
+							3.事件委派<!-- 把一堆子元素的事件绑定在一个父元素上 -->
+									 <!-- 之前有bind(),live(),delegate()处理事件委派，现在用on()替代 -->
+
+							4.给动态创建的元素 绑定事件
+
+		
+				2.事件解绑函数  off()
+
+
+
+				3.只触发事件一次的函数  one()   <!-- 不需要解绑麻烦了 -->
+
+
+
+				4.自动触发事件 trigger()  <!-- e.g. 轮播图自动播放 = 单击按钮，可以利用定时器自动触发click -->
+
+										element.click()
+
+										element.trigger("事件")
+
+										element.triggerHandler("事件")  不会触发元素默认行为
+			
+				
+
+	<div class="div1"></div>
+
+	<div class="div2"></div>
+
+	<ul>
+        <li>事件委派</li>
+        <li>事件委派</li>
+        <li>事件委派</li>
+        <li>事件委派</li>
+        <li>事件委派</li>
+    </ul>
+    <ol>
+
+    </ol>
+	<input type="text" name="">
+	<script type="text/javascript">
+
+
+// 1.同一个元素 添加多个事件
+		$(".div1").on({    				// on()里面多个事件，以对象的的形式写{}，逗号隔开
+			mouseenter: function() {                      
+				$(this).css("backgroundColor","yellowgreen");
+			},
+
+			click: function() {
+				$(this).css("backgroundColor","gold");
+			},
+
+			mouseleave: function() {
+				$(this).css("backgroundColor","skyblue");
+			}
+		});
+
+// 2.类似hover函数的用法
+		$(".div2").on("mouseenter mouseleave", function() {   // 两个事件要写在一个""里，空格隔开
+															  // 表示这两个事件都会触发这个函数
+			$(this).toggleClass("current");
+
+		})
+
+
+
+
+// 3.事件委派
+	// 给li添加click事件
+
+		// $("ul li").click(...)  			// 这种方式利用隐式迭代给每个li都绑定了事件
+
+
+		$("ul").on("click","li",function() {   // click绑定在ul这 一个元素上，但触发对象 是子元素li
+											   // 单击li，事件冒泡到父元素sul身上，触发click
+			
+			$(this).css("backgroundColor","skyblue");    // 是li单独变色的！不是整个ul变色！
+
+		})
+
+
+
+
+// 4.动态创建元素 绑定事件
+		
+		$("ol").on("click","li",function() {        // 给未来动态创建的元素 绑定事件
+			$(this).css("backgroundColor","gold");    
+
+		});
+
+
+		var li = $("<li>动态创建的li</li>");
+		$("ol").append(li);
+
+
+// 5.事件解绑
+		
+		// $(".div1").off();         //div上所有绑定事件	
+
+		$(".div1").off("click");     //只解绑click	
+
+		// $("ul").off("click","li");   // 解除事件委托	
+
+
+// 6.只触发一次 one()
+		$("div").one("click",function() {
+			alert('就弹一次！');
+		})
+		
+// 7.自动触发事件
+		
+		// $("div").click();
+		
+		// $("div").trigger("click");
+
+
+		$("input").on("focus",function() {
+
+			$(this).val("focus");			  // 默认行为带光标
+		})
+
+		$("input").triggerHandler("focus事件");   // 不带光标
+
+
+	</script>
+
+
+
+
+</body>
+</html>

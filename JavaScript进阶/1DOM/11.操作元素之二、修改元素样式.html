@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			width: 200px;
+			height: 200px;
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+		二、可以通过JS修改元素的 样式(大小 颜色 位置等)
+
+				(1)样式修改少：元素.style      行内样式操作
+
+				           1.这里style内的属性采用 驼峰命名法
+
+				           2.检察元素会发现，这个js代码操作后，样式添加在标签内部，变成了行内样式
+
+
+				           元素.style.backgroundColor
+				           元素.style.width
+				           元素.style.backgroundPosition = '横坐标 纵坐标';
+
+
+
+
+				(2)样式修改多：元素.className  类名样式操作
+
+				              1.比如同时变背景色、字体、字颜色、外边距等等
+
+				              2.元素换个类名
+
+				              3.直接覆盖了原先的类名
+
+				                也可以保留原类名，'旧类名 新类名')  <!-- 多类名选择器 -->
+
+				<div></div>
+	<script type="text/javascript">
+		
+		var div = document.querySelector('div');
+
+		div.onclick = function() {
+			this.style.backgroundColor = 'purple';   //div.style里的属性为驼峰命名法
+			this.style.width = '300px';
+		}
+	</script>
+	
+</body>
+</html>

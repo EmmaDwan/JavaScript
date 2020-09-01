@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.box{
+			width: 400px;
+			border-bottom: 1px solid red;
+			margin: 100px auto;
+
+			position: relative;
+		}
+
+		.box input{
+			width: 70px;
+			height: 30px;
+
+			border: 0;
+			outline: none;
+		}
+		.box img{
+			width: 24px;
+
+			position: absolute;   /* 子绝(对)父相(对) */
+			top: 6px;
+			right: 1px;
+		}
+
+
+
+	</style>
+</head>
+
+
+<body>
+
+	<div class="box">
+
+		<label>
+			<img src="眼睛_闭.png" id="codeeye">
+		</label>
+		<input type="password" name="" id="password">
+
+	</div>
+
+
+	<script type="text/javascript">
+
+// 案例 显示密码框密码
+		//单击按钮，可以把 密码框改成文本框(文本框可以显示密码)
+		var codeeye = document.getElementById('codeeye');
+		var pwd = document.getElementById('password');
+
+
+		var flag = 0;   						// 1 默认状态 密码闭眼
+		codeeye.onclick = function() {
+
+			//戳一次，flag变一次
+			
+			if (flag == 0) {
+				pwd.type = 'text';
+				codeeye.src = '眼睛-睁 .png'
+				flag = 1;                   	// 2 戳一下，显示密码 睁眼
+			} else {
+				pwd.type = 'password';
+				codeeye.src = '眼睛_闭.png'
+				flag = 0;            	   	    // 3 再戳一下，密码，闭眼
+
+			}
+			
+
+		}
+
+
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+
+//continue
+//1-100 除了能被7整除的数，其他数之和
+        var sum = 0;
+        for (var i = 0; i <= 100; i++) {
+        	if (i % 7 == 0) {
+        		continue;
+        	}
+        	sum += i;
+        }
+        console.log(sum);
+
+
+
+//break
+		for (var i =1; i <= 8; i++) {
+			if (i == 5) {
+				console.log('吃饱了,不吃了');
+				break;
+			}
+			console.log('我正在吃第' + i + '个包子');
+		}
+
+
+
+	</script>
+</head>
+
+
+<body>  
+		1.continue: 立即跳出本次循环，进入下一次循环。
+
+		            本次continue之后的代码不再执行
+		            继续执行剩下次数的循环
+
+		2.break: 立即跳出整个循环，这个循环不再执行。
+
+
+
+		规范：命名语义
+		     变量名词 函数动词
+
+		     操作符左右空格
+		     //空格 注释
+		     小括号 和挨着它的 空格
+
+
+		      for (..;..;..) {
+
+		      }
+
+		      if (.....) {
+
+		      }
+
+
+	
+</body>
+</html>

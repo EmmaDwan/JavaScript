@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+		高阶函数: 对其它函数进行操作的函数   <!-- 函数也是一种数据类型呀 -->
+
+				 可以将函数作为 参数 来接收  <!-- 最典型的是回调函数 -->
+
+				 或将函数作为 返回值 输出
+
+				 
+
+
+	<script type="text/javascript">
+
+// 1.函数作为参数
+	//声明
+		function fn1(callback) { // 典型: 作为回调函数
+
+			console.log('这是一个高阶函数');
+
+			callback && callback();
+		}
+
+	
+	//调用
+		fn1(function() {        // 这里相当于调用，只不过调用时的实参是个函数
+			console.log('这是一个回调函数');   
+		})
+	//调用
+		fn1(wow());   			// 这样为啥和上面是反的。。。
+		function wow() {
+			console.log('这是一个回调函数');
+		}
+		
+
+// 2.函数作为返回值
+		function fn2() {
+			return function() {
+				// 怎么用？
+			}
+		}
+
+		fn2();
+
+	</script>
+	
+</body>
+</html>

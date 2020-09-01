@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	  (1).正则表达式:(Regular Expression)
+		
+				  用于匹配字符串中字符组合的模式   <!-- JS中正则表达式也是对象 -->
+
+				  		1)灵活性、逻辑性、功能性
+
+				  		2)简单方式达到字符串复杂控制
+
+				  		3)新手晦涩，但实际开发中一般复制现成的，根据实际情况修改
+
+
+				  
+
+	  (2).作用: 1.通常用来检索、替换 那些符合某个模式或规则的文本
+
+			    e.g. 表单验证: 用户输入密码只能是 字母、数字、下划线
+				  		          输入昵称可以是中文
+
+			    2.过滤掉页面内容中的一些敏感词    (替换)	  e.g.  **和谐
+
+			    3.从字符串中获取想要的特定部分    (提取)	  e.g.  搜索匹配
+
+	  (3).创建
+
+	  			1.字面量/  /
+
+	  			2.new RegExp(/  /)   利用RegExp对象创建
+	  			 <!-- RegExp对象 -->
+
+
+
+	  (4).正则对象方法
+
+	  			1.测试正则表达式: 
+	  			    			1) test()  检测字符串是否符合该规范   true/false  
+
+	  			    			   正则表达式.test(待测文本) 
+
+	  			    			2)
+
+	  			    			
+
+	<script type="text/javascript">
+
+		var reg = new RegExp(/123/);
+		console.log(reg);
+
+
+		var rg = /123/;
+		console.log(rg.test(123));    // true
+		console.log(rg.test('abc'));  // false
+		
+
+
+
+	</script>
+
+
+
+
+
+
+
+
+	
+</body>
+</html>

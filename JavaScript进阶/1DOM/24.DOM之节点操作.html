@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+			1.利用DOM提供的方法获取元素  逻辑性不强，繁琐
+			<!-- getElementById()  getElementsByName()  querySelector() 等 -->
+ 			
+ 			2.利用节点层次关系 获取元素：
+ 			           	 	利用父子兄弟关系获取元素
+ 			            	更简单，逻辑性强，兼容性差
+
+ 			3.网页中所有内容都是节点，包括document文档节点、标签节点
+ 			                        所有标签、属性、文本、注释等都是节点
+ 			                     <!-- <h1>  href  '我的标题'   空格回车 -->
+
+ 			  所有节点都可以通过js访问，尽可修改、创建、删除
+
+
+ 			4.节点三要素：节点类型 nodeType
+ 						 节点名称 nodeName
+ 						 节点值   nodeValue
+
+
+ 						 其中nodeType： 元素为1  <!-- 一般操作只获取元素节点 -->
+ 						 			   属性为2
+ 						 			   文本为3(包含文字、空格、换行)
+
+ 			5.节点层级：
+ 						1.父节点：     node.parentNode
+ 						2.子节点：     node.childNodes(带s)   会返回所有节点(不管有元素还有文本)
+ 						3.子元素节点:  node.children         非标准用法，但只返回 子 元素 节点(实际开发常用)
+
+
+
+ 								 (1)第一个子节点:   firstChild        可能返回非元素
+ 									最后一个子节点: lastChild         可能返回非元素
+                        
+    <!-- 兼容性	 -->             (2)第一个子节点:     firstElementChild       ie9以上  
+ 									最后一个子节点:   lastElementChild        ie9以上
+
+                        			<!-- 解决兼容性问题 -->
+ 									实际开发中：用children配合数组
+
+ 								   			node.children[0];
+ 			    				   			node.children[node.children.length - 1]
+
+
+
+ 			    		4.兄弟节点：  node.nextSibling      下一个兄弟节点，包括文本节点  
+ 			    		             node.previousSibling  上一个兄弟节点，包括文本节点
+ 			    		           <!-- 没有返回undefined -->
+
+   <!--  兼容性	 -->    5.兄弟元素节点： node.nextElementSibling     只返回元素节点  
+ 			    					    node.previousElementSibling
+ 			    					<!-- 没有返回null -->
+
+ 			    					<!-- 解决兼容性 -->
+ 			    					自己封装一个函数
+
+
+
+
+
+
+             
+            
+    		<div>我是div</div>
+
+    		<span>我是span</span>
+
+    		<ul>
+        		<li>我是li1</li>
+        		<li>我是li2</li>
+        		<li>我是li3</li>
+        		<li>我是li4</li>
+    		</ul>
+
+
+            <div class="bigBox">
+            	<div class="box">
+ 					<span class="erweima"></span>
+ 			    </div>
+            </div>
+ 			
+
+ 			<script type="text/javascript">
+
+//父节点
+ 				var erweima = document.querySelector('.erweima');  //类要加.
+ 				var box = erweima.parentNode;
+ 				console.log(box);
+
+//子节点
+ 				var ul = document.querySelector('ul');
+
+ 				var lis = ul.childNodes;
+ 				console.log(lis);     // NodeList(9) [text, li, text, li, text, li, text, li, text]
+ 				                      // 4个li，5个文本节点(可能是回车吧。。。)
+ 				                     
+ 			    console.log(lis[0].nodeType);    //类型3 文本
+ 			    console.log(lis[1].nodeType);    //类型1 元素
+
+ 			    //可以用循环提取出元素节点，但不提倡用childNodes
+
+
+
+//子元素节点
+ 			    console.log(ul.children);
+ 			    //ie9以上
+ 			    console.log(ul.firstElementChild);
+ 			    console.log(ul.lastElementChild);
+ 			    //解决兼容性
+ 			    console.log(ul.children[0]);
+ 			    console.log(ul.children[ul.children.length - 1]);
+
+//兄弟节点
+ 			    var div = document.querySelector('div');
+ 			    console.log(div.nextSibling);
+ 			    console.log(div.previouSibling);           //没有返回null
+
+//兄弟元素节点
+ 			    console.log(div.nextElementSibling);
+ 			    console.log(div.previousElementSibling);   //没有返回null
+
+//兄弟节点 只取元素还要兼容性
+				function getNextElementSibling(element) {
+
+					var ele = element;
+
+					while(ele = ele.nextSibling) {
+						if (ele.nodeType === 1) {
+							return ele;
+						}
+					}
+
+					return null;
+
+				} 
+
+				console.log(getNextElementSibling(div));
+
+
+
+
+
+ 				
+
+ 			</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+</body>
+</html>

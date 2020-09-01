@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            
+            padding: 10px;
+
+            border: 10px solid red;
+        }
+
+	</style>
+</head>
+<body>
+		client: 
+			client表示客户端，利用相关属性来 获取元素可视区的相关信息，<!-- 动态得到元素大小、元素边框大小等 -->
+
+
+
+               1.<!-- 获得 元素边框的大小 -->
+
+					element.clientTop      返回元素 上边框的大小
+					element.clientLeft     返回元素 左边框的大小
+
+
+               2.<!-- 获得 元素不含边框的大小 -->
+
+					element.clientWidth    返回自身，padding + 内容宽，  不含边框
+					element.clientHeight            padding + 内容高，  不含边框
+
+
+			以上，返回的数值都 不带单位
+
+    <div></div>
+
+	<script type="text/javascript">
+		var div = document.querySelector('div');
+		
+		console.log(div.offsetWidth);   //含边框
+		console.log(div.clientWidth);   //不含边框
+
+		console.log(div.clientTop);     //边框
+		console.log(div.clientLeft);
+		
+		
+
+	</script>
+	
+</body>
+</html>

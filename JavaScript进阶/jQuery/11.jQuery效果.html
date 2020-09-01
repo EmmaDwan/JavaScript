@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+		(1).jQuery中常见动画效果:  
+
+		 			显示隐藏			滑动    				淡入淡出				自定义动画
+
+		 			show() 			slideDown() 		fadeIn() 			animate()
+		 			hide() 			slideUp() 			fadeOut()
+		 			toggle() 		slideToggle() 		fadeToggle()
+														fadeTo()
+
+            <!-- 通过jQuery API手册查找 -->
+
+
+			1.显示隐藏、滑动、淡入淡出的参数
+
+			         <!--  速度      默认swing   回调函数-->
+					show( "slow",   "swing",   callback())
+			 		      normal    linear
+			 		      fast      
+			 		      1000
+
+
+
+                       
+			2.fadeTo()渐进调整不透明度
+
+				<!--  速度必须写  透明度必须写 -->
+				fadeTo( "slow",   透明度,   "swing",  callback())
+  
+
+ 
+			3.animate()自定义动画
+
+		       <!-- 对象形式传递，必须写 -->，
+		        <!-- 属性名用驼峰命名法 -->
+				animate( 想改的样式,   速度,   "swing",  callback())
+
+
+	
+
+
+
+</body>									
+</html>

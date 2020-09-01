@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+
+		重点：不同click事件函数里变量的问题
+
+
+	<button class="begin">开启定时器</button>
+	<button class="stop">停止定时器</button>
+
+	<script type="text/javascript">
+		var begin = document.querySelector('.begin');
+		var stop = document.querySelector('.stop');
+
+
+
+		//全局变量，此处必须设null不然返回undefined
+		var timer1 = null;   	
+
+
+
+        //开始
+		begin.addEventListener('click', function() {
+			timer1 = setInterval(function() {
+				console.log('每隔0.5s');
+			}, 500)
+		})
+        //停止
+		stop.addEventListener('click', function() {
+			clearInterval(timer1);
+		})
+	</script>
+	
+</body>
+</html>

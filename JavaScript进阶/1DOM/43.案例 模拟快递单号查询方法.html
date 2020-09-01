@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .search {
+            position: relative;
+            width: 178px;
+            margin: 100px;
+        }
+        
+        .con {      
+            position: absolute;
+            top: -40px;
+            width: 171px;
+            border: 1px solid rgba(0, 0, 0, .2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+            padding: 5px 0;
+            font-size: 18px;
+            line-height: 20px;
+            color: #333;
+
+            display: none;       /* 隐藏大字盒子 */
+        }
+        
+        .con::before {
+            content: '';
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: 28px;
+            left: 18px;
+            border: 8px solid #000;
+            border-style: solid dashed dashed;
+            border-color: #fff transparent transparent;
+        }
+
+	</style>
+</head>
+<body>
+
+
+	<div class="search">
+
+        <div class="con">123</div>   <!-- 写个123方便调css样式 -->
+
+        <input type="text" placeholder="请输入您的快递单号" class="jd">
+
+    </div>
+
+
+
+	<script type="text/javascript">
+//输入的时候，大字盒子显示内容
+//不输入的时候(内容空)，隐藏大盒子
+//输入框需要添加键盘事件
+
+// 			1.keyup不会一直按着一直输入
+// 		
+// 			2.在文本框里：keydown和keypress这两个事件触发的时候，文字还没有落入文本框中，盒子还在隐藏
+// 			             按2，又触发事件，这时以及有内容1了，这才显示放大的1
+// 			             用press问题更大，比如删除backspace不识别，大字盒子就不同步删除了
+// 		
+// 			所以一定要用keyup
+
+		var input = document.querySelector('.jd');
+		var con = document.querySelector('.con');
+
+    //键盘按下，大字显示con
+    //无内容，隐藏con
+		input.addEventListener('keyup', function() {
+						 
+			if (this.value == '') { 		  //为空，隐藏con
+				con.style.display = 'none'   
+
+			} else {
+				con.innerText = this.value;   //input输入的值 给大字盒子con
+				con.style.display = 'block';
+			}
+
+		})
+
+	//获得焦点，显示con           					
+		input.addEventListener('focus', function() { 	//这两组写在键盘事件外啊！！！！！！
+			if (this.value !== '') {
+			con.style.display = 'block';            
+			}
+		})
+
+	//失去焦点，隐藏con			
+		input.addEventListener('blur', function() {
+			con.style.display = 'none';
+		})
+
+
+	</script>
+</body>
+</html>

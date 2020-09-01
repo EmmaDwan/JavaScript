@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+		一、定时器：
+			(1) window.setTimeout(函数, [延迟毫秒数]);    <!-- window字眼可以省略 -->
+
+					
+					1.设置一个定时器，在定时器到期后 调用所需函数   
+
+					2.里面可以直接写匿名函数，也可以写个函数名
+
+					3.页面中可能有很多定时器，所以要加标识符
+
+					4.其中的函数叫 回调函数callback，普通函数 按照代码顺序调用
+												   回调函数 需要等待时间，到时了才回头调用
+
+							<!-- onlick或click这类事件里的函数也叫回调函数 -->
+
+
+			(2) setInterval()
+
+					同上
+
+					区别: 执行过程不同
+                          setTimeout是  到时 只调用一次
+                          setInterval是 每间隔n 调用一次
+
+
+
+
+		二、停止定时器: window.clearTimeout()
+		              window.clearInterval()
+
+
+
+    <button>停止定时器</button>
+
+
+	<script type="text/javascript">
+//1.window.setTimeout()
+
+		//隐式
+		var timer1 = setTimeout(function() {
+			console.log('2s时间到了');
+
+		}, 2000)							//2s后调用  =2000ms
+
+
+		//显式
+		function callback() {
+			console.log('3s时间到了');
+		}
+
+		var timer2 = setTimeout(callback,3000);
+
+
+
+//2.window.setTimeout()
+		var timer3 = setInterval(function() {
+			console.log('持续输出');
+
+		},1000)
+
+
+
+
+//3.停止定时器
+	    var btn = document.querySelector('button');
+
+		btn.addEventListener('click', function() {
+			clearTimeout(timer1);
+			clearTimeout(timer2);
+			// clearTimeout(timer3);  //这个也可以
+			clearInterval(timer3);
+		})
+
+
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+
+//random()
+  		console.log(Math.random());
+    
+
+
+//得到[a-b]间随机整数（可能为这两个数）
+		//让它上界往大挪一些，再向下取整 
+		
+		function getRandom(min,max) {
+
+			a = Math.random() * (max-min+1) + min;  
+		// [0, 1) * (大-小)           [0, delta）
+		// [0, 1) * (大-小+1)         [0, delta+1） 下界不变，上界+1
+		// [0, 1) * (大-小+1) + min   [min,max+1)   转为min max界
+		// floor                      [min,max]     向下取整  
+			return Math.floor(a);                   
+		}
+
+		console.log(getRandom(1,10));
+		console.log(getRandom(0,10));
+		console.log(getRandom(15,20));    
+
+
+//随机点名
+		var arr = ['包子', '汤圆', '糯米', '可乐', '七喜'];
+		console.log(arr[getRandom(0,arr.length - 1)]);      
+
+//猜数字游戏
+		//随机数
+		//一直猜(要循环)
+		var random = getRandom(1,100);
+		while(true) {                                 //一直循环
+			var num = prompt('猜测1-100的一个数');
+			if (num > random) {
+				alert('大了');
+			} else if (num < random) {
+				alert('小了');
+			} else {
+				alert('猜对了！');
+				break;                                //退出出口
+			}
+		}
+
+
+       
+	</script>
+</head>
+<body>
+	
+
+		Math.random()   返回一个随机浮点数
+		                [0, 1)
+
+		                有概率取到0，不可能为1
+
+</body>
+</html>

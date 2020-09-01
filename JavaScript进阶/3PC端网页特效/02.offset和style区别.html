@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            padding: 10px;
+        }
+
+	</style>
+</head>
+<body>
+
+		offset和style区别: 
+
+		             1.style只能得到 行内样式，不是行内获得不了
+
+		             2.style得到 带单位的字符串，offset不带单位
+
+
+		             3.style.width只有一个width
+
+		               offsetWidth包含 padding + border + width
+
+
+		             4.style可读可写
+
+
+		    所以offset适合获取，style适合修改
+
+
+
+    	<div class="box" style="width: 200px;"></div>
+
+    	<script type="text/javascript">
+
+    		var box = document.querySelector('.box');
+
+    		console.log(box.offsetWidth);
+    		console.log(box.style.width);
+    	</script>
+
+
+
+
+
+
+
+
+	
+</body>
+</html>

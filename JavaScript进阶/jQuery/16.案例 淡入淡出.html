@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        div {
+            width: 150px;
+            height: 300px;
+            background-color: pink;
+            display: none;
+        }
+    </style>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+
+	<button>淡入效果</button>
+    <button>淡出效果</button>
+    <button>淡入淡出切换</button>
+    <button>修改透明度</button>
+    <div></div>
+
+    <script type="text/javascript">
+
+// fadeIn() fadeOut() fadeToggle()
+    	$("button").eq(0).click(function(event) {
+    		$("div").fadeIn(2000);                 // 淡入
+    	});
+
+
+    	$("button").eq(1).click(function(event) {
+    		$("div").fadeOut();                    // 淡出
+    	});
+
+
+    	$("button").eq(2).click(function(event) {
+    		$("div").fadeToggle();                    // 切换
+    	});
+
+// 修改透明度
+    	$("button").eq(3).click(function(event) {
+    		$("div").fadeTo(1000,0.5);                    // 切换
+    	});
+
+
+    </script>
+	
+</body>
+</html>

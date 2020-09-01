@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+            margin: 0;
+            padding: 0;
+        }
+        
+        li {
+            list-style-type: none;
+        }
+        
+        a {
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .nav {
+            margin: 100px;
+        }
+        
+        .nav>li {
+            position: relative;
+            float: left;
+            width: 80px;
+            height: 41px;
+            text-align: center;
+        }
+        
+        .nav li a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            line-height: 41px;
+            color: #333;
+        }
+        
+        .nav>li>a:hover {
+            background-color: #eee;
+        }
+        
+        .nav ul {
+          
+            position: absolute;
+            top: 41px;
+            left: 0;
+            width: 100%;
+
+            border-left: 1px solid #FECC5B;
+            border-right: 1px solid #FECC5B;
+
+            display: none;    		/* 隐藏所有下级ul，当鼠标经过才显示 */
+        }
+        
+        .nav ul li {
+            border-bottom: 1px solid #FECC5B;
+        }
+        
+        .nav ul li a:hover {
+            background-color: #FFF5DA;
+        }
+
+	</style>
+</head>
+<body>
+
+    <!-- 导航用 ul > li >a，下拉菜单在每个li里再套ul > li > a，且定位到下方，并隐藏 -->
+	<ul class="nav">
+        <li>
+
+            <a href="#">微博</a>
+            <ul>
+                <li>
+                    <a href="">私信</a>
+                </li>
+                <li>
+                    <a href="">评论</a>
+                </li>
+                <li>
+                    <a href="">@我</a>
+                </li>
+            </ul>
+
+        </li>
+
+
+        <li>
+            <a href="#">微博</a>
+
+            <ul>
+                <li>
+                    <a href="">私信</a>
+                </li>
+                <li>
+                    <a href="">评论</a>
+                </li>
+                <li>
+                    <a href="">@我</a>
+                </li>
+            </ul>
+
+        </li>
+
+
+        <li>
+            <a href="#">微博</a>
+
+            <ul>
+                <li>
+                    <a href="">私信</a>
+                </li>
+                <li>
+                    <a href="">评论</a>
+                </li>
+                <li>
+                    <a href="">@我</a>
+                </li>
+            </ul>
+
+        </li>
+
+
+        <li>
+            <a href="#">微博</a>
+
+            <ul>
+                <li>
+                    <a href="">私信</a>
+                </li>
+                <li>
+                    <a href="">评论</a>
+                </li>
+                <li>
+                    <a href="">@我</a>
+                </li>
+            </ul>
+
+        </li>
+
+
+    </ul>
+
+
+	<script type="text/javascript">
+
+// 所有上级li，都要有鼠标经过显示下级ul的效果(循环)
+// 当鼠标经过，上级li的 第二个孩子(ul)显示，鼠标离开，ul隐藏
+// 
+		var nav = document.querySelector('.nav');
+		var lis = nav.children;           //4个 上级li         // nav的children   上级li
+
+		for (var i = 0; i < lis.length; i++) {
+
+
+			lis[i].onmouseover = function() {
+				this.children[1].style.display = 'block';     // li们的children  下级ul
+			}
+
+
+			lis[i].onmouseout = function() {
+				this.children[1].style.display = 'none';      //省去了 标注很多类名 或 几次获取元素
+			}
+		}
+
+
+		
+	</script>
+	
+</body>
+</html>

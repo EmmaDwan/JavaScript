@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+		(1).BOM 浏览器对象模型
+				browser object model
+
+				1.提供 独立于内容之外 和浏览器窗口进行交互的对象，顶级对象是window
+
+				2.BOM由一系列对象构成，每个对象都提供了很多方法和属性
+
+				3.BOM缺乏标准，js语法的标准化组织————ECMA
+							  DOM的标准化组织   ————W3C
+							  BOM最初是Netscape浏览器标准的一部分，现在不同浏览器定义了自己的BOM
+
+
+		(2).BOM比DOM大
+				window ———— document
+							location
+							navigation
+							screen
+							history
+
+		(3).window
+
+				1.window是JS访问浏览器窗口的一个 接口
+
+
+				2.window也是一个全局对象，定义在全局对象中的 变量、函数————变成window的属性和方法
+
+				      e.g. console.log(x)完整是 console.log(window.x);
+				      	   window.alert();
+
+
+				3.window下的一个特殊属性window.name为空，所以一般定义变量不要用name
+
+
+	<script type="text/javascript">
+
+		console.dir(window);    //打印window对象的内容
+								//是真他丫的多啊。。。
+
+
+	</script>
+
+</body>
+</html>

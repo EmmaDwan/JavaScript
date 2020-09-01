@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	手机号码： <input type="number"> <button>发送</button>
+
+
+	<script type="text/javascript">
+		//按钮点击后，禁用，disabled属性值变为true
+		//按钮里的内容会变化
+		//需要定时器
+		
+		var btn = document.querySelector('button');
+
+        var set = 3;
+		var x = set;          //全局 计数变量
+		var timer1 = null;   //全局 定时器名
+
+
+		btn.addEventListener('click', function() {
+
+			btn.disabled = true;
+			
+			timer1 = setInterval(function() {
+
+				if (x == 0) {               //如果x=0
+					clearInterval(timer1);  //停止计时器
+
+					btn.disabled = false;   //启用按钮 + 修改内容 +重置x
+					btn.innerHTML = '发送';
+					x = set;
+
+				} else {
+
+					btn.innerHTML = x + 's后重新发送';    //这里用innerHTML,不用value，要注意
+					x--;   			 //1s调用一次这个函数，所以相当于x每秒-1
+				}
+
+			}, 1000);
+
+			
+		})
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

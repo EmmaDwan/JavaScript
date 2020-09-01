@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		navigator对象: 包含有关浏览器的信息
+
+					   属性: 
+					   		userAgent: 返回 由客户机 发送服务器的user-agent头部的值
+
+
+
+	<a href="15.history对象.html">去15</a>
+	<button>前进</button>
+
+
+	<script type="text/javascript">
+
+//判断电脑还是手机打开的浏览器		
+		// if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+
+		// 	window.location.href = "";   	//手机
+
+		// }   else {
+
+		// 	window.location.href = "";  	 //电脑
+
+		// }
+
+//配合下一篇history对象的案例
+		
+
+
+
+			var btn = document.querySelector('button');
+			btn.addEventListener('click', function() {
+				//前进
+				history.forward();
+
+				//前进1个页面
+			    history.go(1);
+
+			})
+	
+
+	</script>
+	
+</body>
+</html>

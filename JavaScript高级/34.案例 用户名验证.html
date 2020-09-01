@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		span {
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .right {
+            color: green;
+        }
+        
+        .wrong {
+            color: red;
+        }
+	</style>
+</head>
+<body>
+
+    <input type="text" class="uname"> <span>请输入用户名</span>
+	
+	<script type="text/javascript">
+		
+//用户名格式验证	
+		var reg = /^[a-zA-Z0-9_-]{6,16}$/;
+		//		  /^[           ]{    }$/
+		//		   ^    字符集  模式重复次数 $
+    
+		var uname = document.querySelector('.uname');
+		var span = document.querySelector('span');
+
+		uname.onblur = function() {
+			if (reg.test(this.value)) {
+
+				span.className = 'right';
+				span.innerHTML = '用户名格式正确';
+			} else {
+
+				span.className = 'wrong';
+				span.innerHTML = '用户名格式错误';
+			}
+		}	
+
+// 国内座机号码验证
+// 		2种格式: 010-12345678      0123-1234567
+// 				  3+8				4+7
+
+		var reg1 = /^\d{3}-\d{8}|\d{4}-\d{7}$/;
+		// var reg2 = /^\d{3,4}-\d{7,8}$/;   
+	</script>
+</body>
+</html>

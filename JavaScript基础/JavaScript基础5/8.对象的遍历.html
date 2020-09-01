@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function stu(name, age, hobby) {
+
+			this.name = name;
+			this.age = age;
+			this.hobby = hobby;
+			this.perform = function(performance) {
+				console.log(performance);
+			} 
+		}
+
+		var tom = new stu('Tom', '20', 'basketball');
+		var caro = new stu('Caro', '20', 'guitar');
+		var edward = new stu('Edward','20','sing');
+
+		// tom.perform('dance');
+		// caro.perform('sing');
+		// edward.perform('magic');
+
+
+		for(var k in tom) {
+
+			console.log(k);      //         k变量————对象的属性们
+			console.log(tom[k]); // 对象名[变量k]————属性值
+			                     // 方法带着方法函数也会被遍历。。。但我们很少遍历方法
+
+		}
+	</script>
+</head>
+<body>
+		1.对象和构造函数的关系
+
+		(1)对象是具体事务，具体到某个名字、某个指定
+           构造函数就相当于一个大类(class)，比如明星、游戏人物总和
+
+        (2)利用 new创建对象也称为 对象的实例化
+         	(构造函数是图纸，new一个对象叫造出实物)
+
+
+
+
+		2.new关键字执行过程
+			(1)new.......  在内存中创建空对象
+			(2)this指向刚创建的空对象
+			(3)执行构造函数内的代码，空对象被添加属性和方法
+			(4)返回这个对象(new就有，不用return)
+
+
+
+	    3.遍历对象：for-in语句用来遍历对象
+
+	       		for (变量 in 对象) {
+
+	      	 	}
+	      	 	<!-- 变量一般用k或者key -->
+
+	
+</body>
+</html>

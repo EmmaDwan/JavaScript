@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+//1 基础for循环
+		for (var i = 1; i <= 20; i++) {
+			console.log('循环啊循环');
+			// alert('循环啊循环');
+		}
+
+
+//2 用户控制循环次数
+		var num = prompt('请你输入次数');
+		for (var i = 1; i <= num; i++){
+			console.log('我听你的');
+		}
+//3 执行不同语句
+		var num = prompt('要数几只羊？');
+		for (var i = 1; i <= num; i++){
+			console.log(i + '只羊');
+		}
+
+
+		for (var i = 1; i <= 20; i++){
+			if (i == 1) {
+				console.log('第1只羊');
+			} else if (i == 20) {
+				console.log('第20只羊，没羊了');
+			} else{
+				console.log('第' + i + '只羊');
+			}
+		}
+
+//4 进行算术运算
+    //1-100 求和
+        var sum = 0;
+        for (var i = 1; i <= 100; i++){
+        	sum = sum + i;
+        	// sum += i
+        }
+        console.log(sum);
+        console.log(sum/100);
+
+    //1-100 偶数和 和 基数和
+        var even = 0, odd = 0;
+        for (var i = 1; i <= 100; i++){
+        	if(i % 2 == 0) {
+        		even = even + i;
+        	} else {
+        		odd = odd + i;
+        	}
+        }  
+        console.log('1-100所有偶数和' + even);
+        console.log('1-100所有奇数和' + odd);
+
+    //1-100 能被3整除的数 的和
+    
+        var re = 0;
+        for (var i = 1; i <= 100; i++){
+        	if(i % 3 == 0) {
+        		re = re + i;
+        	} 
+        }  
+        console.log('1-100所有能被3整除的数的和' + re);
+        
+
+
+
+
+
+
+
+
+	</script>
+</head>
+
+<body>
+
+	断点调试: 浏览器————F12————source————刷新网页(一直转圈圈)
+	         右侧watch加号可以添加观察变量
+
+
+	循环  目的：重复执行某些代码，规律性的重复操作
+	     语句：循环体 + 终止条件
+
+
+
+	(1)for循环，通常和计数有关
+
+
+	    	for(初始化变量; 条件表达式; 操作表达式) {
+	    	<!-- 循环体 -->
+	   	    }
+
+
+
+	   		1.  初始化变量： 通常作为计数器
+
+	     		条件表达式： 通常为终止条件
+
+	     		操作表达式： 每次循环后最后执行的代码，常用于计数器更新
+
+		
+	   		2.  可以用户控制循环的此数
+
+	     		可以重复执行不同代码 (靠i的变化) 
+
+	     		重复相同算数运算
+
+
+
+	 (2)for循环，通常和计数有关
+
+
+	
+</html>

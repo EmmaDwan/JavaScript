@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+//函数相互调用
+		function Day() {
+			var year = prompt('请输入年份');
+			var flag = isRunYear(year);
+			if (flag == true) {
+				alert('这是闰年');
+			} else {
+				alert('这不是闰年');
+			}
+
+		}
+
+		function isRunYear(year) {
+			var flag = false;
+			if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+				flag = true;
+			}
+			return flag;
+		}
+
+		Day();   //调用Day() ————调用isRunYear()
+
+
+
+//函数两种声明方式：
+		// 1 利用函数关键字function自定义函数(自定义函数)、
+		
+		function print() {
+            console.log('命名函数')
+		}
+
+
+		// 2 函数表达式(匿名函数)
+		
+		var a = function() {     //a是变量名，不是函数名
+
+			console.log('匿名函数')
+
+		}
+
+		
+		print();    //print是函数名
+		a();        //a是变量名，不是函数名
+
+
+	</script>
+</head>
+
+
+<body>
+
+	        (1)函数之间可以相互调用
+
+	        (2)函数的两种声明： 
+	        	1.利用函数关键字function自定义函数(自定义函数)
+
+	                     function fn() {
+
+	                     }
+
+	                     调用的时候写前后都可以
+
+                 2.函数表达式(匿名函数)
+
+	                     var 变量名 = function() {
+
+	                     }
+
+
+	               1)可以看做正常定义变量，只不过把后面的内容换成了函数
+	               2)也有形参传递实参
+	               3)调用的时候 只能写声明后面
+
+</body>
+</html>

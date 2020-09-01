@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+		jQuery元素操作
+
+			1.遍历元素  <!-- e.g.一堆div设黄色，隐式迭代。一堆div每个设不同色，需要遍历 -->
+
+					目的: 给同一元素进行不同操作
+
+					第一种:	
+							要遍历的.each(function( 索引i, 每个元素 ){   <!-- 比for循环简单的多 -->
+													<!-- 这里不是jQ对象！ -->
+													<!-- 本质是DOM -->
+							}) 
+
+
+
+					第二种: 主要用于处理数据
+							$.each(要遍历的，function(索引i，每个元素)) {      
+													   <!-- 本质是DOM -->
+							})
+														 
+							
+	
+
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+
+	<script type="text/javascript">
+
+// 第一种
+		var sum = 0;
+
+		var arr = ['pink','skyblue','yellowgreen','gold'];
+
+		$("li").each(function(i, ele) {
+
+			// 改变每个li的背景色
+			$(ele).css("backgroundColor", arr[i]);    // DOM对象ele ———— jQ对象 $(ele)
+
+
+			// 获取每个li里的数值
+			sum += parseInt($(ele).text()) // 获取的内容是字符串型，转换字符型
+
+			
+		});
+
+		console.log(sum);
+
+
+// 第二种
+		// 遍历元素
+		$.each($("li"), function(i, ele) {
+			console.log(i);
+			console.log(ele);
+
+		})
+
+		//遍历数组
+		$.each(arr, function(i,color) {
+			console.log(i);
+			console.log(color);
+		})
+
+		//遍历对象
+		$.each({
+			name: "Gabrielle",
+			age: 20
+		}, function(i,ele) {
+			console.log(i);     // i就对应 属性了
+			console.log(ele);	// ele就对应 属性值了
+		})
+
+
+	</script>
+</body>
+</html>

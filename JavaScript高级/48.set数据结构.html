@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+		ES6提供了新的 数据结构 Set:
+
+				类似数组，但成员的值唯一，没有重复
+
+							e.g.电商网站，用户搜过的关键字(重复了就不存储了)
+
+				1.Set本身是构造函数，实例化就是生成Set数据结构
+
+				2.s.size 表示数据结构的长度(不算重复的)
+	
+				3.可以利用Set数据结构进行 数组去重
+
+				4.实例方法:
+
+						add()           添加某个值，返回数据结构本身  <!-- 可以链式调用  -->
+
+						delete()        删除某个值，返回true/false，表示是否删除成功
+
+						has() 			判断数据结构有没有某值，返回true/false
+
+						clear()         清除所有成员，没有返回值
+
+				5.遍历  forEach()方法
+
+
+	<script type="text/javascript">
+
+		const s = new Set([1, 2, 3, 4, 5, 'a', 'b']);   // 实例s
+		console.log(s.size);   // 7
+
+// 去重
+		const s1 = new Set(['a', 'a', 'b', 'b']);
+		console.log(s1.size);  // 2，并不会把重复元素算进去
+
+
+		const arr = [...s1];  //这就把数据结构里的数据存进了数组
+		console.log(arr);
+
+// 实例方法们
+		const s2 = new Set();
+
+		console.log(s2.add(1).add(2).add(3).add(4));
+
+		console.log(s2.delete(2));
+		console.log(s2.delete(5));
+
+		console.log(s2.has(1));
+		console.log(s2.has(5));
+
+		s2.clear();
+		console.log(s2.size);
+
+
+// 遍历
+		s.forEach(function(value) {
+			console.log(value);
+		})
+		
+
+
+
+
+		
+
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+			复制节点：比如当点击某个按钮，复制某段文字
+
+					 node.cloneNode()  返回 调用该方法的节点的一个副本，也称克隆/拷贝节点
+
+					  			   ()  空，或者false   浅拷贝：复制节点本身，不管里面的子节点
+					  			   ()  true            深拷贝：复制标签里的内容
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+	</ul>
+
+	<script type="text/javascript">
+		var ul = document.querySelector('ul');
+
+		//复制
+		var lili = ul.children[0].cloneNode(true);
+		//添加节点(粘贴)
+		ul.appendChild(lili);
+
+		
+
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+
+            position: absolute;          /* 动画必须加定位才能动！ */
+            left: 0;
+        }
+     
+		
+	</style>
+</head>
+<body>
+		缓动动画: 让动画速度有所变化
+
+		    1.比如，速度逐渐停下
+		    <!-- 思路: 让盒子每次移动距离，慢慢变小 -->
+
+					  核心算法: 
+								步长 = (目标值 - 当前位置)/10    <!-- e.g.  10   9   8.1  -->
+
+					  停止条件:  当前位置 = 目标位置
+
+			2.JS要尽量避免小数操作，步长为小数，最终位置可能会不准确。最好将步长step进行取整(分正负，两个方向)
+
+
+
+
+
+
+
+		<button class="btn500">走到500</button>
+		<button class="btn800">走到800</button>
+
+		<div></div>		
+		<script type="text/javascript">
+
+			var div = document.querySelector('div');
+			var btn500 = document.querySelector('.btn500');
+			var btn800 = document.querySelector('.btn800');
+
+			function animate(obj,target) {
+
+				clearInterval(obj.timer);
+
+				obj.timer = setInterval(function() {
+
+					if (obj.offsetLeft == target) {                         //停止条件
+						clearInterval(obj.timer);
+
+					}
+
+                    
+					var step = (target - obj.offsetLeft) / 10;
+
+					step = step > 0 ? Math.ceil(step) : Math.floor(step);
+					//正值        向上取整  (不能加速啊！)
+					//负值(往回走) 向下取整
+				  
+
+					obj.style.left = obj.offsetLeft + step + 'px';          //当前位置 + 变步长
+					var dis = obj.style.left;
+
+
+				}, 15)   //一般推荐设15ms
+			}
+
+
+			btn500.addEventListener('click', function() {
+
+				animate(div,500);
+
+			})
+
+			btn800.addEventListener('click', function() {     // 从800回500:  500-800/10 = -30，
+															  // 刚好往回走
+				animate(div,800);
+
+			})
+			
+
+
+			
+		</script>
+
+	
+</body>
+</html>

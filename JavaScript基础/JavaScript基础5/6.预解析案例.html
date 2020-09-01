@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+// 案例1		
+		var num = 10;
+		fun();                //undefined
+
+		function fun() {
+  			console.log(num);         
+  			var num = 20;     // 要是函数作用域内，没有再起名一个num，就会正常去外围全局找，正常输出
+		}
+		// 全局作用域下
+		// var num;
+		// fuction fun();
+		 
+		// num = 10;
+		// fun();
+			//当前作用域下
+			//var num;         这个num和外面的num是不一样的(没传递)，所以undefined
+			//console         
+			//num = 20 
+
+// 案例2
+		var num = 10;
+
+		function fn(){
+    		console.log(num);   
+    		var num = 20;
+    		console.log(num);   
+		} 
+
+		fn();                 //undefined
+		                      //20
+
+// 案例3
+		var a = 18;
+		f1();                 //undefined
+		                      //10
+
+		function f1() {
+  			var b = 10;
+  			console.log(a);
+  			console.log(b);
+  			var a = '123';
+		}
+
+// 案例4
+		f2();         // 9
+		              // 9
+		              // 9
+
+		console.log(z);  // 9     全局变量z
+		console.log(y);  // 9     全局变量y
+		console.log(x);  // 报错   没有x
+
+		function f2() {
+  			var x = y = z = 9;
+  			// 相当于
+  			// var x = 9; y = 9; z = 9; 
+  			// y和z前面没有var 
+  			// 函数内没声明var只赋值，相当于全局变量
+  			
+  			// 集体声明要写成 var a = 9,b = 9,c = 9;
+  			// 
+  			console.log(x);
+  			console.log(y);
+  			console.log(z);
+		}
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>		

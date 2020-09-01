@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+		解构赋值:
+
+			ES6允许从数组中提取值，按对应位置给变量赋值。对象也可以。
+
+			1.数组结构:
+
+					let [变量1, ...] = arr;
+
+					<!-- []在等号左边，表示解构(不表示数组) -->
+
+			2.对象解构
+
+				1)  let{变量1, ...} = Star;
+
+
+				2)  let{对象属性1: 变量1, ....} = Star
+
+					<!-- 冒号左为 对象里的属性名，仅用来对应 -->
+					<!-- 冒号右为变量， 用来调用和赋值 -->
+
+					且 里面重新赋的变量不能和已经存在的变量冲突
+
+
+
+
+	<script type="text/javascript">
+
+// 1 数组解构
+		let arr = [1,2,3];
+
+		//es6之前
+		console.log(arr[0]);	// 要用数组里的值，相当于重复声明了三次变量arr
+		console.log(arr[1]);
+		console.log(arr[2]);
+
+		//es6解构
+		let [a, b, c] = arr;	// 这里的a,b,c是变量
+		console.log(a);         // a = arr[0]
+		console.log(b);
+		console.log(c);
+
+
+		let [d] = [];          // undefined
+		let [e, f] = [1];      // 1, undefined
+
+
+// 2 对象解构
+		let person = {
+			name: 'Gaby',
+			age: 20,
+			sex: '女'
+		}
+
+		// es6之前
+		console.log(person.name); 	    // 要用对象里的值，相当于重复声明了三次变量person
+		console.log(person.age);
+		console.log(person.sex);
+		
+		// es6
+		// 第一种
+		let {name, age, sex} = person;  // 这里的name, age, sex是变量
+		console.log(name);				//name = person.name
+		console.log(age);
+		console.log(sex);
+
+		// 第二种
+		let{name: myname, sex: mysex} = person;   // 只要属性名能对上，顺序和数量可以不一致 
+		console.log(myname);
+		console.log(mysex);
+		
+		
+
+
+	</script>
+</body>
+</html>

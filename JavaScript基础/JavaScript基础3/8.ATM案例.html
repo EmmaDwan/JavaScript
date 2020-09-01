@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+// 核心: do while，可以一直回到主页
+//       parseFloat()，和用户交互用prompt的必备
+//       continue继续do while回到首页
+//       break可以跳出do while取消首页
+        var money = 100;
+        var choose = 'y'
+		do{
+
+
+			var item = prompt('请输入您要进行的操作\n1.存钱\n2.取钱\n3.显示余额\n4.退出');
+			item = parseFloat(item);   //case值 和item 必须全等！！！
+
+			switch (item) {
+				case 1:
+					var save = prompt('请输入您要存的钱数');
+
+
+					money = money + parseFloat(save); 
+					alert('您现有钱' + money + '元');
+					var choose = prompt('要返回首页请输入 "y" ');
+
+
+					if (choose == 'y') {
+						continue;
+					} else{
+						break;
+					}
+				case 2:
+					var take = prompt('请输入您要取的钱数');
+
+					money = money - parseFloat(take);
+					alert('您现有钱' + money + '元');
+
+
+					var choose = prompt('要返回首页请输入 "y" ');
+					if (choose == 'y') {
+						continue;
+					} else{
+						break;
+					}
+				case 3:
+					alert('您现有钱' + money + '元');
+
+					var choose = prompt('要返回首页请输入 "y" ');
+					if (choose == 'y') {
+						continue;
+					} else{
+						break;
+					}
+			    case 4:
+			        alert('您已退出程序');
+			        break;
+			    default:                //没有对应项用defaut！！！
+			        alert('请重新输入');	
+			}
+
+
+
+
+		}while (choose == 'y');	
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

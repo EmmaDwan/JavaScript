@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div {
+            margin: 200px;
+        }
+        
+        span {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            font-size: 20px;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+        }
+
+	</style>
+</head>
+<body>
+
+
+
+
+	<div>
+        <span class="hour">1</span>
+        <span class="minute">2</span>
+        <span class="second">3</span>
+    </div>
+
+
+	<script type="text/javascript">
+//三个盒子，存放时 分 秒
+//利用innerHTML往盒子里写内容
+
+		var hour = document.querySelector('.hour');     //全局变量 函数内也依然能用
+		var min = document.querySelector('.minute');
+		var sec = document.querySelector('.second');
+	
+	//1.设定距离时间
+        var time = '2020-6-23 21:00:00 ';
+		var targetTime = +new Date(time);				//全局变量 函数内也依然能用
+
+
+	//3.第一次调用也间隔了 设定的毫秒数
+	//  刷新页面后会有短暂的不合要求，可以先调用一次这个函数
+		countDown();
+
+
+	//2.计时器
+		setInterval(countDown, 1000);
+
+
+		//计时器要调用的函数
+		function countDown() {
+ 	    	var nowTime = +new Date();
+ 	    	
+ 	    	var deltaSec = (targetTime - nowTime)/1000;   //毫秒转换成秒
+
+            //必须有parseInt，不然得到是一长串小数
+            //parseInt是向下取整，(多出来的小数转化更小时间单位)
+            
+ 	    	// var d = parseInt(deltaSec / 60 / 60 / 24);
+ 	    	var h = parseInt(deltaSec / 60 / 60 % 24);
+ 	    	var m = parseInt(deltaSec / 60 % 60);
+ 	    	var s = parseInt(deltaSec % 60);            //当前秒
+
+ 	    	// d = d < 10 ? '0' + d : d;
+ 	    	h = h < 10 ? '0' + h : h;
+ 	    	m = m < 10 ? '0' + m : m;
+ 	    	s = s < 10 ? '0' + s : s;
+
+ 	    	hour.innerHTML = h;
+ 	    	min.innerHTML = m;
+ 	    	sec.innerHTML = s;
+
+ 	    }
+
+
+	</script>
+</body>
+</html>

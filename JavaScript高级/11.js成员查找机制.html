@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+		
+		JS成员查找机制:
+				按原型链查找
+
+				1.实例对象的属性或方法，先查找实例对象本身  
+
+				2.如果1没有，就查找它的原型  (__prpto__指向的prototype原型对象)
+
+											oynn.__proto__  =  Star.prototype
+
+				3.如果2也没有，就查到 原型对象的原型 (Object的prototype原型对象)
+											
+											Star.prototype.__proto__ = Object.prototype 
+
+				4.就到Object为止了 (再往上是null呀)
+
+
+							如果都有，甚至冲突，就近原则
+
+
+			<!-- __proto__对象原型，意义在于为成员查找机制提供一个方向(路线) -->
+
+	
+<body>
+		
+	
+	<script type="text/javascript">
+
+		function Star(name,age) {
+			this.userName = name;
+			this.userAge = age;
+			this.sing = function(song) {
+				console.log(this.userName + '唱' + song);
+			}
+			// this.dance = function() {
+			// 	console.log('跳舞');
+			// }
+		}
+		Star.prototype.dance = function() {    
+			console.log('跳舞');
+		}
+
+
+		var oynn = new Star('欧阳娜娜',20);
+		var gxt = new Star('关晓彤', 20);
+
+// 查找机制
+		oynn.sex = '女';              // 实例本身               
+		Star.prototype.sex = '男';	 // 实例的__proto__
+		Object.prototype.sex = '女';	 // 构造函数的的__proto__
+	
+
+		console.log(oynn.sex);
+		console.log(oynn.toString());    	// 这个方法只有Object里有
+
+	</script>
+</body>
+</html>

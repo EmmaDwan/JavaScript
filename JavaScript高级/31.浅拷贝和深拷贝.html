@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		浅拷贝: 只拷贝一层，更深层次的对象只拷贝引用
+
+		深拷贝: 拷贝多层，每一级别的数据都会拷贝
+
+		1.jQuery里，$.extend() 
+		            $.extend(true, targetObj, obj) 
+
+
+		2.1 原生JS浅拷贝: 1) for in
+
+				 		 2) ES6新增方法     Object.assign(新的, 被拷贝的)
+
+
+		  2 原生JS深拷贝: 递归
+	
+	<script type="text/javascript">
+
+		var obj = {
+			id: 1,
+			name: 'Gabrielle',
+			detail: {
+				age: 20,
+				addr: 'xxxxxx'
+			},	
+			color: ['pink', 'yellow']					
+		};
+
+		console.log(obj);
+
+
+//一、原生JS的浅拷贝   
+	// 1)for in
+		var o = {};
+		var o1 = {};
+
+		for(var k in obj) {   // k是属性名，obj[k]是属性名
+			o[k] = obj[k];
+		}
+		console.log(o);
+
+	// 2)ES6提供的浅拷贝方法
+		Object.assign(o1, obj); 
+		console.log(o1);
+
+		// o和obj里的复杂数据类型拷贝的是个地址，即二者的detail指向同一个地址
+		// 修改了o的detail，会影响obj
+		
+		// o.detail.age = 0;    //这里修改，上面的console.log也改变了。。。
+		
+
+//二、原生JS的深拷贝	
+	// 1)递归  如果是复杂数据类型，就进入它，重新按for in遍历这部分
+	
+		var d = {};
+		var d1 = {};
+
+		function deepCopy(newobj, oldobj) {
+			for (var k in oldobj) {
+				// var value = oldobj[k];				
+				// 1.是不是数组
+				if (oldobj[k] instanceof Array) {
+
+					newobj[k] = [];  				// 声明对应newobj的第k项也是数组
+					deepCopy(newobj[k], oldobj[k]); // 递归
+
+				// 2.是不是对象
+				} else if (oldobj[k] instanceof Object) {
+
+					newobj[k] = {};  				// 声明对应newobj的第k项也是对象
+					deepCopy(newobj[k], oldobj[k]); // 递归
+
+				// 3.简单数据类型	
+				} else {
+
+					newobj[k] = oldobj[k];           // 直接赋值，不进去递归了
+
+				}
+			}
+		}
+
+
+		// 数组一定要放第一个
+		// 因为数组[]也属于Object，不能把对象那条放上面
+		
+
+		deepCopy(d,obj);
+
+		console.log('原obj');
+		console.log(obj);
+		console.log('深拷贝d');
+		console.log(d);
+
+
+		// 修改d不会影响obj
+		d.detail.age = 0;
+		
+
+
+		
+
+	</script>
+	
+</body>
+</html>

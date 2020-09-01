@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	Array对象的扩展方法   
+
+		一、扩展运算符:   
+
+				1.可以将数组或者对象 转化为逗号分割的参数序列
+
+				2.合并数组
+
+				3.将 类数组 或 可遍历对象  转换为真正的数组
+				 <!-- 伪数组 变 真数组 -->
+				 			1)  ...伪数组
+				 			2)  Array.from(待转换的，func)  <!-- 是个构造函数方法 -->
+
+				 								第二个参数类似数组的map(), 对每个元素进行处理，返回新数组
+
+
+
+
+
+	<div>第1个div</div>
+	<div>第2个div</div>
+	<div>第3个div</div>
+	<div>第4个div</div>
+	<div>第5个div</div>
+	<div>第6个div</div>
+	<div>第7个div</div>
+
+	<script type="text/javascript">
+
+// 1.拆分数组元素为 一个序列
+		let arr = ['a', 'b', 'c'];
+
+		// ...arr1; // 'a', 'b', 'c'  相当于去掉了[]
+
+		// console.log也可以接收 多个参数 
+		console.log(...arr);         // 参数序列的逗号，被console.log当做分割运算符
+		console.log('a', 'b', 'c');    
+
+
+// 2.合并数组			
+		let arr1 = [1, 2, 3, 4];
+		let arr2 = [5, 6, 7, 8];
+
+		let arr3 = [...arr1, ...arr2];
+		console.log(arr3);
+
+		// 或者
+		arr1.push(...arr2);     // 用扩展运算符...将arr2数组中的元素 拆分成逗号分隔的，再给push
+								// push就是识别逗号分隔的
+
+		console.log(arr1);		
+
+
+// 3.将伪数组转换为真数组
+
+	// 1) ...伪数组
+		var div = document.querySelectorAll('div');
+		console.log(div);       //伪数组
+
+
+		const arr4 = [...div];  // 变成真数组
+		console.log(arr4);    
+
+		
+		arr4.push('a');         // 就可以用Array下的方法了
+		console.log(arr4);
+
+
+
+	// 2) Array.from()
+		let arrayLike = {      				// 伪数组，索引是''字符串
+			'0': 1,
+			'1': 2,
+			'2': 3,
+			length: 3
+		};
+		console.log(arrayLike);  
+		// 第一个参数
+		let arr5 = Array.from(arrayLike);   // 真数组，索引是数值，还有length
+		console.log(arr5);
+		// 第二个参数
+		let arr6 = Array.from(arrayLike, (value) => {value * 2});  //(){}可以省略
+		console.log(arr6)
+
+
+
+
+
+	</script>
+
+
+				
+	
+</body>
+</html>

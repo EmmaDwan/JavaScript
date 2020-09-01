@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+	<button>快速</button>
+    <button>快速</button>
+    <button>快速</button>
+    <button>快速</button>
+    <button>快速</button>
+    <button>快速</button>
+    <button>快速</button>
+
+    <script type="text/javascript">
+
+    	$(function() {
+
+    		$("button").click(function() {
+
+    			$(this).css("background","pink");   				//当前设pink
+
+    			$(this).siblings("button").css("background","");    // 其它设空
+    										 //背景色，值为空，
+    										 //不能加空格，否则不起作用
+                 
+                // $(this).css("color", "red").siblings().css("color", "");   //链式编程                          
+
+    		})
+    	})
+    	
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		(1).鼠标事件对象
+
+		    以下的坐标其实都是距离
+
+
+				e.clientX    返回 鼠标  相对于 浏览器窗口可视区 的X坐标   <!-- 距离可视框上沿 -->
+				e.clientY    								   Y       <!-- 距离可视框左沿 -->
+
+				<!-- 跟滚动条滚动与否无关，只相对上边和左边 -->
+				<!-- 不包括浏览器的各类边框工具栏和菜单 -->
+				<!-- 控制台也不算在内 -->
+
+
+
+				e.pageX      返回 鼠标  相对于 文档页面  的X坐标  (ie9以上)  <!-- 距离document最顶上 -->
+				e.pageY  							     Y                <!-- 距离document最左边 -->
+
+				<!-- 实际开发最常用 -->
+				<!-- 跟滚动条有关 -->
+
+
+
+				e.screenX    返回 鼠标  相对于 电脑屏幕 的X坐标      
+				e.screenY 								Y
+
+
+	
+
+	<script type="text/javascript">
+		document.addEventListener('click', function(e) { 
+
+			console.log(e);       
+			//MouseEvent {isTrusted: true, screenX: 352, screenY: 139, clientX: 352, clientY: 68, …}
+			
+			console.log(e.clientX);
+			console.log(e.clientY);
+
+			console.log(e.pageX);
+			console.log(e.pageY);
+
+			console.log(e.screenX);
+			console.log(e.screenY);
+
+		})
+	</script>
+	
+</body>
+</html>

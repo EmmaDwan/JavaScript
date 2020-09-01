@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+// 全局变量和局部变量
+
+		var num1 = 0;        //全局num1
+		function fn(num) {
+			var num0 = num;
+			var num1 = 1;    //局部num1，和全局num1不冲突
+			num2 = 2         //全局num2(没声明直接赋值)
+			console.log(num0,num1,num2);
+		}
+
+
+		fn(num1);           //全局num1传递进去
+		console.log(num1);
+
+//java有块级作用域,js没有
+
+
+		if (3<5) {
+			a = 10;
+		}
+		
+        console.log(a);  //java里不能用if块里的a，js可以
+
+
+//作用域链
+         
+        var str = '外部str';
+
+        function fn1() {
+        	var str = 'fn1的str';
+
+        	function fn2() {         //声明fn2
+        		console.log(str);
+        	}
+
+        	fn2();                   //调用fn2 
+        	        //没有这句相当于只是声明了一下而已...
+        	        //fn1里面必须调用fn2(光声明不行！！！)
+        	        //不然下面调用fn1函数不打印
+        }
+
+        fn1();
+
+
+	</script>
+</head>
+        (1)作用域：限定 代码中名字 的可用范围 
+                  
+
+                  提高逻辑的局部性、可靠性，
+                  减少名字冲突
+
+        (2)分为两大类(es6之前)
+
+        		 全局作用域:  整个script标签，或者一个单独js文件
+                                     
+                 局部作用域:  一个函数内部
+
+
+        (3)变量的作用域：
+
+       			 全局变量：包括函数内部没有声明直接赋值的变量(没var)   (不建议)
+
+                 局部变量：1.函数形参 
+                          2.函数内变量
+
+                        局部里可以用全局变量(传参或自设)
+
+
+                 全局变量 在浏览器关闭才会销毁，占内存
+                 局部变量 执行完程序就会销毁，节约内存    (更倾向局部变量)
+
+        (4)es6之前js没有块级作用域(es6有块级作用域)
+
+                 比如if块里的，i、j
+
+                 块外面，java不能用，js可以
+
+        (5)作用域链：内部函数 可以访问内上级(外部)函数的变量
+                    采用链式查找，(向外层找)找到即用
+
+
+
+
+
+
+<body>
+	
+</body>
+</html>

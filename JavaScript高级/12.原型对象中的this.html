@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+
+			1.构造函数内:  this指向实例对象
+
+			2.构造函数的原型对象prototype中:  this指向实例对象
+
+				只有调用的时候，才确定this到底指向谁
+
+				一般情况下，this指向调用者
+
+
+
+
+	<script type="text/javascript">
+		function Star(name,age) {
+			this.userName = name;        					// 1. this指向调用它的实例对象
+			this.userAge = age;
+			this.sing = function(song) {
+				console.log(this.userName + '唱' + song);
+			}
+		}
+
+		var that;
+		Star.prototype.dance = function() {    
+			console.log('跳舞');
+			that = this;  									// 2.this指向调用它的实例对象
+		}
+		
+		var oynn = new Star('欧阳娜娜',20);
+		var gxt = new Star('关晓彤', 20);
+
+
+		oynn.dance();
+		console.log(that);
+		console.log(oynn === that);
+
+	</script>
+
+
+
+	
+</body>
+</html>

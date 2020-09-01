@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		字符串方法:
+
+			1.str.trim()   无参数，从一个字符串两端 删除空白字符
+								  中间的空白不管
+						    
+						    <!-- 返回新字符串，不影响原先的 -->
+
+	<input type="text" name="">
+	<button>提交</button>
+	<div></div>
+
+	<script type="text/javascript">
+
+		var str = '   Gabrielle Lisa ';
+		var newStr = str.trim();
+
+		console.log(str);
+		console.log(newStr);
+
+
+		var input = document.querySelector('input');
+		var btn = document.querySelector('button');
+		var div = document.querySelector('div');
+
+		btn.onclick = function() {
+
+			var str = input.value.trim();   // 2.要讲input输入框内容 先去头为字符串
+
+			if (str === '') {
+				alert('清输入内容');
+			} else {
+				console.log(str);           // 1.如果用户确实输入了，只不过输入了空格     '   '
+				console.log(str.length);    //   如果用户输入了字符串，但开头结尾用了空格  '   Naby '      
+												 
+				div.innerHTML = str;
+			}
+
+		}
+	</script>
+	
+</body>
+</html>

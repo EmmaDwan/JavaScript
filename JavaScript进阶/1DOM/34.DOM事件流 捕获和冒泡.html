@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.father {
+            overflow: hidden;
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+            background-color: pink;
+            text-align: center;
+        }
+        
+        .son {
+            width: 200px;
+            height: 200px;
+            margin: 50px;
+            background-color: purple;
+            line-height: 200px;
+            color: #fff;
+        }
+
+	</style>
+</head>
+<body>
+	
+		(1).DOM事件流：描述的是从页面中接收时间的顺序
+
+					(事件发生时，在元素节点之间按特定顺序传播 的过程)
+
+			          
+			          1.捕获阶段：      由DOM最顶层节点开始，逐级向下传播到 最具体元素接收
+			          2.当前目标阶段：  目标对象
+			          3.冒泡阶段：      由具体元素接收，逐级向上传播到DOM最顶节点的过程
+
+
+	    (2).注意：1.js代码只能执行 捕获或冒泡的任一阶段
+
+	    		 2.onclick和attachEvent只能得到 冒泡阶段
+
+	    		 3.addEventListener的第三个参数，为true，就在捕获阶段调用事件处理程序
+	    		 								为false或省略，就在冒泡阶段调用事件处理程序
+
+	             4.实际开发中，少用事件捕获，多用冒泡
+
+	             5.有的事件没有冒泡，比如onblur，onfocus，onmouseover，onmouseleave
+
+
+
+	    <div class="father">
+	    	<div class="son">son盒子</div>
+	    </div>
+
+	    <script type="text/javascript">
+
+
+//2.捕获阶段
+		//都true，先弹father盒子
+	    	// var son = document.querySelector('.son');
+	    	// son.addEventListener('click', function() {
+
+	    	// 	alert('son盒子');
+
+
+	    	// }, true)
+
+
+	    	// var father = document.querySelector('.father');
+	    	// father.addEventListener('click', function() {
+
+	    	// 	alert('father盒子');
+
+	    	// }, true)
+
+
+//2.冒泡阶段 
+		//都false或省略，先弹son盒子
+	    	var son = document.querySelector('.son');
+	    	son.addEventListener('click', function(e) {
+
+	    		alert('son盒子');
+	    		e.stopPropagation();  //阻止冒泡，但如果再单击father，还会继续冒泡，document也冒
+	    		e.cancelBubble = true;
+
+
+	    	}, false)
+
+
+	    	var father = document.querySelector('.father');
+	    	father.addEventListener('click', function() {
+
+	    		alert('father盒子');
+
+	    	}, false)
+
+
+	    	document.addEventListener('click', function() {
+
+	    		alert('document大盒子');
+
+	    	}, false)
+
+
+
+	    </script>
+	    
+
+</body>
+</html>

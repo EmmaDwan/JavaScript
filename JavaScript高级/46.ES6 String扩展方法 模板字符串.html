@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	String的扩展方法：
+
+			1.模板字符串:
+
+				ES6新增的 创建字符串的方式，利用反引号定义
+
+
+					1).模板字符串可以解析变量
+
+							拼接变量只需要 ${ 变量 }，不需要'+ +'来拼接了
+
+
+					2).模板字符串可以换行，普通字符串''内可不能换行啊
+
+					3).模板字符串中可以调用函数, ${ 函数() }
+
+
+
+
+
+	
+	<script type="text/javascript">
+
+
+// 可解析变量
+		let str = `这是一个 模板字符串`;
+		console.log(str);
+
+		var uname = 'Gaby';   
+		var uage = 20;				// 普通字符串
+		let hello = `Helow,it's ${uname};`  // 模板字符串，不需要+拼接
+		console.log(hello);
+
+// 可换行
+		let detail = `<div>         
+			<span>${uname}</span>
+			<span>${uage}</span>
+
+		</div>`;                    // 普通字符串可不能换行啊
+
+		console.log(detail);
+
+// 可调用函数
+		
+		const sayHello = function() {
+			return '这是个函数';
+		}
+
+		let greet = `你好！${sayHello()}`;
+		console.log(greet);
+		
+
+	</script>
+	
+</body>
+</html>

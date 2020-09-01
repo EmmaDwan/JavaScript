@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        //(1)数字型 
+
+        var a = 012,         //八进制   10
+            b = 0x12;        //十六进制 18
+        console.log(a);
+        console.log(b);
+
+        console.log(Number.MAX_VALUE);       //最大值
+        console.log(Number.MIN_VALUE);
+
+        console.log(Number.MAX_VALUE * 2);   //无穷大
+        console.log(-Number.MAX_VALUE * 2);  //无穷小
+        console.log('pink' - 100);           //NaN 非数字
+
+        //验证用户输入的是不是数字
+        var x = 'pink';
+        console.log(isNaN(x));            
+
+
+
+
+        //(2)字符串型
+
+
+        var str2 = '我是一个"高富帅的"程序员';
+        console.log(str2);
+        // var str1 = '我是一个'高富帅的'程序员';   //外单内双，外双内单
+        // console.log(str1);
+
+
+
+        alert('酷热难耐，火辣的太阳底下，我挺拔的身姿，成为了最为独特的风景。\n我审视四周，这里，是我的舞台，我就是天地间的王者。\n这一刻，我豪气冲天，终于大喊一声："xxxxx" ')
+            // 不能敲回车，否则alert里的''中断
+            // 只能敲\n
+
+
+    //字符串长度
+        var str = "It's an apple tree";
+        console.log(str);
+        console.log(str.length);          
+
+    //字符串拼接
+        console.log('沙漠' + '骆驼');
+        console.log('pink' + 20);        //pink20
+        console.log(10 + 10);            //20
+        console.log('10' + 10);          //1010
+
+        console.log('鸟有' + 18 + '只'); //鸟有18只
+
+        var num = 18;
+        console.log('鸟有' + num + '只'); //鸟有18只
+        // age是变量，不是字符串，不能加''
+        // 用变量方法有利改变数字
+    </script>
+</head>
+
+<body>
+
+    (1)数字型 
+        1.不仅可以写十进制，也可以写 
+
+            二进制 
+            八进制 0-7 前面加0 
+            十六进制 0-9 a-f 前面加0x 
+
+        2.数字型范围 
+
+            最大值 Number.MAX_VALUE 
+            最小值 Number.MIN_VALUE 
+
+        3.特殊 
+
+            Infinite 无穷大 
+            -Infinite 无穷小 
+            NaN 非数值 not a number 
+
+        4.isNaN(x) 非数字 返回true 
+
+    (2)字符串型 
+
+        1.引号括起来的就是字符串型 '12' 'pink' 
+
+        2.嵌套时 原则上 外双内单，外单内双 
+
+        3.js字符串转义符
+            <img src="字符串转义符.jpg"> 
+            \n   \\   \'   \"   \t   \b     <!-- 注意这里是顿号\   不是除号/ -->
+        4.字符串长度(字符的数量) 
+            length属性：xxx.length 
+
+        5.拼接用+ 
+
+            数值相加，字符相连 
+            任何类型都可以放在一起拼接，但 '字符串'  +   任何        =  拼接字符串 
+                                        数字  +   数字        =  算数加减法 
+                                    '字符串'  + 变量(不加引号) =  拼接字符串
+
+
+
+
+
+</body>
+
+</html>

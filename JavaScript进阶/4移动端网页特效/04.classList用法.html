@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.bg{
+			background-color: black;
+		}
+	</style>
+</head>
+<body>
+		元素的classList属性: 
+							H5新增，ie10以上
+
+							1.添加类名: div.classList.add(' ')   
+									   在后面追加类名，不会覆盖， ' '内不加 .
+
+							2.移除类名  div.classList.remove(' ')
+
+							3.切换类名  element.classList.toggle(' ')   自动判断 并添加删除类名
+
+	<div class="name1 name2"></div>
+	<button>开关灯</button>
+
+	<script type="text/javascript">
+		
+		var div = document.querySelector('div');
+		console.log(div.classList);      //伪数组形式 存储元素的所有类名
+
+		console.log(div.classList[0]);   //name1
+		console.log(div.classList[1]);   //name2
+
+// 1.添加类
+		div.classList.add('name3');
+		console.log(div.classList[2])
+// 2.删除类
+		div.classList.remove('name3');
+		console.log(div.classList[2])
+
+
+// 3.切换类
+		var btn = document.querySelector('button');
+		btn.addEventListener('click', function() {
+
+			document.body.classList.toggle('bg');    //自动判断,没.bg类就添上，有就删去
+		})
+		
+
+
+
+
+	</script>
+	
+</body>
+</html>

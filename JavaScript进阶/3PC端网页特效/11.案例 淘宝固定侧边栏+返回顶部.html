@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style type="text/css">
+		.slider-bar {
+
+            width: 45px;
+            height: 130px;
+            background-color: pink;
+            margin-left: 600px;
+
+            position: absolute;    /* 本来是绝对定位 */
+            left: 50%;
+            top: 300px;
+        }
+        
+        .w {
+            width: 1200px;
+            margin: 10px auto;
+        }
+        
+        .header {
+            height: 150px;
+            background-color: purple;
+        }
+        
+        .banner {
+            height: 250px;
+            background-color: skyblue;
+        }
+        
+        .main {
+            height: 2000px;
+            background-color: yellowgreen;
+        }
+        
+        span {
+            position: absolute;     /* 返回顶部：绝对定位 */
+            bottom: 0;
+
+            display: none;
+        }
+
+	</style>
+    <script src="11.返回顶部 竖直方向缓动动画.js"></script>
+</head>
+<body>
+
+	<div class="slider-bar">
+        <span class="goBack">返回顶部</span>
+    </div>
+
+    <div class="header w">头部区域</div>
+    <div class="banner w">banner区域</div>
+    <div class="main w">主体部分</div>
+
+    <script type="text/javascript">
+
+// 侧边栏本来是绝对定位，滚动到banner后变成固定定位
+// 继续滚动时，增加返回顶部选项
+// scroll事件的事件源是document，不是元素
+		var slider = document.querySelector('.slider-bar');
+		var banner = document.querySelector('.banner');
+		var main = document.querySelector('.main');
+		var goBack = document.querySelector('.goBack');
+
+    //01节offsetTop!!! 
+    //这些距离一定要写在scroll事件外面，不然banner滚动过程中offsetTop不准
+		var distance = banner.offsetTop;    
+		var sliderbanner = slider.offsetTop - distance;
+		var maintop = main.offsetTop;
+
+
+
+
+//1.滚动页面时，侧边块的移动和固定
+		document.addEventListener('scroll', function() {
+
+        //滑块
+			if (window.pageYOffset >= distance) {  //页面被卷去的头部 >=...
+
+				slider.style.position = 'fixed';          //侧边栏变成固定定位fixed
+				slider.style.top = sliderbanner + 'px';   //修改top值，记得加px单位！！！！！！
+
+			} else {
+
+				slider.style.position = 'absolute';       
+				slider.style.top = '300px';               // top值变回300px
+
+			}
+
+        //返回顶部
+			if (window.pageYOffset >= maintop) {   
+
+				goBack.style.display = 'block';
+
+			} else {
+				goBack.style.display = 'none';
+		
+			}
+
+		})
+
+//2.单击返回顶部，返回页面最上端
+        // window.scroll(x,y)  让窗口滚动到特定位置
+        goBack.addEventListener('click',function() {
+
+        // 1
+            // window.scroll(0,0);   //刷的一下
+                                     //不加px
+                                 
+        // 2 缓动动画实现回到顶部
+            animate(window, 0);   //对象是window，返回顶部 target就是0
+
+        })
+
+
+        
+		
+    </script>
+
+</body>
+
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+//数组翻转
+		function reverse(arr) {
+
+			var newArr = [];
+			for (var i = arr.length - 1; i >= 0; i--) {
+
+				newArr[newArr.length] = arr[i];
+			}
+			return newArr;
+		}
+
+
+		var arr1 = reverse( [1,3,5,7,9] );    //数组要加中括号
+		console.log(arr1);
+
+//冒泡排序
+        
+        function sort(arr) {
+        	for (var i = 1; i <= arr.length - 1 ; i++) {    // 1到length-1趟
+        		for (var k = arr.length - i; k > 0; k--) {  //第1趟最多8次 length-1
+        			                                        //第2趟最多7次 length-2 
+        			                                        //k-1=0,k>0
+        			                                        
+
+        			if (arr[k] < arr[k - 1]) {
+        				var temp = arr[k];
+        				arr[k] = arr[k - 1];
+        				arr[k - 1] = temp;
+
+        			}        			
+        		}
+        	}
+        	return arr;
+
+        }
+
+        console.log(sort([3,1,6,4,9,2,7,5,8]));   
+        console.log(sort([11,7,22,999]));   
+        //length = 9
+        //右边第一个开始比较
+        
+        //右边 > 左边，不动
+        //右边 < 左边，右向左移(交换)
+        
+        //第一趟 至多比较8次  length-1
+        //第二趟 至多比较7次
+        //...
+        //第八趟 至多比较1次  
+        
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

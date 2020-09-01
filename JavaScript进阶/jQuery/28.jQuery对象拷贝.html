@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery.min.js"></script>
+</head>
+
+<body>
+		jQuery对象拷贝:
+					$.extend()     把一个对象 拷贝给 另一个对象用
+
+					$.extend(true, 要被添加的目标对象,  要拷贝的对象)
+				
+						<!-- true，深拷贝 -->
+						<!-- 不写默认false，浅拷贝 -->
+
+
+
+					浅拷贝: 1.被拷贝的对象中 简单数据类型 直接拷贝，复杂数据类型 拷贝地址 ———— 给目标对象
+
+							2.修改目标对象里的复杂数据类型  会影响  被拷贝的对象
+
+							<!-- 因为二者里面的复杂数据类型 指向的是同一个地址啊，改了同一个地址下的东西 -->
+
+
+
+					深拷贝: 1.完全克隆(拷贝的是复杂数据类型本身，而不是地址)
+
+							2.修改目标对象里的复杂数据类型  不会影响	  被拷贝的对象
+
+
+
+
+
+
+
+	<script type="text/javascript">
+
+		var targetObj = {
+			id: 0,
+			height: 166
+		};
+
+
+		var obj = {
+			id: 1,
+			name: 'Gabrielle',
+			age: 20,				// 以上简单数据类型
+
+			msg: { 					// 对象，复杂数据类型
+				class: 'physics',
+				score: 99
+			}
+		}
+
+
+
+		// 浅拷贝 深拷贝true
+		$.extend(true, targetObj, obj);    // 有冲突的属性会覆盖掉原来的，id以1为准。复杂数据类型也会覆盖
+
+
+		// 对目标对象里的 复杂数据类型修改
+		// 影响了被拷贝的obj
+		targetObj.msg.score = 100;
+		console.log('修改后的targetObj: ');
+		console.log(targetObj);
+
+		console.log('修改targetObj后的obj: ');
+		console.log(obj);
+
+
+		
+		
+
+
+
+
+
+		
+
+
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+        <!-- 费那么多话，常用innerHTML就完事了 -->
+
+        1.元素.innerText
+	           读或修改 起始——终止位置内 的内容，       同时去除html标签、空格、换行
+	    2.元素.innerHRML
+	           读或修改 起始——终止位置内 的全部内容，   可读可添加html标签，保留空格、换行
+
+
+
+        <div id = "difference"></div>
+	    <div id = "read">
+	    	阿拉啦啦 哇咔咔
+	    	<span>
+	    		123456
+	    		7890
+	    	</span>
+	      
+	   </div>
+
+
+
+
+
+		<script type="text/javascript">
+// 一、改变元素内容
+
+	//2.innerText和innerHTML区别
+				var div1 = document.getElementById('difference');
+
+				div1.innerText = '<strong>今天是</strong>:2020-6-12';
+				// div1.innerHTML = '<strong>今天是</strong>:2020-6-12';
+
+				//innerText不识别''内容里的html标签   非标准
+				//innerHRML识别                      W3C标准
+				//
+	//3.可读功能(也有上述区别)
+				var div2 = document.getElementById('read');
+		        console.log(div2.innerText);    //去除html标签、空格(再多个也只留一个)、换行
+		        console.log(div2.innerHTML);    //可读可添加html标签，保留空格(有几个留几个)，保留换行
+
+
+        
+		</script>
+<body>
+	
+</body>
+</html>

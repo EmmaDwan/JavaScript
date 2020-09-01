@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		 * {
+            margin: 0;
+            padding: 0
+        }
+        
+        ul {
+            list-style: none
+        }
+        
+        .box {
+            width: 600px;
+            margin: 100px auto;
+            border: 1px solid #000;
+            padding: 20px;
+        }
+        
+        textarea {
+            width: 450px;
+            height: 160px;
+            outline: none;
+            resize: none;
+        }
+        
+        ul {
+            width: 450px;
+            padding-left: 80px;
+        }
+        
+        ul li {
+            line-height: 25px;
+            border-bottom: 1px dashed #cccccc;
+            display: none;
+        }
+        
+        input {
+            float: right;
+        }
+        
+        ul li a {
+            float: right;
+        }
+	</style>
+	 <script src="jquery.min.js"></script>
+
+</head>
+<body>
+
+	<div class="box" id="weibo">
+
+        <span>微博发布</span>
+        <textarea name="" class="txt" cols="30" rows="10"></textarea>
+        <button class="btn">发布</button>
+
+        <ul> </ul>
+    </div>
+
+    <script type="text/javascript">
+
+// 1.单击发布按钮时，动态生成li，为文本框里的信息
+    	$(".btn").on("click", function() {
+
+    		var li = $("<li></li>");									// 1 新建 li元素节点
+    		li.html($(".txt").val() + "<a href='javascript:;'>删除</a>") 	// 2 li的内容为 text内容+删除
+    																	//       内容用html()赋值
+    		$("ul").prepend(li);										// 3 插入
+
+    		li.slideDown('slow');
+    		$(".txt").val("");   	//发布后 清空textarea内容
+
+    	})
+
+// 2.单击删除按钮，删除这条
+		// $("ul a").click(function() {           // 并不能给 动态添加的li的内容(删除按钮) 添加事件
+		// 	alert(1);							  // 此时还没有这个a呢
+		// })
+
+
+		$("ul").on("click","a",function() {
+			$(this).parent().slideUp(function() {   // this是a
+
+				$(this).remove();					// 先上拉
+													// 上拉完成后，回调函数里删除
+			})    
+		});
+		
+
+
+
+
+    </script>
+
+
+	
+</body>
+</html>

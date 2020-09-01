@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+
+// 块级作用域	
+		if (true) {
+			const a = 10;
+			console.log(a);
+		}
+		// console.log(a);   // 报错
+
+
+// 常量值不可更改		
+		const PI = 3.14;
+		// PI = 100;         // 报错，不能分配一个值给常量
+
+
+		const arr = [100,200];
+
+		arr[0] = 150;		 // 没有改内存地址，复杂数据类型的元素可以更改
+		// arr = [150,200];     // 更改了内存地址
+	</script>
+</body>
+</html>

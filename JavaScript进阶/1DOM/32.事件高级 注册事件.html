@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+			(1).注册事件
+			        1.传统方法 (之前学的on开头那些)
+
+			          唯一性： 同一元素 同一on事件，只能设置一个处理函数，后注册的函数会覆盖前面的
+
+			        2.方法监听注册：
+			        		addEvenListener()，是一个方法 	 <!-- ie9之后 -->
+			        		ie9之前用attachEvent              <!-- 不提倡用 -->
+
+			        	    同一元素 同一事件，可以添加多个监听器
+
+
+
+			        	    事件目标.addEventListener(  '去了on的事件类型', 事件处理函数{}，可选参数)
+
+
+
+		<button>传统按钮1</button>
+		<button>监听按钮2</button>
+
+
+
+		<script type="text/javascript">
+
+			var btn = document.querySelectorAll('button');
+
+//传统法
+			btn[0].onclick = function() {
+				alert('传统法注册事件');
+			}
+
+
+//监听法
+			btn[1].addEventListener('click',function() {           //在内部添加匿名函数的方式
+				alert('监听法注册事件');
+			})
+
+//注册事件兼容性解决方案
+		function addEventListener(element,eventName,fn) {
+
+			if (element.addEvenListener {
+
+				element.addEvenListener(eventName,fn);
+
+			} else if (element.attachEvent) {
+
+				element.attachEvent('on' + eventName,fn);
+
+			} else {
+
+				element['on' + eventName] = fn;
+			}
+		}
+
+
+		</script>
+
+	
+</body>
+</html>

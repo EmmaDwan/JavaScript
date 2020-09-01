@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+// Math.PI      圆周率
+		console.log(Math.PI);
+
+
+// Math.max()   最大值
+		console.log(Math.max(1,99,255,112,300));
+		console.log(Math.max(3,5,7,9,'pink'));   //NaN
+		console.log(Math.max());                 //-infinity
+
+
+// Math.abs()   绝对值
+		console.log(Math.abs(-5));        
+		console.log(Math.abs('-5'));      // 5 隐式转换，字符串自动被转换为数值型
+		console.log(Math.abs('pink'));    //NaN
+
+
+// Math.floor() 向下取整
+		console.log(Math.floor(1.1));    //1
+		console.log(Math.floor(1.9));    //1
+
+
+// Math.ceil()  向上取整
+		console.log(Math.ceil(1.1));    //2
+		console.log(Math.ceil(1.9));    //2
+
+
+// Math.round() 四舍五入
+		console.log(Math.round(1.1));    //1
+		console.log(Math.round(1.9));    //2
+
+		console.log(Math.round(-1.1));    //-1
+		console.log(Math.round(-1.5));    //-1  这个.5特殊，往大了取，负数也往大了取
+		console.log(Math.round(-1.6));    //-2  其它正常
+
+
+
+
+
+//对象案例：封装自己的Math对象
+		var myMath = {
+			PI: 3.1415926535,       //逗号
+
+			max: function() {
+				var max = arguments[0];
+				for (var i = 1; i < arguments.length; i++) {
+					arguments[i]
+					if (arguments[i] > max) {
+						max = arguments[i];
+					}
+				}
+				return max;
+			},                      //逗号
+
+			min: function() {
+				var min = arguments[0];
+				for (var i = 1; i < arguments.length; i++) {
+					arguments[i]
+					if (arguments[i] < min) {
+						min = arguments[i];
+					}
+				}
+				return min;
+			}
+		}
+
+		console.log(myMath.PI);
+		console.log(myMath.max(1,5,9));
+		console.log(myMath.min(1,5,9));
+
+
+	</script>
+</head>
+
+
+
+
+<body>
+		Math对象
+		    不是构造函数，所以不需要new来调用Math
+		    可以直接用里面的属性和方法
+
+
+		    e.g.    Math.PI      圆周率
+
+					Math.max()   最大值
+
+					Math.abs()   绝对值
+
+					Math.floor() 向下取整
+
+					Math.ceil()  向上取整
+
+					Math.round() 四舍五入
+
+
+
+</body>
+</html>

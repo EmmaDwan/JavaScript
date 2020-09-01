@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+
+<body>
+
+
+		history对象: 和浏览器历史记录进行交互，包含用户访问过的URL(在浏览器窗口中访问过的)
+
+					方法：
+						back() 		后退
+
+						forward()   前进
+
+						go(参数)    1为前进1个页面，-1为后退一个页·面  (数字是几就跳几个页面)
+
+		history对象在实际开发中很少用到，但有些OA办公系统可能会用到
+        
+
+
+		<a href="14.navigator对象.html">去14</a>        <!-- a标签实现两页面跳转 -->
+		<button>后退</button>                           <!-- 再让button实现两页面前进后退 -->
+
+		<script type="text/javascript">
+
+			var btn = document.querySelector('button');
+			btn.addEventListener('click', function() {
+
+            //history.back 后退
+				// history.back();
+
+			//history.go(-1) 后退1个页面
+			    history.go(-1);
+
+			})
+		</script>
+
+
+		 			 
+	
+</body>
+</html>

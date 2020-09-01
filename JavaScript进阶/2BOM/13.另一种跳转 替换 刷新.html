@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+
+<body>
+	<button class="assign">跳转</button>
+	<button class="replace">替换</button>
+	<button class="reload">刷新</button>
+
+	<script type="text/javascript">
+
+
+//location.assign 跳转
+		var btn1 = document.querySelector('.assign');
+		btn1.addEventListener('click', function() {
+
+			location.assign('https://cn.bing.com/');      // 可以后退
+
+		})	  
+
+//location.replace 替换
+		var btn2 = document.querySelector('.replace');
+		btn2.addEventListener('click', function() {
+
+			location.replace('https://cn.bing.com/');     // 不可以后退 不保存记录的那种
+
+		})
+//location.reload 刷新
+		var btn3 = document.querySelector('.reload');
+		btn3.addEventListener('click', function() {
+
+			location.reload(true);     					   // 空或false，单击刷新
+							       					       // true，强制刷新
+
+		})
+
+		
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+
+<body>
+		常用键盘事件: 
+				1.键盘事件
+					 keyup    	按键弹起触发
+
+					 keydown    按键按下触发     <!-- 如果按着不松开会一直触发 -->
+					 keypress                   <!-- 不识别功能键，比如ctrl、shift、alt、左右上下 -->
+
+					 <!-- 执行顺序，keydown——keypress——keyup -->
+
+
+                2.键盘事件里的属性
+
+                	 key        按的键  			<!-- 兼容性问题 -->
+					 keyCode    按下键对应的ACII码
+
+
+					 keyup和keydown事件 不识别 按键大小写 <!-- 但可以靠大小写判断 -->
+					 keypress识别大小写					<!-- 但keypress 不识别功能键 -->
+
+
+				
+
+
+		<script type="text/javascript">
+
+//弹起
+		//keyup
+			document.addEventListener('keyup', function() {
+				console.log('键盘按键弹起keyup');
+			})	
+
+
+
+//按下 
+		//keydown
+
+			document.addEventListener('keydown', function(e) {     //第一个执行的keydown
+			
+				console.log('keydown ' + e.key);
+				console.log('keydown ' + e.keyCode);
+
+			})	
+
+        //keypress
+			document.addEventListener('keypress', function(e) {
+
+
+				console.log('keypress ' + e.key);
+				console.log('keypress ' + e.keyCode);
+			})	
+
+	
+
+
+
+
+
+		</script>
+	
+</body>
+</html>

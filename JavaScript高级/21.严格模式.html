@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		JavaScript除了提供正常模式外，还提供了严格模式(strict mode)
+
+		ES5的严格模式:
+
+				采用 具有限制性的JS变体 的一种模式，<!-- 在严格的条件下运行JS代码 -->  IE10以上才支持
+	
+			1.消除了JS语法一些不合理、不严谨，减少了怪异行为 <!-- 比如 变量不声明竟然还能赋值 -->
+
+			2.消除一些运行不安全之处
+
+			3.提高编译器效率，增加运行速度
+
+			4.禁用了ECMAScript未来版本可能会定义的一些语法，
+										<!-- 比如一些保留字class、enum、extends等等不能做变量名 -->
+												<!-- 这说的还是ES5的时候 -->
+
+		(1).开启严格模式: 
+
+			 	1.整个脚本: 	'use strict';
+
+			 	2.个别函数:	放在函数体内所有语句前
+
+
+		(2).严格模式和正常模式的区别:
+
+		                   			  		正常模式   				严格模式
+
+			变量没有声明直接赋值          	默认为全局变量			 报错
+			删除已声明变量					可删                     报错
+
+			全局作用域普通函数里的this    	指向window               undefined
+
+			构造函数不加new调用				当普通函数调用			 报错
+															<!-- 不new，构造函数里的this还是指向undefined -->
+															<!-- 没法赋值，构造函数的属性不管用 -->
+			函数的参数有重名					可以	执行					 报错
+											但结果未必对					
+
+			非函数代码块里声明函数			可以 					 报错
+															<!-- 禁止在比如if、for里声明函数 -->
+															<!-- 函数里可以声明函数 -->
+															
+
+
+
+
+
+	<script type="text/javascript">
+
+		'use strict';   	  // 1.整个script脚本 开启严格模式
+		var a = 1;
+		b = 1;
+		delete a;
+
+
+	</script>
+
+
+
+	<script type="text/javascript">
+		(function() {          
+							   
+			'use strict';     // 1.有多个脚本的时候，写在立即执行函数里面
+							  //   因为script标签只能有一个立即执行函数
+							  //   ie10以前，当做没有输入输出的普通字符串，忽略
+
+		})();
+	</script>
+
+
+
+	<script type="text/javascript">
+		function fn() {
+			'use strict';     // 2.fn下面的代码按照严格模式执行
+
+		}
+		function fn1() {
+
+		}
+	</script>
+
+
+
+</body>
+</html>	

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+    //班级成绩平均值
+		//输入多少人，依次输入每人成绩，求班级均分
+		var num = prompt('请输入总人数');
+		var sum = 0;
+		for(var i = 1; i <= num; i++) {
+			var score = prompt('请输入第' + i + '个学生成绩');  
+
+			//用户输入的成绩是字符串型！！！
+			
+			sum = sum + parseFloat(score);
+
+		}
+		average = sum / num;
+		alert('平均成绩为' + average);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

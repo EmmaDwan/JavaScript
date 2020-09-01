@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+
+        <!-- 自定义属性的目的：保存并用数据，有些数据可以保存在页面里而非数据库里 -->
+
+    综合之前学的：
+		(1).获取元素的属性
+						1.  元素.属性 ———— 获得内置属性(元素自带的)
+						2.  元素.getAttribute('属性') ———— 获得程序员自己添加的自定义属性 
+
+		(2).修改元素的属性
+						1.  元素.属性 = '新'
+						2.  元素.setAttribute('新属性') 
+		(3).移除元素的属性
+						1.  元素.removeAttribute('')
+
+
+
+
+
+
+
+
+		<div id="demo" index="自定义属性：01" class="nav"></div>    <!-- index是自己添加的属性 -->
+
+		<script type="text/javascript">
+
+			var div = document.querySelector('div');
+//(1).获取元素的属性
+			//1 div.id
+			console.log(div.id);                         //获得内置属性
+
+            //2 div.getAttribute('id')
+			console.log(div.getAttribute('id'));
+			console.log(div.getAttribute('index'));      //可获得自定义属性
+
+
+//(2).修改元素的属性
+			//1
+			div.id = 'text'; 
+			console.log(div.id);  
+			div.className = 'navs';  
+			console.log(div.className);                                   //className
+
+            
+            //2 div.setAttribute('属性','值');
+			div.setAttribute('id','set');             //get
+			console.log(div.getAttribute('id'));      //set
+			div.setAttribute('class','footer');        //get
+			console.log(div.getAttribute('class'));    //set              //'class'
+
+//(3).修改元素的属性
+			
+			console.log(div.removeAttribute('index'));
+
+
+
+
+
+			
+
+
+		</script>
+
+	
+</body>
+</html>

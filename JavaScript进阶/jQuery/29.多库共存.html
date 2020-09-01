@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+
+		jQuery用$作标识符，随着jQ流行，其它js库也会用$作标识符，会冲突
+
+		多库共存: 
+				一个让jQuery和其它js库不冲突的方案
+
+				1.将$改成jQuery  e.g.  $("div") ———— jQuery("div");
+
+				2.jQuery变量规定新的名称: $.noConflict()
+
+										<!-- 相当于把$符号，换成了用户自定义的名字 -->
+
+										var 随便啥名 = $.noConflict();
+										随便啥名.("div");
+	<div></div>
+	<script type="text/javascript">
+
+		var aha = $.noConflict();
+		console.log(aha("div"));
+		
+
+
+	</script>
+
+
+	
+</body>
+</html>

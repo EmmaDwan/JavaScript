@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+	<button>跳转</button>
+	<div></div>
+
+	<script type="text/javascript">
+
+//单击按钮 跳转		
+		var btn = document.querySelector('button');
+
+		btn.addEventListener('click', function() {
+
+			location.href = 'https://cn.bing.com/';
+
+		})
+
+
+//5s后自动跳转
+		var div = document.querySelector('div');
+
+		var set = 5;
+		var s = set;
+
+		setInterval(function() {
+		
+			if (s == 0) {
+				location.href = 'https://cn.bing.com/';
+			} else{
+				div.innerHTML = s + '秒后跳转至必应';
+				s--;
+
+			}
+
+		}, 1000);
+
+
+
+	</script>
+	
+</body>
+</html>

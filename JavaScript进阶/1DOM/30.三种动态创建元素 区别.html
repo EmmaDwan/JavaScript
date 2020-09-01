@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+			1. document.write: 直接将内容 写入页面的内容流
+
+							如果文档流执行完毕后(页面从上往下一次执行，执行完毕),
+							再执行write它会导致页面全部重绘制
+
+
+			2. element.innerHTML        这两者，创建单个元素没区别。        
+			3. document.createElement   创建大量元素时(1000个a)，
+										innerHTML通过拼接字符串的方式，耗费大量时间          3000
+										createElement每次创建新的，速度快                   20
+										但效率最高的是，innerHTML配合 数组push + join拼接    6
+						  				
+						  				 
+
+
+
+
+			<button>write</button>
+			<p>abc</p>
+
+
+			<div class="inner"></div>
+			<div class="create"></div>
+
+
+
+		<script type="text/javascript">
+
+// document.write			
+			var btn = document.querySelector('button');
+			btn.onclick = function() {
+				document.write('<div>123456</div>');    //刷新后，文档流就算执行完了
+				                                        //点击按钮是在 文档流执行完之后，页面重绘(新页面)
+			}	                                        
+
+
+
+// element.innerHTML 
+			var div1 = document.querySelector('.inner');
+			
+			for (var i = 0; i < 10; i++) {
+				div1.innerHTML += '<a href="#">百度</a>';   //拼接字符串 大量的时候耗时
+			}
+
+
+			//改良：
+			var arr = [];
+			for (var i = 0; i < 10; i++) {
+				arr.push('<a href="#">百度</a>');           //比create效率还高
+			}
+			div1.innerHTML = arr.join('');//中间啥符号都不要
+
+
+
+
+// document.createElement 
+			var div2 = document.querySelector('.create');
+			
+
+			for (var i = 0; i < 10; i++) {
+				var a = document.createElement('a');         //每次创建新元素
+				div2.appendChild(a);
+			}
+
+
+
+				
+				
+
+		</script>
+	
+</body>
+</html>

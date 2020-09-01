@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	
+	 (1).正则表达式的组成:
+
+	 			    	正则表达式内，不论数字还是字符串，都不需要''
+
+	 			1.简单字符   		  /abc/
+
+	 			2.简单和特殊字符    	  /ab*c/
+			     <!-- 也称元字符 -->   <!-- ^  $  +等 -->   <!-- 参考MDN官网 或jQuery手册 -->
+
+			     			^    边界符，匹配行首的文本<!-- 以谁开始  -->  
+			     			$    边界符，匹配行末的文本<!-- 以谁结束 -->
+
+
+
+			    3.字符类[]	表示有一系列字符可供选择，匹配"其中之一"即可 
+			    							  <!-- 只有[]啥都不加，只匹配方括号里1个就满足！ -->
+			    			1)不加限定时         [...] 		  任1个匹配，整个字符串满足
+			    			2)加了限定后         ^[...]$ 	  单个字符才满足
+
+
+				    			        [a-zA-Z]   	   大小写都可以
+				    				 	               [a-zA-Z0-9_-]   大小写、数字、_、-  都可以
+
+
+				    			^    放在[]内表示取反   [^a-zA-Z]      不许用字母
+
+
+			    		
+
+
+
+			    4.量词符  设定某个模式出现的次数
+
+			    		  *         随意(不重复 或重复任意次，甚至没有)  /^a*$/  <!-- 可以没有a -->
+			    		  +			重复1次或更多						  /^a+$/  <!-- 不能没有a  -->
+			    		  ?			不重0 或重复1次					  /^a?$/  <!-- 要么a，要么没有 -->
+
+			    		  {n} 		重复n次
+			    		  {n,} 		重复n次或更多
+			    		  {n,m}     重复n-m次
+
+			    	      量词符组合边界符   /^[a-zA-Z0-9]{6-16}$/    任何地方不能随意空格
+
+			    5.预定义类
+			    		  /d           [0-9]
+			    		  /D		   [^0-9]
+
+			    		  /w 		   [A-Za-z0-9]	 					  
+			    		  /W  		   [^A-Za-z0-9]	       
+
+			    		  /s 		   [\t\r\n\v\f]   匹配空格、回车、制表符等等
+			    		  /S   		   [^\t\r\n\v\f]  匹配非空格字符，
+			    		  							  用来判断是否为空
+
+
+
+
+	  (2).总结：		
+
+					[] 字符类	    {} 量词符        ()优先级		
+				 
+					如果不加[]，  /^abc{4}$/, 表示c重复4次，只有abcccc为true
+
+								 /^(abc){4}$/, 表示abc重复4次 ，只有abcabcabcabc为true
+
+								 /^[abc]{4}$/，如果加了[]，一般再{}后就只是限制位数了
+			
+
+	   (3).console.log太麻烦
+
+			<a href="https://c.runoob.com/front-end/854">菜鸟工具|正则表达式在线测试</a>
+
+
+
+	<script type="text/javascript">
+	// 1
+		var rg = /abc/;                         	 // 只要有相连的abc就算对
+		console.log(rg.test('abc'));		 // true
+		console.log(rg.test('abcde'));		 // true
+		console.log(rg.test('aeabc'));		 // true
+		console.log(rg.test('aeaebc'));		 // false
+
+		var rg1 = /^abc/;							 // 必须以abc开头
+		console.log(rg1.test('abc'));		 // true
+		console.log(rg1.test('abcde'));		 // true
+		console.log(rg1.test('aeabc'));		 // false
+		console.log(rg1.test('aeaebc'));	 // false
+
+
+		rg2 = /abc$/;					     		 // 必须以abc结尾
+		console.log(rg2.test('abc'));		 // true
+		console.log(rg2.test('abcde'));		 // false
+		console.log(rg2.test('aeabc'));		 // true
+		console.log(rg2.test('aeaebc'));	 // false
+
+		rg3 = /^abc$/;                       		 // 精确abc
+		console.log(rg3.test('abc'));		 // true
+		console.log(rg3.test('abcd'));		 // false
+		console.log(rg3.test('abcabc'));	 // false
+
+	// 2
+		var rg4 = /[abc]/;							 // 只要包含a 或b 或c，都对
+		console.log(rg4.test('ariana'));	 // true
+		console.log(rg4.test('color'));		 // true
+		console.log(rg4.test('tom'));	     // false		
+
+		var rg5 = /^[abc]$/;						// a开头a结尾 (或b或c)
+		console.log(rg5.test('aa'));	 	 // false
+		console.log(rg5.test('a'));			 // true
+		console.log(rg5.test('ana'));		 // false
+
+	// 3
+		var rg6 = /[a-h]/;
+
+		console.log(rg6.test('ahz'));        // true
+		console.log(rg6.test('xyz'));		 // false
+
+	// 4
+		var rg7 = /^a*$/;							// 首a尾a，任意重复或不重复(甚至没有)
+		console.log(rg7.test('a'));			 // true
+		console.log(rg7.test(''));			 // true
+		console.log(rg7.test('aaaaaa'));     // true
+
+	// 5
+	   var rg8 = /^[a-zA-Z0-9]$/; 					//首任意尾任意，仅限一次，相当于首a尾a就只能写一个字母
+	   console.log(rg8.test('aaaaaa')); 	// false 								|
+	   console.log(rg8.test('aa')); 		// false 								|
+	   console.log(rg8.test('a')); 			// true 								|
+	   console.log(rg8.test('abcdefge')); 	// false 								|
+	   										//									    ↓
+	 	
+	   var rg9 = /^[a-zA-Z0-9]{6,10}$/; 		    //首任意尾任意，出现6-10次，只要位数对了就随意
+	   console.log(rg9.test('aaaaaa')); 	 // true
+	   console.log(rg9.test('aaaaaaaaaaa')); // false
+	   console.log(rg9.test('abcdefge')); 	 // true
+	   console.log(rg9.test('a1b2c3d4')); 	 // true
+
+	// 6
+		
+	   var rg10 = /\d/;
+	   console.log(rg10.test('0123'));
+
+
+
+	</script>
+	
+</body>
+</html>

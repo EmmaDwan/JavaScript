@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+
+        本案例数据保存的形式: 数组<!-- 数组里面放的对象 -->
+
+                        1. 本地存储里面只能存储字符串:
+
+                                        数组对象 转换为 字符串 JSON.stringify()
+
+                        2. 获取本地存储的数据:
+
+                                        字符串数据 转换为 对象 JSON.parse()
+
+
+
+    <script>
+        var todolist = [{
+            title: '我今天吃八个馒头',
+            done: false
+        }, {
+            title: '我今天学习jq',
+            done: false
+        }, ];   //本质上是个数组
+
+
+    // set存
+        localStorage.setItem("todo", todolist);   // 错误格式，显示[object Object],[object Object]
+        localStorage.setItem("ToDo", JSON.stringify(todolist));    //存字符串格式
+
+    // get取
+        var data = localStorage.getItem("ToDo");      
+
+        console.log('取到字符串');
+        console.log(typeof data);     // string
+        console.log(data[0].title);   //字符串，没有原先数组对象的title属性
+
+    // 转回对象数组
+        data = JSON.parse(data);
+
+        console.log('转回数组对象');
+        console.log(data);
+        console.log(data[1].title);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		构造函数的 原型对象prototype里的 原型__proto__:
+			     <!-- 它也是个 对象！  它也有原型__proto__ -->
+
+
+					<!-- Star -->                       <!-- Object -->
+											 指向
+		1.		Star.prototype.__proto__    ——————     Object.prototype
+
+			      构造函数原型对象的原型			       Object的原型对象
+
+
+
+					<!-- Object -->                     <!-- Object -->
+												指回
+		2.		 Object.prototype.constructor ————————  Object构造函数
+
+
+
+		3.       Object.prototype.__proto__     为null
+
+	<!-- ----------------------------------------------------------------------  -->
+
+			     
+			(1)		 Star.prototype 					  <!-- 原型对象 -->	
+						   =                                   
+					 oynn.__proto__  					  <!-- 原型，方向的作用 --> 		
+
+				     二者都有.constructor   指回Star	      <!-- 构造函数Star -->	
+									
+			
+
+			(2)		 Object.prototype 					  <!-- 原型对象 -->	
+					   	    =
+					 Star.prototype.__proto__ 		      <!--原型，方向的作用 --> 	 	
+							    					 
+					 二者都有.constructor   指回Object 	  <!-- 构造函数Object -->	
+						
+
+
+																	null
+                                                             
+                                                                      ↑
+                                                                      | Object.prototype.__proto__ 
+									Object.prototype                  |
+							 ————————————————————————————————→		  |						
+		      构造函数Object ←———————————————————————————————— Object.prototype   Object的原型对象
+							   Object.prototype.constructor			  ↑
+                                                                      |
+                                                                      | Star.prototype.__proto__
+									 指向原型对象                      |
+									Star.prototype                    |
+							  ————————————————————————————→           |
+				构造函数Star	  ←————————————————————————————     Star.prototype   Star的原型对象
+							   Star.prototype.constructor
+					    ↑	   		  指回构造函数					  ↑
+						\	   		  								  |
+						 \	   		  								  | oynn.__proto__  指向原型对象
+						  \	   		  								  |	 
+						   \	   		  							  |
+							\___________________________________
+							<!-- oynn.__proto__.constructor -->		实例对象
+								 其实就也是prototype指回去的
+	
+																			     ↑
+								 										 此列的原型们 .__proto__  
+
+								 										      构成原型链
+
+		五、原型链: 各层的原型连成的链
+
+				实例的 原型                  oynn.__proto__   
+											|			  |
+				构造函数的原型对象的 原型     Star.prototype.__proto__
+											|                       |
+				Object的原型对象的  原型     ！      Object.prototype.__proto__ 
+
+	<script type="text/javascript">
+		function Star(name,age) {
+			this.userName = name;
+			this.userAge = age;
+			this.sing = function(song) {
+				console.log(this.userName + '唱' + song);
+			}
+			// this.dance = function() {
+			// 	console.log('跳舞');
+			// }
+		}
+		Star.prototype.dance = function() {    
+			console.log('跳舞');
+		}
+
+
+		var oynn = new Star('欧阳娜娜',20);
+		var gxt = new Star('关晓彤', 20);
+
+							 
+// 1 Star的原型对象
+		console.log('Star的原型对象prototype');
+
+		console.log(oynn.__proto__);		
+		console.log(Star.prototype);		// 原型对象prototype里也有一个__proto__，指向Object
+		console.log(oynn.__proto__ === Star.prototype);    // true
+
+
+
+// 2 Object的原型对象
+		console.log('Object的原型对象prototype');
+
+		console.log(Star.prototype.__proto__);		
+		console.log(Object.prototype);		
+		console.log(Star.prototype.__proto__ === Object.prototype);   //true
+
+
+
+// 3 null
+		console.log(Object.prototype.__proto__);   // null,最顶层
+
+
+
+
+	</script>
+	
+</body>
+</html>

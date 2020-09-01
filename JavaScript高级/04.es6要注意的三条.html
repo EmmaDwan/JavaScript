@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+			ES6中注意: 
+					1.类 没有变量提升，必须现有类，再有实例化
+
+					2.类中 共用的属性和方法，一定要加this   
+
+							e.g. 1) sing()里面的
+								 2) constructor里的
+
+					 <!-- 调用类属性和方法时，this其实指向实例化对象 -->
+
+
+					3.类里面的 this指向问题:
+
+						一、constructor里的this ———— 实例对象  
+															生成哪个实例对象 就是哪个
+
+						二、方法里面的this ———— 调用者:  
+													对象调用方法，this就指向对象
+													单击按钮调用方法，this就指向按钮
+
+					<!-- 当方法里的this没有指向想要的对象时，可以声明全局that，constructor里的this给that -->
+
+
+
+
+
+
+	<button>button调用sing()</button>
+
+	<script type="text/javascript">
+
+		var that;
+		var _that;
+		
+		class Stars {
+			constructor(name,age) {
+// 一、constructor里的this
+				console.log('%c constructor里的this',"color: yellowgreen");
+				that = this;
+				console.log(this); // 哪个实例化对象调用它，就输出哪个
+
+//----------------------------------------------------------------------------------------------
+				// 传递参数
+				this.userName = name;
+				this.userAge = age;
+				//this.sing();       					 // 2.如果想 实例化的同时就调用sing方法，
+														 // 		需要写在constructor内并加this
+				// button事件										 	
+				this.btn = document.querySelector('button');
+				this.btn.onclick = this.sing; // 这不加()，加了小括号表示立刻调用，就不是点击调用了
+//----------------------------------------------------------------------------------------------
+
+				console.log('%c constructor里的this',"color: yellowgreen");
+				console.log(this);  //单击按钮后调用sing()，输出sing的内容，
+									//而这条打印this还是属于constructor，在创建实例oynn和gxt的时候会打印
+			}
+
+
+// 二、方法里的this 
+			sing() {
+
+				console.log('%c (2).' + 'button调用sing()',"color: skyblue");
+				console.log(this.userName + '说唱就唱');  // 1.必须加this，sing函数里没有userName
+														 //            constructor里才有userName
+														 //            而constructor是在创建实例对象自动调用的
+														 //            也就是说this指向实例化对象
+				console.log(that.userName + '说唱就唱');  
+				
+				console.log(this);
+				// click按钮后调用sing，上面打印undefined说唱就唱
+				// 					   button调用sing()
+			}
+
+			dance() {
+				_that = this;
+				console.log('dance方法: ');
+				console.log(this);
+			}
+		}
+
+
+
+//(1)欧阳娜娜自动调用constructor
+		console.log('%c (1).' + '欧阳娜娜自动调用constructor',"color: skyblue");
+
+		var oynn = new Stars('欧阳娜娜',20);  // new的时候自动调用construnctor
+											 // constructor里赋了值，并调用了sing()	
+		console.log(that);				// Stars {userName: "欧阳娜娜", userAge: 20, btn: button}
+		console.log(that === oynn);     // 返回true！  
+
+//(3)关晓彤调用constructor和dance()	
+		console.log('%c (3).' + '关晓彤调用dance()',"color: skyblue");
+
+		var gxt = new Stars('关晓彤',20);
+		gxt.dance();
+		console.log(_that);			    // Stars {userName: "关晓彤", userAge: 20, btn: button}
+		console.log(that === gxt);	
+
+		gxt.sing();		
+										 
+
+
+
+	</script>
+	
+</body>
+</html>

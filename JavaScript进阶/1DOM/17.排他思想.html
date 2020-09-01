@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+
+<body>
+	<button>按钮1</button>
+	<button>按钮2</button>
+	<button>按钮3</button>
+	<button>按钮4</button>
+	<button>按钮5</button>
+	
+
+	<script type="text/javascript">
+
+//选中哪个个按钮，就让哪个变色
+	//干掉所有人，只留下自己
+	//先把所有颜色清空，再让选中的那个变色
+		var btns = document.getElementsByTagName('button');
+  
+        console.log(btns);
+         // btns是个伪数组 就算只有一个元素它形式也是个数组
+
+
+		for (var i = 0; i < btns.length; i++) {
+			btns[i].onclick = function() {
+
+                //先把所有颜色清空，再让选中的按钮变色
+                for (var i = 0; i < btns.length; i++) {
+                	btns[i].style.backgroundColor = '';
+                }
+
+				this.style.backgroundColor = 'pink';  //戳哪个按钮，this就指向哪个
+
+
+			}
+		}
+		
+
+
+	</script>
+</body>
+</html>

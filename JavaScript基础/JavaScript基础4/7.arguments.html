@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+
+//arguments存储了所有实参
+		function fn(){
+			console.log(arguments);          //数组形式
+			console.log(arguments.length);   //有length属性
+			console.log(arguments[2]);       //有索引
+
+			for (var i = 0; i < arguments.length; i++) {
+				console.log(arguments[i]);       //遍历元素
+			}
+		}
+
+		fn(2,3,4,5);
+		fn(1,3,5,7,9);
+
+//求任意个数的最大值
+        function getMax() {
+        	var max = arguments[0];
+        	for (var i = 0; i < arguments.length; i++) {
+        		if (arguments[i] > max) {}
+        			max = arguments[i];
+        	}
+
+            return max;
+        }
+        console.log(getMax(6,8) );
+        console.log(getMax(35,24,78,66) );
+        console.log(getMax(6,255,375,46,198,510) );
+
+	</script>
+</head>
+<body>
+
+		arguments：
+			1.JS中，arguments是当前函数的一个 内置对象(所有函数都内置了一个arguments对象)
+				
+            2.arguments对象中 存储了传递的所有实参。
+
+			3.所以当确定有多少个参数传递的时候，可以用arguments获取 
+
+			4.数组的形式，但 是伪数组，有 length属性
+			                         有 索引号
+			                         没有真正数组的一些方法，比如pop(),push()
+
+
+	   
+</body>
+</html>

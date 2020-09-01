@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		 div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+
+            position: absolute;          /* 动画必须加定位才能动！ */
+            left: 0;
+        }
+        span {
+            display: block;
+            width: 150px;
+            height: 150px;
+            background-color: purple;
+
+            position: absolute;          /* 动画必须加定位才能动！ */
+            left: 0;
+            top: 200px;
+        }
+
+
+	</style>
+</head>
+<body>
+		动画函数 至少要传递两个参数: 动画对象 和 目标位置
+
+		<div></div>
+		<span></span>
+
+
+		<script type="text/javascript">
+
+
+			var div = document.querySelector('div');
+			var span = document.querySelector('span');
+
+
+			//封装函数
+			function animate(obj,target) {
+
+
+				var timer = setInterval(function() {
+
+		 			if (obj.offsetLeft >= target) {         //什么时候停止定时器
+		 				clearInterval(timer);
+
+		 			} 
+
+		 			obj.style.left = obj.offsetLeft + 1 + 'px';     // 左:  style.left用来赋值
+									                         		// 右:  当前位置   +   均匀步长
+									                         		//   offsetLeft用来读取  
+	 			}, 10);
+
+			}
+
+            //调用
+			animate(div,400);
+			animate(span,200);
+
+
+
+			
+			
+	 		
+		</script>
+	
+</body>
+</html>

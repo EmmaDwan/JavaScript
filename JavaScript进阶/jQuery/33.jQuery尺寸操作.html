@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            padding: 10px;
+            border: 15px solid red;
+            margin: 20px;
+        }
+    </style>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+		jQuery尺寸: 
+				width() 			元素宽度  只算width
+				height()  			元素高度  只算height
+
+				innerWidth()        包含padding
+  				innerHeight()
+
+				outerWidth() 		包含padding border
+				outerHeight()
+
+				outerWidth(true) 	包含padding border margin
+				outerheight(true)
+
+		参数为空，获取值(数值型)
+		
+		括号里写值，可修改(不带单位)
+
+	<div></div>
+
+	<script type="text/javascript">
+		console.log($("div").width());            // 200
+		// $("div").width(300); //直接修改，不带单位
+		console.log($("div").innerWidth());		  // 200 + 10*2
+		console.log($("div").outerWidth());		  // 200 + 10*2 + 15*2
+		console.log($("div").outerWidth(true));   // 200 + 10*2 + 15*2 + 20*2
+	</script>
+	
+</body>
+</html>

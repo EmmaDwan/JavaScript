@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		箭头函数: <!-- es6新增的定义函数的方法 -->
+				 
+						const 函数名 = () => {
+				   <!-- const 常量 -->	
+
+						}
+
+			1.如果函数体就一句，执行结果即为返回值，可以省略大括号 
+
+			2.如果形参就一个，小括号也可以省略
+
+
+			3.箭头函数不绑定this关键字
+
+					箭头函数中的this，指向函数定义位置 上下文this
+
+			4.箭头函数没有arguments
+
+	<script type="text/javascript">
+
+	// es6之前
+		function f() {
+
+		}
+
+	// es6箭头函数
+		const fn = () => {
+			console.log('箭头函数fn')
+
+		}
+		fn();
+
+
+// 简化1 省略右{}
+		function sum(a, b) {
+			return a + b;          // 函数体就一句，且代码结果即为所需返回值
+		}
+
+
+		const sum1 = (a, b) => a + b;
+
+
+		console.log(sum1(2, 4));
+
+
+// 简化2 省略左()
+		function qua(a) {
+			return a*a;
+		}
+
+
+		const qua1 = a => a*a;
+
+
+		console.log(qua1(5));
+
+
+	</script>
+</body>
+</html>

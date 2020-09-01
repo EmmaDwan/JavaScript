@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+		ES6之前，并没有extends继承
+		通过构造函数 + 原型对象实现继承，也称作组合继承
+
+
+
+		(1).组合继承
+
+			继承属性:
+					在子构造函数内，调用父，且用call()修改指向
+
+
+			继承方法: 
+				1.不能Son.prototype = Father.prototype
+
+					 当Son.prototype指向Father.prototype的地址时，修改Son独有的方法，也会改了Father的方法
+
+		
+				2.应该 Son.prototype = new Father();
+
+					 		1)相当于Son.prototype指向 父的实例对象，
+
+					 		  							父实例对象 可以用父函数存在父prototype的方法
+					 		  							     			     <!-- 实例.__proto__ -->
+
+							 2)先继承，再添加自己的。不然自己的方法又会被覆盖。。。
+
+					   		 3) 实例对象也是个对象啊，相当于{}
+
+					   		    					覆盖了Son.prototype，所以没了constructor
+									|
+									|
+									|
+									↓
+
+				3.	   Son.prototype.constructor = Son;
+
+						如果利用 对象形式 修改了原型对象，一定要手动constructor指回来
+					    <!-- new Father()也算 -->
+
+
+
+				
+				第281集 图
+
+
+
+		(2).call()
+
+				1.调用函数: 函数名.call();
+
+				2.修改函数运行时的this指向
+
+								call(指向谁,形参,...)
+
+
+
+
+	<script type="text/javascript">
+
+// 一、call()函数的用法
+		function fn1(x,y) {
+			console.log('想喝手磨咖啡');
+			console.log(this);
+			console.log(x + y);
+		}
+
+		var Gaby = {
+			name: 'Gabrielle'
+		};
+
+		// call()用法
+		fn1.call();        // 可以调用，且this指向window
+		fn1.call(Gaby,2,6);    // 可以调用，且this指向实例对象Gaby
+
+
+// 二、组合继承
+		// 父
+		function Father(name, age) {
+			this.userName = name;    		        // 1.this指向Bro1创建的实例对象
+			this.userAge = age;				
+		}
+		Father.prototype.actF = function() {
+			console.log('父构造函数 演电影');
+		}
+
+
+		// 子
+		function Son(name, age, score) {   			// 2.this指向Bro2创建的实例对象
+			this.score = score  // 子自己的属性
+
+			// (1)继承属性			
+			Father.call(this, name, age);       	// 3.子调用父，且修改父函数的this，让它指向子的实例
+													//           (this在Son里，是指向子构造函数的this )
+		}
+		// (2)继承方法		
+		Son.prototype = new Father();		// 1) 让son的原型对象 指向 Father的实例对象
+		Son.prototype.constructor = Son;  	// 2) 让son的原型对象的prototype 指回 Son自己  
+
+		Son.prototype.danceS = function() {
+			console.log('子构造函数 蹦蹦跳跳');
+		}
+
+
+
+
+		var oynn = new Son('欧阳娜娜',20,97);
+
+		console.log(oynn);          	// 实现了继承
+										// 1 实例化oynn里没有act()
+										// 	 2 它的__proto__也就是Son的prototype里有danceS()
+										// 	   它的__proto__也指向了Father，没有actF()，
+										// 	 	 3 Father的__proto__指向了一个对象，有了
+// 继承属性
+		console.log(oynn.userName);
+// 继承方法
+		oynn.danceS();   //自己的
+		oynn.actF();     // 继承的
+
+
+		// 修改子原型对象内的方法，不会影响父原型对象内容
+		console.log(Father.prototype);
+		console.log(Son.prototype);            // Son的constructor只想了Father，但按理说应该指回自己
+		console.log(Son.prototype.constructor);
+
+
+	</script>	
+		
+	
+</body>
+</html>

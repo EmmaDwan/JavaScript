@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+		三、对象原型__proto__:  <!-- 两个杠！ -->
+
+
+				1.__proto__ : 指向构造函数的 原型对象prototype
+
+							因为有__proto__的存在，实例化对象才能够 用prototype里的属性方法
+												  <!-- 原型对象 -->
+
+
+										  
+				2.等价关系
+
+											     ===
+						实例对象.__proto__    ——————————    构造函数.prototype
+										         等价
+
+
+
+				3. 方法查找规则:
+							    实例对象上有sing方法，就用它;    
+				   			    没有， <!-- 因为有__proto__的存在 -->就去原型对象prototype找
+
+
+				4.意义:
+
+						1)对象原型__proto__的意义就是，为对象的查找机制 提供一个方向(路线)
+
+						2)是个非标准属性，开发中并不会去用这个属性，它只是在内部起到指向作用
+
+	<script type="text/javascript">
+		
+		function Star(name,age) {
+			this.userName = name;
+			this.userAge = age;
+			this.sing = function(song) {
+				console.log(this.userName + '唱' + song);
+			}
+			// this.dance = function() {
+			// 	console.log('跳舞');
+			// }
+		}
+		Star.prototype.dance = function() {    // 在构造函数的原型对象里，给构造函数添加方法
+			console.log('跳舞');
+		}
+		
+
+		var oynn = new Star('欧阳娜娜',20);
+		var gxt = new Star('关晓彤', 20);
+
+
+
+
+// __proto__
+		console.log(oynn);  // 打印了oynn对象，里面有个系统自动添加的__proto__属性，
+							// 					  该属性指向原型对象prototype
+												  
+											  
+		console.log(oynn.__proto__ === Star.prototype);  // true
+
+		
+		
+	</script>
+</body>
+</html>

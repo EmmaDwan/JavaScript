@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+        //(3)布尔型
+        
+		var flag1 = true;
+		var flag2 = false;
+
+		console.log(flag1+1);    //true当1
+		console.log(flag2+1);    //false当0
+
+
+		//(4)undefined
+		var str;
+		console.log(str);        // undefined
+
+		var variable = undefined;
+		console.log(variable + 'pink')    // undefinedpink 字符串
+		console.log(undefined + 'pink') 
+		console.log(variable + 6)         // NaN          非数字
+		        
+
+
+		//(5)null
+		var space = null;
+		console.log(space + 'pink');      // nullpink
+		console.log(space + 1);           // 1
+	</script>
+</head>
+
+
+<body>
+
+
+	(3)布尔型
+
+		1.做加法运算时，true当1，false当0
+
+	              	二进制    
+	                八进制    0-7       前面加0
+	                十六进制  0-9 a-f    前面加0x
+	(4)undefined
+
+	    undefined不确定是什么数据类型，+ 数字    =  非数值
+	                                 + 字符串  =  拼接字符串
+
+    (5)null 空值
+
+                          null是空值，+ 数字    =  该数字
+	                                 + 字符串  =  拼接字符串
+
+
+
+</body>
+</html>

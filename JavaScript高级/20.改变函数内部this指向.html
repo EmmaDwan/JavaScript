@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+		改变函数内部的this指向:
+
+				1.call()    调用函数 + 改变this指向   	<!-- 用于构造函数中的继承 -->
+
+				2.apply()   调用函数 + 改变this指向  		<!--  用于借助Math内置对象对数组操作 -->
+
+							第一个参数同上，第二个参数必须是数组
+
+				3.bind()    不会调用函数 + 改变this指向   <!-- 有的函数不需要立即调用，又想改变this -->
+
+							参数同call，返回的是 原函数的改造的拷贝(this指向变了，实参变了)
+
+
+	<button>bind</button>
+	<script type="text/javascript">
+		
+			var obj = {
+				name: 'Gabrielle',
+				age: 20
+			}
+//1.call()
+			function func1(a,b) {
+				console.log(this);
+				console.log(a + b);
+			}
+
+			func1();				// this指向window
+			func1.call(obj);     	//     指向obj
+			func1.call(obj,2,4);	
+
+
+//2.apply()
+			function func2(arr) {
+				console.log(this);
+				console.log(arr);
+			} 
+
+			var arr = [2,4];      // ???
+			// var arr = ['pink'];
+			func2.apply(obj, arr);
+
+	// 用于让字符串 用得了Math下的数学方法
+			var arr1 = [1,3,5,7,9];
+			var maxNum = Math.max.apply(Math, arr1)// 不需要改变this指向，第一个参数可以写null
+					     //  func.apply()          // 这里还是写Math
+			console.log(maxNum);    			   // apply()传递的数组啥类型就是啥类型(字符串或数值)
+														
+			
+//3.bind()
+			
+			var func3 = func1.bind(obj,2,5);     //返回 原函数 改变this和实参后的新函数
+			func3();
+
+	// 一个按钮，单击后禁用，3s后开启
+			var btn = document.querySelector('button');
+			btn.onclick = function() {
+				this.disabled = true;
+				setTimeout(function() {
+					this.disabled = false;   // 定时器的this指向window
+											// 解决1: 定时器外部声明var that = this
+											// 				 that.disabled = false
+
+				}.bind(this), 2000);        // 解决2: 定时器外部用bind，此时是在click里面，this指向btn
+											//      	按钮名怎么改、多少按钮都不影响
+											//       (如果多个按钮，定时器里的btn[i]跟不上外部for循环的速度)
+											//      
+											//      	用call和apply就不行，不想立即调用
+			}
+		
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body>
+
+	(1)
+	  	1.创建类：  首字母必须大写
+
+
+				class 类名{    <!--  没括号 -->
+
+				}
+
+
+		2.创建对象: 
+		  (实例化)
+
+		  		new 类名();    <!--  有括号 -->
+
+
+
+		(2).constructor构造函数
+
+				1.constructor是类的 构造函数(默认方法)
+
+				  用来传递参数、返回实例对象 ———— new实例化的时候自动调用constructor
+
+				2.不写它也会自动生成
+
+
+
+		(3).类里面的 函数(方法)
+
+				1.所有函数}之间不加,逗号
+
+				2.不用function它也是个函数
+
+				3.可以有形参
+
+		
+	<script type="text/javascript">
+
+
+//创建类 和 类的实例化
+		//创建
+		class Stars{ //没有括号
+
+			constructor(name, age){   //constructor函数  可以传递参数	             
+			         	  //形参		    new的时候会自动调用
+                this.userName = name;
+                this.userAge = age;
+
+			}
+
+			sing(song) {                //方法 只要有()就表示是个函数,类里面不需要写function
+				//形参				    
+				console.log(this.userName + '演唱' + song);    //必须加this
+
+			}  //不许有逗号         
+
+		}
+
+        //实例化 一定有new  有()
+		var gxt = new Stars('关晓彤',20);  //new的时候会自动调用constructor
+										  // Stars是类，gxt是个实例，是个对象
+										  //            gtx里面有userName、userAge两个属性和sing()方法
+										  // 		        	name     age           song都是形参   
+		var oynn = new Stars('欧阳娜娜',20);							
+
+		console.log(gxt.userName);  // 属性
+		console.log(gxt.userAge);	// 属性
+		console.log(gxt);			// 打印整个对象
+
+		gxt.sing('You Are Beautiful');   //方法
+		oynn.sing('夏天的风');
+
+
+
+	</script>
+</body>
+</html>

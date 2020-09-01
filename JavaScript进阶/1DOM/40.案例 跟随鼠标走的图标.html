@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		img{
+			width: 30px;
+			height: 30px;
+
+			position: absolute;
+		
+
+		}
+	</style>
+
+</head>
+<body>
+   <img src="飞行.png">
+
+	<script type="text/javascript">
+
+//鼠标不断移动用mousemove， 整个document需要注册事件
+//图片要移动距离，还不占位置，需要绝对定位
+
+//每次移动 鼠标坐标 给 图片
+		var pic = document.querySelector('img');
+
+		document.addEventListener('mousemove', function(e) {    //只要移动1px，就会触发mousemove
+			var x = e.pageX;
+			var y = e.pageY;
+			// console.log(x,y);
+
+			pic.style.left = x - 15 + 'px';         //一定要添加px！！！！
+			pic.style.top = y - 15 + 'px';          //减去一半图片大小可以居中对齐
+
+
+			
+
+		})
+
+				
+	</script>
+	
+</body>
+</html>

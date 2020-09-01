@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+ //1获取数据类型
+		
+		var num = 20,str = 'pink',flag = true;
+		console.log(num);  // number
+		console.log(str);  // string
+		console.log(flag);  // boolean
+		console.log(typeof num);  // number
+		console.log(typeof str);  // string
+		console.log(typeof flag);  // boolean
+
+
+		var timer = null;
+		console.log(typeof timer);    // object 对象
+		var timer = undefined;
+		console.log(typeof timer);    // undefined
+
+
+		var age = prompt('请输入你的年龄');
+		console.log(age);             //用户输入的是数字，但其实是字符型。不输入就是null
+		console.log(typeof age);      // String。   不输入就是Object
+
+
+ //2数据类型转换
+		
+    //(1)转换为字符串
+		var num1 = 10;
+		//  1.  tostring()
+		var str1 = num1.toString();
+		console.log(typeof num1.toString());
+
+		//  2.  String()
+		console.log(String(num1));
+
+		//  3.  +拼接字符串(倾向此种)
+		console.log(num1 + '');
+		
+    //(2)转换为数字型
+        //  1. parseInt()
+        console.log(parseInt(age));         //数字
+        console.log(parseInt(null));        //NaN
+        console.log(parseInt('3.94'));      //数字3   向下取整
+        console.log(parseInt('120px'));     //数字120 去掉单位(去掉一切不是数字的)
+        console.log(parseInt('rem120px'));  //NaN 第一位不是数字，识别不了
+
+        //  2. parseFloat()
+        console.log(parseFloat('3.14'));      //3.14
+        console.log(parseFloat('100px'));     //100  去掉单位(去掉一切不是数字的)
+        console.log(parseFloat('rem120px'));  //NaN 第一位不是数字，识别不了
+
+        //  3. Number()
+        console.log(Number('3.1415'));        //3.1415
+
+		//  4. 算术运算 - * /
+		console.log('7'-0);          //7
+		console.log('128'-'120');      //8
+		console.log('128'-120);      //8
+		console.log('128'*1);      //128
+	//(3)转换为布尔型
+        //  Boolean()
+        console.log(Boolean(''));         
+        console.log(Boolean(0));      
+        console.log(Boolean(NaN));     
+        console.log(Boolean(null));  
+        console.log(Boolean(undefined));      //这几个false
+
+        console.log(Boolean(123)); 
+        console.log(Boolean('123')); 
+        console.log(Boolean('字符串'));       //其它都true
+
+      
+        
+	</script>
+</head>
+
+<body>
+	1.获取数据类型
+	          typeof
+
+	          chrome控制台中，数字型      蓝色
+	                         字符串型    黑色
+	                         布尔型      深蓝色
+	                         undefined   灰色
+	                         null        灰色
+	2.字面量
+	   一眼能看出属于啥数据类型
+
+	   字面量是源代码中 一个固定值的表示法，通俗说，字面量表示如何表达这个值
+
+
+	3.数据类型转换
+	   prompt获取来的数据默认为字符串型，不能直接进行加减法运算
+
+	   通常用到  
+	   (1)转换为字符串
+	             变量名.toString()
+
+	             String(变量名)
+
+	             变量名 + ''               隐式转换，倾向此种
+	   
+	   (2)转换为数字
+	  			 parseInt()
+
+	  			 parseFloat()
+
+	  			 Number()
+
+	  			 算术运算 - * /
+
+	   (3)转换为布尔
+	             Boolean()
+
+
+	             转为false:空字符串   数字0 
+	                       NaN   null   undefined
+	             转为true: 其它
+
+	4.扩展
+	   (1)编译型语言：一大堆代码，编译器全部编译完，再执行(变机器语言)    java编译器
+	              <!-- 一大桌菜做好上桌才能吃 -->
+	      解释型语言：每一句代码，运行处直接解释，立即执行（变机器语言)   JavaScript引擎
+	              <!-- 火锅边涮边吃 -->
+
+
+
+	   (2)标识(zhi)符: 开发人员为  变量、 属性、 参数、 函数  取的名字
+
+	      关键字:      JS本身已经用了的字
+	                   break  case  catch  continue  default  do  else  finally  for  
+	                   function  if  in  instance  new  return  switch  throw  try 
+	                   typeof  var  void  while  with等等
+
+	      保留字：     预留的关键字(现在还不是，将来可能是)
+	                   boolean  byte  char  class  const  debugger  double  enum  export
+	                   extends  final  float  goto  elements  import  int  interface  long
+	                   mative  packge  private  protected  public  short  static  super  
+	                   synchronized  throws  transient  volatile
+
+
+	      vscode中出现红色波浪线就是不可用
+
+	
+</body>
+</html>

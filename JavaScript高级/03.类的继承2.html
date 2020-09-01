@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		
+//(2)super()让子类 访问调用 父类的函数方法
+
+        //父类
+		class Bro1{
+			constructor(x,y){
+				this.x = x;
+				this.y = y;
+			}
+			laugh() {
+				return '我是老子';   	    //return
+			}
+		}
+
+        //子类继承
+		class Bro2 extends Bro1 {
+			constructor(x,y) {
+				super(x,y);   	// 还不得不写了??? 只要子类继承父类，不写这句咋都报错			  
+				this.x = x;   
+				this.y = y;		
+			}
+			laugh() {
+				console.log(super.laugh());
+			}
+			substract() {      //子类扩展自己的方法substract
+				console.log(this.x - this.y)
+			}
+		}
+
+		//实例化
+		var son2 = new Bro2(6,3);
+		var son3 = new Bro2(10,20);
+
+	
+// 父子都有，子laugh()中super调用父普通函数laugh()		
+		console.log('狐假虎威: ');		  
+		son2.laugh();    
+
+//子类独有
+		son2.substract();
+		son3.substract();
+
+	</script>
+
+</body>
+</html>

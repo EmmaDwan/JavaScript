@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        div {
+            width: 150px;
+            height: 300px;
+            background-color: pink;
+            display: none;
+        }
+    </style>
+    <script src="jquery.min.js"></script>
+
+
+</head>
+<body>
+	<button>下拉滑动</button>
+    <button>上拉滑动</button>
+    <button>切换滑动</button>
+    <div></div>	
+
+    <script type="text/javascript">
+
+    	$("button").eq(0).click(function(event) {
+
+    		$("div").slideDown('slow', function() {
+    			
+    		});
+    	});
+
+
+    	$("button").eq(1).click(function(event) {
+
+    		$("div").slideUp('fast', function() {
+    			
+    		});
+    	});
+
+    	$("button").eq(2).click(function(event) {
+
+    		$("div").slideToggle('5000', function() {
+    			
+    		});
+    	});
+    	
+
+    </script>
+</body>
+</html>

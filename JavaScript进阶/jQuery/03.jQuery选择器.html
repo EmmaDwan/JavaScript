@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+		jQuery选择器: 
+					原生JS获取元素方式很多，而jQ有统一标准
+
+					$(" 选择器 ") ————   $(" #id ")         <!-- id -->
+             <!--直接写各种CSS选择器-->	$(".class ")        <!-- 类 -->
+										$("div")		    <!-- 标签 -->
+										$("*")			    <!-- 全选 -->
+										$(" div,p,li ")	    <!-- 并集(多选) -->
+										$(" li.current ")	<!-- 交集 -->
+								
+										$(" ul>li ")     <!-- 子代选择器，获取亲儿子层级，不包括孙子层级 -->
+										$(" ul li ")     <!-- 后代选择器，获取ul下所有li  包括孙子层级 -->
+
+                 				筛选选择器
+										$(" li:first ")  	<!-- 获取第一个li -->
+										$(" li:last ")   	<!-- 获取最后一个li -->
+
+										$(" li:eq(2) ")		<!-- 获取索引为2的li -->
+
+										$(" li:odd ")		<!-- 索引！为奇数的li   索引是0 1 ...-->
+										$(" li:even ")      <!-- 索引！为偶数的li -->
+ 
+
+	<div>我是div</div>
+
+    <div class="nav">我是nav div</div>
+
+    <p>我是p</p>
+
+    <ol>
+        <li>我是ol 的</li>
+        <li>我是ol 的</li>
+        <li>我是ol 的</li>
+        <li>我是ol 的</li>
+    </ol>
+
+    <ul>
+        <li>我是ul 的</li>
+        <li>我是ul 的</li>
+        <li>我是ul 的</li>
+        <li>我是ul 的</li>
+    </ul>
+
+    <script type="text/javascript">
+
+    	console.log($(".nav"));
+
+    	console.log($("ol>li"));
+
+
+    	$(" ul li:first").css('background','yellow');
+    	$(" ul li:last").css('background','yellow');
+
+    	$(" ol li:eq(1)").css('background','yellowgreen');  //ol的第2个li
+
+    	$(" ol li:even").css('color','skyblue');     		//偶数索引，0和2  (ol的第1、3个li)
+
+
+
+
+
+    </script>
+									  
+	
+</body>
+</html>

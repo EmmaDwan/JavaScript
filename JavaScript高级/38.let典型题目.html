@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+
+// 例1
+		var arr = [];
+
+		for (var i = 0; i < 2; i++) {
+			arr[i] = function() {	
+				console.log(i);		
+			}		
+			// arr[i]();       // 这里就分别能输出0和1
+		}
+
+		arr[0]();      // 2  变量i是全局的，函数输出的都是全局作用域下的值
+		arr[1]();	   // 2
+
+
+
+// 例2		
+
+		for (let k = 0; k < 2; k++) {     	// 每次循环都会产生一个块级作用域，每个块级作用域的变量都不同
+			arr[k] = function() {   
+				console.log(k);				// 函数内部没有k，向上一级作用域查找，
+											// 分别去自己对应的块级作用域查找
+			}
+		}
+
+		arr[0]();      // 0
+		arr[1]();		// 1
+
+
+
+	</script>
+	
+</body>
+</html>

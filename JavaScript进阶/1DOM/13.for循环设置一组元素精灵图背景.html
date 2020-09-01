@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	    * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box li {
+            width: 24px;
+            height: 24px;
+            background-color: pink;
+            
+            float: left;
+            margin: 15px;
+            background: url(images/sprite.png) no-repeat;
+        }
+
+        li {
+            list-style-type: none;
+        }
+        
+        .box {
+            width: 250px;
+            margin: 100px auto;
+        }
+        
+
+	</style>
+
+</head>
+
+
+
+<body>
+    <div class="box">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+
+
+
+
+	<script type="text/javascript">
+
+//设置一组元素的精灵图背景
+	//精灵图 图标排列要有规律
+	//利用for循环，改变精灵图的背景位置
+
+	var lis = document.querySelectorAll('li');    // NodeList(12) [li, li, li, li, li, li, li, li, li, li, li, li]
+	console.log(lis);  
+
+
+	for (var i = 0; i < lis.length; i++) {
+		// lis[i].style.backgroundPosition = '0 -44px';  
+		var index = i * 44; 
+		lis[i].style.backgroundPosition = '0 -' + index + 'px';   
+		// lis[i].style.backgroundPosition = '0' + '-' + index + 'px';
+		                               // '0     -..px'   
+	}
+	
+	</script>
+	
+</body>
+</html>

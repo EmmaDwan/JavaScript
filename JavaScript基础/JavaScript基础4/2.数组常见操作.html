@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+//1 数组求和 求平均
+
+        var arr = [2,6,1,7,4];
+        var sum = 0;
+
+        for (var i = 0; i < arr.length; i++) {
+
+        	sum = sum + arr[i];
+        }
+        var average = sum / arr.length;
+
+        console.log(sum);       //20
+        console.log(average);   //4
+
+
+
+//2 求数组最大值
+
+       var arr1 = [2,6,1,77,52,25,7,99];
+       var max = arr1[0];
+
+       for (var i = 1; i < arr1.length; i++) {
+
+       	   if (arr1[i] > max) {
+       	   	  max = arr1[i];
+           }
+       }
+       console.log('该数组的最大值为' + max);
+
+
+
+//3 数组转换分割字符串
+
+       var arr2 = ['red','green','blue','pink'];
+       var str = '';
+       var sep = '!';
+
+       for (var i = 0; i < arr2.length; i++) {
+
+         	str = str + arr2[i] + sep;
+         } 
+       console.log(str);
+
+
+
+
+	</script>
+</head>
+<body>
+
+	
+</body>
+</html>

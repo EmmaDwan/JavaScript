@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery.min.js"></script>
+    <style>
+        div {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+
+	<button>动起来</button>
+    <div></div>
+
+    <script type="text/javascript">
+
+    	$("button").click(function() {
+    		
+    		$("div").animate({           //第一个参数用 对象形式传递
+    			left: 200,
+    			top: 100,
+    			opacity: 0.5,
+    			width: 500
+    		})
+    	})
+    	
+
+
+    </script>
+	
+</body>
+</html>

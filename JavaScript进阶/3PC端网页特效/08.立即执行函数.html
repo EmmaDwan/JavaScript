@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+						<!-- 以前学的函数，要先声明，后调用 -->
+
+			立即执行函数: 不需要调用，直接执行
+						 创建了独立的作用域，里面变量都是局部变量，不会命名冲突
+
+
+						第一种		(function(形参) {})(参数)      <!-- 大致原理就是，直接多加个()相当于调用了 -->      <!-- (                 )(    ) -->   <!-- 然后匿名函数本身也得包起来 -->        
+
+						第二种       (function(形参){}(参数))
+						       <!-- (                (   )) -->
+
+
+
+
+				   1.两个立即执行函数之间 要有分号
+
+				   2.可以传递参数
+
+				   3.创建了独立的作用域
+
+
+	<script type="text/javascript">
+
+//第一种		
+		(function() {
+			console.log(1234567890);
+		})();                            //要加分号
+
+
+
+		(function(a) {
+			console.log(a);						
+		})(123456);						//要加分号
+
+
+
+		(function(a,b) {
+			console.log(a + b);
+		})(2,4);
+
+
+//第二种
+		(function(a,b) {
+			console.log(a * b);
+		} (2,5))
+
+
+
+
+	</script>
+	
+</body>
+</html>

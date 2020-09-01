@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<input type="text">
+    <button class="set">存储数据</button>
+    <button class="get">获取数据</button>
+    <button class="remove">删除数据</button>
+    <button class="del">清空所有数据</button>
+
+    <script type="text/javascript">
+
+    	var input = document.querySelector('input');
+    	var set = document.querySelector('.set');
+    	var get = document.querySelector('.get');
+    	var remove = document.querySelector('.remove');
+    	var dele = document.querySelector('.del');
+
+
+// 存储 sessionStorage.setItem( '键名' ,值)
+    	set.addEventListener('click', function() {
+
+    		var Va = input.value;
+    		sessionStorage.setItem('uname',Va);
+    		
+    	})
+
+// 获取 sessionStorage.getItem('键名')
+    	get.addEventListener('click', function() {
+
+    		console.log(sessionStorage.getItem('uname'));
+
+    	})
+
+// 单个删除 sessionStorage.removetItem('键名')
+    	remove.addEventListener('click', function() {
+
+    		sessionStorage.removeItem('uname');
+
+    	})
+
+// 清空页面所有数据 实际应用中慎用！  sessionStorage.clear()
+    	dele.addEventListener('click', function() {
+
+    		sessionStorage.clear();
+
+    	})
+
+// 在别的页面用lacalStorage的数据
+		console.log('浏览器共享的localStorage数据: ' + localStorage.getItem('uname'));   
+    </script>
+	
+</body>
+</html>

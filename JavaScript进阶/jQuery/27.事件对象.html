@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery.min.js"></script>
+	<style type="text/css">
+		div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+	</style>
+</head>
+<body>
+		jQuery事件对象: 
+					事件被触发，就会有事件对象产生。
+
+					阻止默认行为: e.preventDefault()
+								 return false
+
+					阻止冒泡:	e.stopPropagation
+
+
+
+	
+	<div></div>
+
+	<script type="text/javascript">
+		$(document).on("click",function() {
+
+			console.log('戳document');
+
+
+
+		})
+		
+		$("div").on("click", function(e) {
+
+			console.log(e);
+
+			console.log('戳div');
+			e.stopPropagation();     // 阻止冒泡了，戳div不会蹦出戳document
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+//基础while循环
+		var num = 1;         //计数器
+		while (num <=100) {  //终止条件
+			console.log('while循环啊循环');
+			num++;           //计数器更新
+		}
+
+
+
+//数羊    
+        var i = 1;           //计数器
+        while (i <= 20) {    //终止条件
+        	console.log('第' + i + '只羊');
+        	i++;             //计数器更新
+        }
+
+
+
+//1-100和
+        var sum = 0;
+
+        var i = 1;           //计数器
+        while (i <= 100) {   //终止条件
+        	sum = sum + i;
+        	i++;             //计数器更新
+        }
+        console.log('1-100的和为' + sum);
+
+
+//while 比 if 条件更宽广
+//可以弹对话框，if三要素里不能prompt
+        var answer = prompt('说你是猪');   //计数器
+        while (answer !== '我是猪') {      //终止条件
+
+        	answer = prompt('说你是猪');   //人为决定终止/无限循环
+
+        }
+
+
+
+	</script>
+</head>
+
+
+<body>  
+
+	(1)while循环
+
+	   while (条件表达式) {
+	      <!-- 循环体 -->
+	      <!-- 循环体里一定要有 计数器的变化(操作表达式) -->
+	   }
+
+	   表达式true，执行循环体
+
+
+	   1.  while前声明：初始化变量(计数器)   
+
+	       while结构中：条件表达式————终止条件
+
+	                   循环体里——————操作表达式： 计数器更新      
+	
+</body>
+</html>

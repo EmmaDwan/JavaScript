@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+
+		div {
+            width: 600px;
+            margin: 100px auto;
+        }
+        
+        .message {
+            display: inline-block;
+            font-size: 12px;
+            padding-left: 20px;
+
+            color: #999;
+            background: url(images/mess.png) no-repeat left center;
+        }
+
+        .wrong{
+        	color: red;
+        	background-image: url('images/wrong.png');
+        }
+        .right{
+        	color: green;
+        	background-image: url('images/right.png');
+        }
+
+
+	</style>
+</head>
+
+
+<body>
+
+
+
+	<div class="register">
+		<input type="password" class="ipt">
+		<p class="message">请输入6-16位密码</p>
+	</div>
+
+
+
+	<script type="text/javascript">
+//输入正确：绿色图标
+//输入不是6-16位 提示错误信息 红色图标
+		var ipt = document.querySelector('input');
+		var message = document.querySelector('.message'); //可以用类名选
+
+		ipt.onblur = function() {
+			if (ipt.value.length < 6 || ipt.value.length > 16) {
+			 // value是表单输入的内容，.length位长度属性
+			 	message.className = 'message wrong';
+			 	message.innerHTML = '你输入的位数不对，要求6-16位';
+
+			} else {
+				message.className = 'message right';
+				message.innerHTML = '你输入的密码符合要求';
+
+
+			}
+		}
+	</script>
+	
+</body>
+</html>

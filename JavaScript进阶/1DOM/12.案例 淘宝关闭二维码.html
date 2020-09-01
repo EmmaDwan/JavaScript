@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.box{
+			width:74px;
+			height:88px;
+			border: 1px solid #ccc;
+
+			margin: 100px auto;
+
+			font-size: 12px;
+			text-align: center;
+			color:  #f40;
+			/* display: block; */  /*  默认这句 */
+
+			position: relative;
+			
+		}
+		.box img{
+			width: 60px;      /* 有趣 */
+			margin-top: 5px;
+		}
+		.close-btn{
+			position: absolute;
+			top: -1px;                   /*  这部分定位是为什么 */
+			left: -16px;
+
+			width: 14px;
+			height: 14px;
+			border: 1px solid #ccc;
+
+			line-height: 14px;
+			font-family: Arial, Helvetica, sans-serif;
+			cursor: pointer;      /* cursor 光标属性 */
+								  /* cursor: pointer; 光标呈现为指示链接的指针（一只手） */
+
+
+
+
+		}
+
+	</style>
+</head>
+
+<body>
+
+
+	<div class="box">
+
+		淘宝二维码
+		<img src="images/tao.png">
+		<i class="close-btn">x</i>     <!-- 斜体标签<i></i> -->
+
+	</div>
+
+
+
+	<script type="text/javascript">
+//戳小叉号，关闭二维码
+	//利用display: none;隐藏元素  display: block;显示元素
+		var btn = document.querySelector('.close-btn');
+		var box = document.querySelector('.box');
+
+		btn.onclick = function() {
+			box.style.display = 'none';   //这个box还是存在的，只是不显示了
+		}
+
+
+			
+		
+	</script>
+		
+	
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+	</style>
+
+
+	<script type="text/javascript">
+
+//文档内容完全加载完成, onload
+//DOM加载完成时,       DOMContentLoaded
+
+		// window.onload = function() {
+		// }
+		window.addEventListener('load', function() {
+
+		})
+
+
+	</script>
+
+
+</head>
+<body>
+
+			(1).窗口(页面)加载事件
+
+			    1.  onload或者load
+
+						1)文档内容 完全加载完成，才会触发该事件(包括图像、脚本文件、CSS文件、flash等)
+
+						2)把js代码写进这个事件里，js内容就可以放在前面了
+
+					  	用传统方法，只能写一次，多个以后的为准
+					  	用监听方法可以写多次
+
+				2.  DOMContentLoaded
+
+						仅当 DOM加载完成时 触发，不包括CSS、图片、flash等  <!-- ie9以上 -->
+
+						<!-- 如果图片很多很多加载费时间，交互不能实现，可以用这个事件 -->
+
+			(2).调整窗口大小事件
+
+				1.  onresize或resize
+					    
+					    1)窗口大小发生像素变化时 触发
+
+					    2)常利用这个事件完成响应式布局
+
+					    3)window.innerWidth当前屏幕的宽度
+
+
+
+	<div></div>
+
+	<script type="text/javascript">
+
+
+// 调整窗口大小事件 onresize
+		var div = document.querySelector('div');
+
+		window.addEventListener('resize',function() {
+			// console.log('窗口大小变化了');
+			console.log(window.innerWidth);
+
+			if (window.innerWidth <= 800) {
+				div.style.display = 'none';
+
+			} else {
+				div.style.display = 'block';
+			}
+
+		})
+	</script>
+
+
+
+
+</body>
+
+
+
+
+
+
+</html>

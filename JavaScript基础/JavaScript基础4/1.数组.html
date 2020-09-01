@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+//(1)创建数组方式
+
+     //1 利用关键字new
+		var arr = new Array();          //创建空数组
+    
+     //2 利用数组字面量[]
+		var arr = [];                   //创建空数组
+		var arr1 = [1,2,'pink',true];   //元素可以为任意数据类型
+		console.log(arr1); 
+
+//(2)数组长度
+        console.log(arr1.length);       // 数组长度4, 4个元素
+                                        // 0 1 2 3 下标到3
+
+
+//(3)获取数组元素
+	  //访问单个数组元素   
+		console.log(arr1[2]);    //pink
+		console.log(arr1[4]);    //没有这个元素，undefined
+      //访问所有数组元素(遍历)
+        for (var i = 0; i < arr1.length; i++) {       //i 从0开始 
+        	                                          //i<数组长  不能<=
+        	console.log(arr1[i]);
+        }
+
+
+
+     
+	</script>
+</head>
+<body>
+
+		单个变量只能存储一个值
+
+		数组： 一组数据的集合(将一组数据存在单个变量名下)
+		       并提供方便的访问(获取)方式
+
+               
+
+        (1)创建数组
+
+              1 利用new
+
+              2 利用数组字面量: []方括号是数组的字面量  (更主要)
+
+
+
+        (2)数组里可以存放任意类型的数据
+
+           每个元素之间用逗号隔开
+
+
+
+        (3)获取(访问)数组元素
+ 
+        	  1 数组索引(下标)从0开始
+
+        	  2 访问单个元素： 
+        	                  数组名[索引号]
+        	                  arr[2];
+
+        	  3 取出数组中所有元素：
+        	      遍历：把数组元素从头到尾访问一遍
+        	      
+         (4)数组长度
+           数组名.length
+
+
+
+
+	
+</body>
+</html>

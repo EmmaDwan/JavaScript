@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		var timer = null;
+		console.log(timer);
+		console.log(typeof timer);  //返回对象object
+
+	</script>
+</head>
+<body>
+		1.简单数据类型 (存入栈)
+			也叫 基本数据类型
+			也叫 值类型
+
+			变量中存储的是值本身，string, number, boolean, undefined
+								null(只有null返回的是复杂数据类型：空对象)
+			       <!-- 如果有个变量，打算存储对象，暂时没想到存啥，就用null -->
+			       
+            栈里，直接开辟一个空间，直接存放值，变量指向该值
+
+	    2.复杂数据类型(存入堆)
+	        也叫 引用类型
+
+	        新建变量是 在栈里开辟空间，变量指向这个空间，这个空间里存地址(十六进制)。
+	        这个地址指向 堆里的数据。
+	        
+
+	    3.栈和堆:其实js没有栈和堆的概念，此处只是便于理解代码执行方式
+
+　　			(1)栈（操作系统）：由操作系统自动 分配释放存放 函数的参数值、局部变量的值等。
+							类似于数据结构中的栈；
+
+　　			(2)堆（操作系统）：存储复杂类型
+							一般由程序员分配释放，程序员不释放则由垃圾回收机制回收。
+
+
+
+
+	
+</body>
+</html>

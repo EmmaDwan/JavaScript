@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		剩余参数:
+
+				允许讲一个不定数量的参数，表示成一个数组
+
+				1.用在函数的参数传递:
+
+				 		function sum (first，...args) 
+										
+									first   对应第一个形参
+									...args 对应剩下的形参，是一个数组
+
+				2.用在解构中
+						let [s1, ...s2] = arr
+
+						s1    对应第一个元素
+						...s2 对应剩下所有元素，是一个数组
+
+
+
+	<script type="text/javascript">
+
+		// arr.forEach(function(value,i,array) {
+						    // 元素  索引 数组本身
+		// })
+
+
+// 剩余参数用在 函数参数传递中		
+		const sum = (...args) => {
+			// console.log(first);    
+			console.log(args);
+
+			let sum = 0;
+			args.forEach(value => sum += value);    //要是参数有first，这个公式就不对了
+			return sum
+		};
+
+		console.log(sum(10, 20));
+		console.log(sum(10, 20, 30));
+
+
+// 剩余参数用在 解构中
+		let students = ['tom', 'john', 'edward', 'Naby','jack'];
+		let [a,b, ...c] = students;
+
+		console.log(a);  // 第一个
+		console.log(b);  // 第二个
+		console.log(c);  // 剩下的
+
+
+
+
+	</script>
+</body>
+</html>

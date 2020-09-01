@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+		二.事件对象的常见属性和方法
+
+            1.
+ 				e.target              返回触发事件的元素  (和this区分开) <!-- ie678 不能用 -->
+ 				e.srcElement                                           <!-- ie678 能用 -->
+ 				e.currentTarget       同this(所以用this就好了)          <!-- ie678 不能用  -->
+
+
+            2.
+ 				e.type                 返回 事件类型                    <!-- 不带on -->
+
+ 			
+
+            3.事件对象阻止默认行为	
+
+ 				e.preventDefault()     阻止默认行为(DOM标准)，是个方法   <!-- 普通浏览器 -->
+ 				e.returnValue          ie678用，是个属性                <!-- ie678 -->
+ 				return false           (就是函数返回的操作)        <!-- 没有兼容性问题，但后续代码无法执行 -->
+
+                这三种都可以用在传统注册方式里，但只有第一种能用在监听方式里
+
+
+            4.阻止冒泡
+
+ 				e.stopPropagation()      是个方法，标准             <!--  ie678 不能用    -->
+ 				e.cancelBubble = true;   是个属性                   <!--  ie678 能用 -->
+
+
+ 				
+
+
+ 		<div>1</div>
+	    <ul>
+	    	<li>abc</li>
+	    	<li>abc</li>
+	    	<li>abc</li>
+	    </ul>
+
+
+
+
+	    <div class="div2">2</div>
+	    <a href="http://www.baidu.com">百度</a>
+	    <form action="http://www.baidu.com">
+	    	<input type="submit" value="提交" name="sub">
+	    </form>
+
+
+
+
+	    <script type="text/javascript">
+
+// e.target和this 	
+	    	var div = document.querySelector('div');
+	    	div.addEventListener('click', function(e) {
+	    		console.log(e.target);        //返回 触发事件的 元素
+	    		console.log(this);            //返回 调用(绑定)事件的 元素
+	    	})
+
+
+	    	var ul = document.querySelector('ul');
+	    	ul.addEventListener('click',function(e) {
+	    		console.log(e.target);        		 //戳li，返回li
+	    		console.log(this);             		 //戳li，返回ul
+	    	}) 
+
+// e.type 
+			var div2 = document.querySelector('.div2');
+			div2.addEventListener('click',fn1);
+			div2.addEventListener('mouseover',fn1);
+			div2.addEventListener('mouseout',fn1);
+
+
+			function fn1(e) {
+				console.log(e.type);
+			}
+
+// 事件对象阻止默认行为  让按钮不提交 
+			var a = document.querySelector('a');
+			//监听
+			a.addEventListener('click',function(e) {
+				e.preventDefault();
+			})
+            //传统
+			a.onclick = function(e) {
+
+				// e.preventDefault(); 
+
+				// e.returnValue;
+
+				return false;
+				alert('1');
+
+			}
+
+// 阻止冒泡 见捕获冒泡那一节
+			
+
+			//解决兼容性
+			// if (e && e.stopPropagation) {
+			// 	e.stopPropagation();
+			// } else{
+			// 	window.event.cancelBubble = true;
+			// }
+	    	
+
+
+	    </script>
+</body>
+</html>

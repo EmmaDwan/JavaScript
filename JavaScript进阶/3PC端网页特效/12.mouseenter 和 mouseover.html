@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.father {
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+            margin: 100px auto;
+        }
+        
+        .son {
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+        }
+
+	</style>
+</head>
+<body>
+	<div class="father">
+        <div class="son"></div>
+    </div>
+
+    <script type="text/javascript">
+
+    	var big = document.querySelector('.father');
+    	var small = document.querySelector('.son');
+
+    	big.addEventListener('mouseover', function() {
+
+    		console.log('大盒子的mouseover');                //空白 进大盒子，触发
+    														//大盒子和小盒子之间，触发
+    														
+    	})
+
+    	big.addEventListener('mouseenter', function() {
+
+    		console.log('大盒子的mouseenter');           // 空白 进大盒子触发
+    												    // 离开整个盒子 进空白 触发
+    													// 大小盒子之间 不触发(相当于只在一个大盒子里，无视小盒子)
+    	})
+
+
+    	// 总结:  
+    	// 		mouseover: 经过自身盒子触发，经过子盒子触发
+    	// 					子盒子冒泡
+    	// 		mouseenter: 经过自身出发，经过子盒子不触发
+    	// 					这个事件不会冒泡
+    	// 					搭配的mouseleave也不会冒泡
+    </script>
+
+	
+</body>
+</html>

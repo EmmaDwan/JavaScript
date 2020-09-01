@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		1.闭包(closure):
+
+				 1)定义: 有权访问另一个函数作用域中的变量 的函数 
+				 <!-- 一个函数，这个函数可以访问别的作用域的局部变量 -->
+
+
+				 2)通俗: 被访问的局部变量所在的函数，叫闭包
+
+		<!-- --------------------------------------------------------------------------- -->
+
+				 到底 被访问的 和 访问的 哪个是闭包？？？chrome指向被访问的，就当闭包是种现象吧。。。
+
+
+		2.闭包的作用: 延伸了变量的作用范围(存在时间也变久了)
+
+				   		函数内部作用域 访问 别的作用域的局部变量
+				   		全局作用域     访问 ..................
+
+	
+	<script type="text/javascript">
+
+		function fn() {
+			var num = 10;  // fn局部作用域下的局部变量
+
+			function func() {
+				console.log(num);   // func这个函数作用域，访问了另一个函数fn里的局部变量
+									// 这时候变量所在的fn就算个闭包
+			}
+
+		//第1种	
+			// func();  			// 这个地方得调用啊！		
+		//第2种
+			return func;			// 不调用func了，改成return(fn外部就也能访问num了)
+		//第3种
+			//也可以直接return function() {}匿名函数
+		}
+		var f = fn();  
+		//相当于 var f = func(); 		     (直观但错误的写法)
+		// 		var f =	function func() {    (正确写法)
+		// 				console.log(num);   
+		// 			}
+		console.log(f);  							
+
+
+		f();   // f访问了fn的变量, func算个桥梁
+			   // 这时候，在全局作用域调用f 访问了局部作用域fn的变量
+			   // f调用完了，fn的局部变量才会销毁
+		   
+
+		
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		input{
+			color: #999;
+
+		}
+		
+	</style>
+</head>
+
+
+<body>
+
+		除了onclick外
+		新事件： 获得焦点 onfocus
+		 		失去焦点 onblur
+
+
+	<input type="text" value="手机">
+
+
+
+
+
+	<script type="text/javascript">
+//文本框有默认内容 颜色为浅灰
+
+//鼠标点击文本框，默认内容消失
+//光标撤离文本框 1.如果用户什么都没输入，内容变回默认值 且颜色为浅灰
+//              2.如果用户输入了东西，内容不可以变  且颜色为深灰
+		var text = document.querySelector('input');
+
+		text.onfocus = function() {	
+
+		// 1.原默认值消失
+			if (text.value === '手机') {     //所有属性可读写，value也可以读
+				text.value = '';
+			}
+		// 2.再打字 颜色加深
+			text.style.color = '#333';
+
+		}
+		
+		text.onblur = function() {
+		// 3.如果用户没输入(是空'')，  恢复默认值   //如果用户输入了(不是空'')  就不操作了
+			
+			if (text.value === '') {  //用户没输入
+                text.value = '手机';
+			}
+			
+		// 4.文字变浅
+			text.style.color = '#999';
+
+
+		}
+		
+	</script>
+	
+</body>
+</html>

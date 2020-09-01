@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div {
+            width: 200px;
+            height: 200px;
+            background-color: #FFCC99;
+
+            border: 1px solid red;
+            padding: 10px;
+
+            overflow: auto;   /* 自动显示滚动条 */
+
+        }
+
+	</style>
+</head>
+<body>
+		scroll: 
+			scroll表示滚动的，利用相关属性可以'动态'得到元素的  大小、滚动距离等等
+		                                 				<!-- 位置  宽 高 -->
+
+
+               1.<!-- 获得 被滚动卷去的距离 -->
+
+				 (1)element.scrollTop      返回 被卷去的上侧距离   (上边框下沿————内容顶)
+					element.scrollLeft     返回 被卷去的左侧距离
+
+				 (2)如果是整个页面被卷去的部分，用window.pageYOffset    <!-- ie9以上 -->
+											   window.pageXOffset    <!-- 是offset！不是scroll -->
+
+						兼容性问题: 声明了DTD，用document.documentElement.scrollTop
+								   未声明DTD，用document.body.scrollTop
+								   ie9及以上，用window.pageYOffset  window.pageXOffset
+
+
+
+
+               2.<!-- 获得 元素实际宽高(随内容变) -->
+
+					element.scrollWidth    返回自身实际宽 实际多少内容 + padding，不含边框
+					element.scrollHeight          实际高  (上边框下沿到内容底)
+									<!-- 内容多的话撑开，scrollHeight也会变大，clientHeight不会   -->       
+
+
+			以上，返回的数值都 不带单位
+
+
+
+	总结: offsetLeft 和 offsetTop      用来获得元素位置
+
+	      clientWidth 和 clientHeight  用来获得元素大小
+
+          scrollLeft 和 scrollTop      用来获得滚动卷去的距离
+
+
+
+			
+
+
+	<div>
+        我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容
+    </div>
+
+    <script type="text/javascript">
+    	var div = document.querySelector('div');
+
+    	console.log(div.scrollHeight);
+    	console.log(div.clientHeight);
+    	console.log(div.offsetHeight);
+
+    	div.addEventListener('scroll', function() {   //滚动事件
+
+    		console.log(div.scrollTop);
+
+    	})
+
+    	
+    </script>
+
+
+	
+</body>
+</html>

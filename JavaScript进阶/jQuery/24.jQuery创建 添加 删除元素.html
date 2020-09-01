@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+
+		1.创建元素: 
+					$(" <li></li> ");
+
+
+
+		2.添加元素: 
+			<!-- 父子 -->
+				内部添加: element.append()      <!-- 放子元素最后面，类似原生JS中的 appendChild -->
+					   		    .prepend()     <!-- 放子元素最前面 -->
+
+			<!-- 兄弟 -->
+				外部添加: 
+						 element.after()     <!-- 放目标元素后 -->
+						        .before()    <!-- 放目标元素前 -->
+
+
+		3.删除元素:
+				element.remove()   删除element自身
+						.empty()   删除element的子元素
+						.html("")  删除         子元素(空字符串清空)
+	
+	<br>
+	<ul>
+		<li>原li</li>
+	</ul>
+
+
+		<script type="text/javascript">
+			
+			var li = $("<li>创建的li</li>");
+
+			$("ul").append(li);      // 内部添加，并且放在内容的最后面
+
+			// $("ul").prepend(li);      // 内部添加，并且放在内容的最后面
+			// 
+			
+			var div = $("<div>创建的div</div>");
+			$("ul").before(div);
+
+			$("ul").empty();
+			$("ul").remove();
+
+			
+
+
+
+
+
+		</script>
+	
+</body>
+</html>

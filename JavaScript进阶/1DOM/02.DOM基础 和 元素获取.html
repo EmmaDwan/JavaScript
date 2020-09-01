@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+	</script>
+</head>
+<body>
+
+		(1).文档对象模型：DOM  
+
+				document object model
+
+				是W3C组织推荐的 处理可标记语言(html或xml) 的标准编程接口
+
+
+				1.文档 document：一个页面就是一个文档
+				2.元素 element： 页面中所有标签
+				3.节点 node：    网页中所有内容(标签、属性、文本、注释等等)
+
+				DOM把以上内容都当做 对象 来看
+
+
+	    (2).获取元素：
+
+	            以下返回的全是元素对象
+
+
+	       <!-- DOM在实际开发中 主要是操作元素 -->
+	       <!-- 文档页面 从上往下————script标签需要在html标签之后 -->
+
+	     		1.根据ID名  getElementById('')
+	     		         <!-- I大写d小写，element没s --> 
+
+	     		           返回元素对象 
+
+	     		           参数是 ID名(大小写敏感的字符串)
+
+	     		         
+                          
+
+	     		2.根据标签  getElementsByTagName('')
+	     					<!-- elements有s -->
+
+	     		           返回一组元素对象
+
+	     		           是动态的
+
+	     		           
+
+
+	     		3.html5新增 (IE678不能用) 
+
+	     				   1)根据类名： 
+	     				                getElementsByClassName('')
+	     				    		    <!-- elements有s -->
+
+	     				   2) 返回指定选择器的 "第一个"元素对象:   
+
+	     				                querySelector('')
+
+
+						   3) 返回指定选择器的 "所有"元素对象
+
+	                                    querySelectorAll('')  ————  等价 1 和 2 和 1)
+	
+
+
+	     		4.特殊元素获取  见下一页
+
+
+
+	     <div id="time">2020-1-1</div>
+	     <div class="box">盒子1</div>
+	     <div class="box">盒子2</div>
+
+
+	     <ul>
+	     	<li>苹果</li>
+	     	<li>梨</li>
+	     	<li>葡萄</li>
+	     	<li>樱桃</li>
+	     	<li>香蕉</li>
+	     </ul> 
+
+
+	     <ul id="nav">
+	     	<li>手机</li>
+	     	<li>平板</li>
+	     	<li>电脑</li>
+	     	<li>蓝牙耳机</li>
+	     </ul>
+
+
+	     <script>
+
+//1 根据ID名
+//document.getElementById('')
+	     	var timer1 = document.getElementById('time');
+
+	     	console.log(timer1);          //<div id="time">2020-1-1</div>
+	     	console.log(typeof timer1);   //object  返回的是一个元素对象
+
+            //用dir打印元素对象 包含一大堆属性和方法
+	     	console.dir(timer1);          
+	     								  
+
+
+
+//2 根据标签名
+//document.getElementsByTagName('')
+
+	     	var lili = document.getElementsByTagName('li');
+	     	console.log(lili);      //HTMLCollection(9) [li, li, li, li, li, li, li, li, li]
+	     							//以 伪数组 形式存储
+            						//返回 获取的元素对象的集合 
+            
+
+	     	//打印其中的对象      
+	     	console.log(lili[0]);              //<li>苹果</li>
+
+	     	//遍历打印其中的对象              
+	     	for (var i = 0; i < lili.length; i++) {  
+	     		console.log(lili[i]);
+	     	}
+
+	     	console.log('以上只按按标签循环遍历，不仅遍历了苹果那些，还遍历了手机那些');
+
+
+
+//3 只选出 某些元素里 的元素
+//不用document
+//元素.getElementsByTagName('')
+	     	var tech = document.getElementById('nav');   //获得nav元素 变量名和id名可重复
+	     	var navLi = tech.getElementsByTagName('li');
+
+
+            // HTMLCollection(4) [li, li, li, li]
+	     	console.log(navLi);   
+            //遍历全部
+	     	for (var i = 0; i < navLi.length; i++) {  
+	     		console.log(navLi[i]);
+	     	}
+
+	     	console.log('以上按"元素.标签"循环遍历，只遍历了手机那些');
+
+
+
+//4 H5新增 
+	// 1) 根据类名
+	//getElementsByClassName('')
+	
+			var boxs = document.getElementsByClassName('box');
+
+			
+			console.log(boxs);  		          // HTMLCollection(2) [div.box, div.box]
+
+
+	// 2) 返回指定选择器的 "第一个"元素对象
+	//querySelector('')
+	
+	        //类选择器
+	 		var firstBox = document.querySelector('.box');  
+	 		console.log(firstBox);				  // <div class="box">盒子1</div> //只返回第一个对象！ 
+
+
+            //id选择器
+	 		var tech2 = document.querySelector('#nav');
+	 		console.log(tech2);                   //<ul id="nav"> 。。。</ul>
+	 		// 只返回第一个对象！
+
+
+            // 标签选择器
+	 		var liOne = document.querySelector('li');
+	 		console.log(liOne);                   //<li>苹果</li>
+	 		// 只返回第一个对象！  
+ 
+	// 3) 返回指定选择器的 "所有"元素对象
+	//querySelectorAll('')  ————  等价根据类名
+			var allBox = document.querySelectorAll('.box');
+			console.log(allBox);        //NodeList(2) [div.box, div.box]
+
+	     	
+
+
+
+
+	     	
+	     </script>
+
+
+
+	
+</body>
+</html>

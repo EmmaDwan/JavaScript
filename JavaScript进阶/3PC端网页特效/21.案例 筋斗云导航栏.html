@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        body {
+            background-color: black;
+        }
+        
+        .c-nav {
+            width: 900px;
+            height: 42px;
+            background: #fff url('21.案例 筋斗云导航栏/images/rss.png') no-repeat right center;
+            margin: 100px auto;
+            border-radius: 5px;
+            position: relative;
+        }
+        
+        .c-nav ul {
+            position: absolute;
+        }
+        
+        .c-nav li {
+            float: left;
+            width: 83px;
+            text-align: center;
+            line-height: 42px;
+        }
+        
+        .c-nav li a {
+            color: #333;
+            text-decoration: none;
+            display: inline-block;
+            height: 42px;
+        }
+        
+        .c-nav li a:hover {
+            color: white;
+        }
+        
+        .c-nav li.current a {
+            color: lightgreen;
+        }
+        
+        /* 筋斗云 */
+        .cloud {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 83px;
+            height: 42px;
+            background: url('21.案例 筋斗云导航栏/images/cloud.gif') no-repeat;
+        }
+    </style>
+
+
+    <script src="21.案例 筋斗云导航栏/animate.js"></script>
+
+    <script type="text/javascript">
+// 鼠标经过哪个li，筋斗云来哪个。鼠标离开li，筋斗云复原
+// 鼠标单击哪个li，筋斗云就在哪个li，且离开不复原
+
+// 利用滑动动画
+
+    	window.addEventListener('load', function() {       //写上面，需要添加load事件 
+
+    		var cloud = document.querySelector('.cloud');
+    		var nav = document.querySelector('.c-nav');
+    		var li = nav.querySelectorAll('li');            //要加all！！！！！！
+
+
+    		var current = 0; //作为 筋斗云起始位置
+
+
+    		//给li绑定事件
+    		for (var i = 0; i < li.length; i++) {
+
+
+    			li[i].addEventListener('mouseenter',function() {
+
+    				animate(cloud,this.offsetLeft);         //直接用当前li的位置即可
+
+    			})
+
+
+    			li[i].addEventListener('mouseleave', function() {
+
+    				animate(cloud,current);
+    			})
+
+    			li[i].addEventListener('click',function() {
+
+    				//单击某个li，筋斗云的 起始位置就改变了
+    				current = this.offsetLeft;
+    			})
+
+    		}
+
+
+    	})
+    </script>
+    
+</head>
+
+<body>
+
+    <!-- 大盒子 -->
+    <div id="c_nav" class="c-nav">
+
+    	<!-- 筋斗云可以在导航栏任意移动，所以是个单独的span -->
+        <span class="cloud"></span>
+
+        <!-- 导航选项 -->
+        <ul>
+            <li class="current"><a href="#">首页新闻</a></li>
+            <li><a href="#">师资力量</a></li>
+            <li><a href="#">活动策划</a></li>
+            <li><a href="#">企业文化</a></li>
+            <li><a href="#">招聘信息</a></li>
+            <li><a href="#">公司简介</a></li>
+            <li><a href="#">我是佩奇</a></li>
+            <li><a href="#">啥是佩奇</a></li>
+        </ul>
+    </div>	
+
+
+
+
+
+
+  		
+
+
+</body>
+
+</html>

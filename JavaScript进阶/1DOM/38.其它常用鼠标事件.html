@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body>
+		1.禁止鼠标右键菜单  
+					contextmenu   e.g.不想被复制粘贴，或者不想右键菜单栏
+
+
+
+   <!-- 但还可以ctrl c啊 -->
+
+
+
+		2.禁止选中文字
+					selectstart
+
+   <!-- 但还可以打开控制台查看元素复制啊~ -->
+
+
+
+
+	<script type="text/javascript">
+
+
+//禁止鼠标右键菜单
+		document.addEventListener('contextmenu', function(e) {
+			e.preventDefault();   //阻止默认行为
+		})
+
+
+
+//禁止选中文字
+		document.addEventListener('selectstart',function(e) {
+			e.preventDefault();   //阻止默认行为
+		} )
+
+
+
+	</script>
+	
+</body>
+</html>

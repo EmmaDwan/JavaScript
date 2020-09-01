@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<img src="早上好.jpg">
+	<div>上午好</div>
+
+	<script type="text/javascript">
+//案例 根据系统时间显示上午下午晚上的问候
+		//只需要改变两个内容
+		var img = document.querySelector('img');
+		var div = document.querySelector('div');
+
+        // 需要 几点(小时)数据
+		var date = new Date();
+		var h = date.getHours();
+
+        //判断
+		if (h < 12) {
+			img.src = '早上好.jpg';
+			div.innerHTML = '上午好！';
+
+		} else if(h <18 ) {
+			img.src = '下午好.jpg';
+			div.innerHTML = '下午好！';
+
+		} else{
+			img.src = '晚上好.jpg';
+			div.innerHTML = '晚上好！';			
+		}
+
+	</script>
+
+
+
+
+
+	
+</body>
+</html>

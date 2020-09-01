@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+
+	</style>
+</head>
+
+<body>
+
+
+
+			删除事件:(解绑)
+					1.传统方法  
+
+					2.方法监听方法：
+							事件目标.removeEventListener('事件类型', 要移除的函数)
+														<!-- 这个地方必须放函数，事件绑定的函数 -->
+
+
+					
+
+	<div>1</div>
+    <div>2</div>
+    <div>3</div>
+
+    <script type="text/javascript">
+
+    	var divs = document.querySelectorAll('div');
+
+//传统删除
+    	divs[0].onclick = function() {
+    		alert('传统删除');
+    		divs[0].onclick = null;
+    	}
+
+
+//方法监听删除
+    	divs[1].addEventListener('click',aha);       // 因为removeEventListener第二个参数，删哪个函数，
+    												 // 不能用匿名函数
+ 
+    		   		  
+    	function aha() {
+    		alert('方法监听删除');
+    		divs[1].removeEventListener('click', aha);   //自己删除自己
+    	}
+
+
+//老ie方法删除
+    	divs[2].attachEvent('onclick', del2);
+
+    	function del2() {
+    		alert('老ie方法删除');
+    		divs[2].detachEvent('onclick',del2);
+    	}
+
+
+
+    </script>
+
+	
+</body>
+</html>

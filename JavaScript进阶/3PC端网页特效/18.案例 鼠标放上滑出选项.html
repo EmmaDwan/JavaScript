@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="18.滑动动画.js"></script>
+	<style type="text/css">
+		.sliderbar {
+            position: fixed;
+            right: 0;
+            bottom: 100px;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            color: #fff;
+        }
+        
+        .con {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 40px;
+            background-color: purple;
+            z-index: -1;
+        }
+	</style>
+
+</head>
+<body>
+
+	<div class="sliderbar">
+
+        <span>←</span>
+        <div class="con">问题反馈</div>
+
+    </div>
+
+
+
+    <script type="text/javascript">
+    	var sliderbar = document.querySelector('.sliderbar');
+    	var con = document.querySelector('.con');
+
+//1.鼠标划过
+//  滑出来，箭头反向
+    	sliderbar.addEventListener('mouseenter', function() {    //mouseenter没有冒泡
+
+
+    		dis = con.offsetWidth - sliderbar.offsetWidth;       //显示信息长框 - 箭头短框
+    		
+    		animate(con, -dis, arrowback);   
+    		//animate(obj,target,callback); 
+
+    	})
+
+
+
+//2.鼠标离开
+//  滑回，箭头变回去
+    	sliderbar.addEventListener('mouseleave',function() {     //mouseleave也没有冒泡
+    														  
+    		animate(con, 0, arrow);   
+
+    	})
+
+    	
+
+
+    	function arrowback() {
+    		sliderbar.children[0].innerHTML = '→';
+    	}
+    	function arrow() {
+    		sliderbar.children[0].innerHTML = '←';
+    	}
+    </script>
+
+
+	
+</body>
+</html>

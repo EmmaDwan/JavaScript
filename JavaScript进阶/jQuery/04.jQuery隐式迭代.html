@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+
+			隐式迭代: 
+					 遍历 内部各个DOM元素的过程 叫做隐式迭代   <!-- jQ对象是伪数组形式存储的 -->
+
+					 即，自动给获取到的所有元素进行循环遍历，执行相应方法(不用手动遍历了)
+
+
+
+	<div>惊喜不，意外不</div>
+    <div>惊喜不，意外不</div>
+    <div>惊喜不，意外不</div>
+    <div>惊喜不，意外不</div>
+
+    <ul>
+        <li>相同的操作</li>
+        <li>相同的操作</li>
+        <li>相同的操作</li>
+    </ul>
+	
+
+	<script type="text/javascript">
+
+		$("div").css('background','pink');     		 //  jQ元素.css('属性'，'值')
+
+		$("ul li").css('background','yellowgreen');      
+	</script>
+</body>
+</html>

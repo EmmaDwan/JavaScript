@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+		动态创建元素节点：比如新发布评论
+
+						1.创建节点   
+									creatElement()
+
+						2.添加节点   
+
+						   		(1)在(已有元素) 后面添加 
+									node.appendchild();   现节点后面添加 "子节点"
+
+						   		(2)在 指定元素 前面添加
+						   			node.insertBefore(新, 指定元素)
+
+						3.删除节点
+									node.removeChild()    删除 "子节点"
+
+
+
+
+
+		<button>删除条目</button>
+        <ul>
+        	<li>原本ul第一个子节点</li>
+        	<li>熊大</li>
+        	<li>熊二</li>
+        	<li>光头强</li>
+        </ul>
+
+
+
+	    <script type="text/javascript">
+
+
+//在后面添加 节点	    	
+	    	var ul = document.querySelector('ul');
+	    	
+	    	var li = document.createElement('li');     // 有e！！！create！不是creat
+	    	ul.appendChild(li);
+
+//在指定处前面 添加节点
+	    	var lili = document.createElement('li');
+	    	ul.insertBefore(lili, ul.children[0]);
+
+
+
+
+//删除节点	    	
+	    	ul.removeChild(ul.children[4]);
+
+//案例 做一个按钮 按一下删一条            
+            var btn = document.querySelector('button');
+	    	btn.onclick = function() {
+	    		if (ul.children.length == 0) {
+	    			this.disabled = true;
+	    		} else {
+	    			ul.removeChild(ul.children[0]);
+
+	    		}
+	    	}
+	    	
+
+
+
+	    </script>
+
+	
+</body>
+</html>

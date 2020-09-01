@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+//(4)三元表达式
+		var num = 10;
+		var result1 = num > 5 ? 'yes' : 'no';
+		console.log(result1);
+
+     //补0案例 其实是"拼接"
+        var time = prompt('请输入0-59的数字');
+        var result2 = time < 10 ? '0'+time : time;   //用字符串拼接，不要用数字型0
+        console.log(result2);
+
+
+//(5)switch 多分支语句
+        var a = 1
+        switch(a){
+        	case 1:
+        	console.log('这是1');
+        	break;
+
+        	case 2:
+        	console.log('这是2');
+        	break;
+
+        	case 3:
+        	console.log('这是3');
+        	break;
+
+        	default:
+        	console.log('暂无此数');
+        }
+
+        //水果案例
+        //
+        var fruit = prompt('请输入查询的水果');
+        switch(fruit) {
+        	case '苹果':
+        	alert('价格3.5');
+        	break;
+
+        	case '香蕉':
+        	alert('价格2.5');
+        	break;
+
+        	case '榴莲':
+        	alert('价格1.5');
+        	break;
+
+        	case '芒果':
+        	alert('价格4.5');
+        	break;
+
+        	default:
+        	  alert('没有此水果');
+
+        }
+
+
+
+
+ 
+	</script>
+        
+</head>
+<body>
+	    (4)三元表达式： 由三元运算符组成的式子
+
+	              一元表达式: ++num  num--
+	              二元表达式: 3 + 5
+
+	              三元表达式: 条件表达式A ?表达式1 : 表达式2  
+	              <!--  类似if else，简化版-->
+	                         			A真，返回1
+	                         			A假，返回2
+	    (5)switch 多分支语句
+
+	    			switch(表达式){
+
+        	 			case value1:
+        	      			<!-- 值=value1 执行 -->
+        	      			break;
+ 
+        	 			case value2:
+        	      			<!-- 值=value2 执行 -->
+        	      			break;
+
+        	 			...
+        	 			...
+
+
+        	 			default:
+        	      			<!-- 啥都没匹配 执行 -->
+        			}
+
+        		1 注意，表达式值 和 case值匹配必须是全等！类型和大小完全相同
+
+        		2 当前case中没有break，则不会跳出分支，会执行下一个case
+        		  直到遇到break才会跳出。
+
+
+        (6)switch 和 if else区别 
+
+                1 一般情况可互换
+                2 switch适用确定值，if else更灵活，适用范围判断
+                3 switch直接跳到要执行的语句，效率高。if else要挨个执行，判断多次
+                4 if else写着更简单，switch写着麻烦
+
+                分支少建议if，分支多建议switch
+
+                
+
+	
+</body>
+</html>

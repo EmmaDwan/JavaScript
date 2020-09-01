@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	
+ 
+	
+//(1)基本包装类型
+		var str = '关晓彤';
+		console.log(str.length);
+        //相当于
+		var temp = new String('关晓彤');    // 临时变量
+		str = temp;						   //把临时变量给str
+		temp = null;					   //销毁临时变量
+
+
+//(2)字符串不可变
+		var str = 'abc';
+		str = 'hello';   //指向地址变了。abc的内存空间还在，hello新空间出现
+		var str1 = '';
+
+		//不要大量拼接字符串，很费内存
+		for (var i = 0; i < 10; i++) {
+			str1 = str1 + i;
+		}
+		console.log(str1);   //当数字越来越大，这个结果输出时间越来越久
+
+//(3)找到字符串元素 的位置(类似数组)
+        // 1 str.indexOf('内容',起始位置)
+		var str2 = '改革春风吹满地春';
+		console.log(str2.indexOf('春'));
+		console.log(str2.indexOf('春',3));
+
+		console.log(str2.lastIndexOf('春'));
+		console.log(str2.lastIndexOf('春',5));
+
+
+
+//案例 查找字符串'abcoefoxyozzopp'中所有o出现的位置以及次数
+        
+        //先找到第一个o
+        //indexOf返回-1，就继续找
+        //找到后，+1
+        var str3 = 'abcoefoxyozzopp';
+        var index = str3.indexOf('o');
+        var num = 0;
+
+        while(index !== -1) {          //index不等于-1的时候，
+        	                           //也就是进入这个循环就是能找到o
+        	                           //循环几次 = 找到几次
+        	console.log('o的位置:' + index);
+        	num++;                  
+        	index = str3.indexOf('o',index + 1);   //更新index
+        }
+	    console.log('o出现了'+ num + '次');
+
+
+// (4)根据字符位置 找到对应的字符
+
+		// 1 charAt()
+	    var str4 = 'Christina';
+	    console.log(str4.charAt(3));
+
+	    //2 遍历所有字符
+	    for (var i = 0; i < str4.length; i++) {
+	    	console.log(str4.charAt(i));
+	    }
+        //3 返回对应ACII码
+        //可以判断用户按了哪个键 ———— 游戏开发
+	    console.log(str4.charCodeAt(8));   // a————97
+
+		//4 H5新增 等效charAt
+		//串名[i]最简单，但兼容性不好
+		console.log(str4[5]);
+	</script>
+</head>
+
+<body>
+
+		前面提到str.length,字符串有length属性。
+		但只有杂数据类型(对象)才有 属性和方法
+		涉及到基本包装类型
+
+		1.基本包装类型：
+				把简单数据类型 包装成 复杂数据类型
+
+				为了方便操作基本数据类型，js提供了三个特殊的引用类型：
+				String Number Boolean
+
+		2.字符串不可变：
+				指的是 里面的值不可变。
+				虽然看上去赋值可以改变，但只是内存中开辟了新的内插空间，str指向的地址变了
+
+
+		3.一些String方法
+		(1)找到字符串元素位置(同数组)
+
+       			1.str.indexOf('内容',起始位置)
+		
+					str2.indexOf('')
+					str2.lastIndexOf('')
+
+  			 		e.g.查找字符串'abcoefoxyozzopp'中所有o出现的位置以及次数
+       
+
+
+
+		(2)根据位置 找到对应字符
+
+		 		1.str4.charAt()
+
+	    				e.g.遍历所有字符
+
+
+         		2.str4.charCodeAt()
+
+                		返回对应ACII码
+        				可以判断用户按了哪个键 ———— 游戏开发
+
+				3.串名[i] (H5新增)
+		         		等效charAt最简单，但兼容性不好
+
+</body>
+</html>

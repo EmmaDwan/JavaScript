@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.box {
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+            margin: 200px;
+        }
+
+	</style>
+
+</head>
+<body>
+
+	<div class="box"></div>
+
+	<script type="text/javascript">
+
+//需要 鼠标在页面中坐标,也就是 鼠标相对body的距离    e.pageX
+//需要 鼠标 相对body 距离 						 box.offsetLeft
+		var box = document.querySelector('.box');
+
+		box.addEventListener('click', function(e) {
+			
+			console.log(e.pageX);
+			console.log(e.pageY);
+			console.log(box.offsetLeft);
+			console.log(box.offsetTop);
+
+			x = e.pageX - box.offsetLeft;
+			y = e.pageY - box.offsetTop;
+
+			box.innerHTML = 'x坐标:' + x + '，y坐标:' + y;
+
+			//这里box都可以换this
+
+		})
+		
+	
+	</script>
+	
+</body>
+</html>

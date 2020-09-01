@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	//基础函数
+	
+		function sayHi() {  
+			return('Hi~~~');
+		}
+
+        console.log(sayHi());
+
+
+	//1-100累加和
+	
+	    function getSum(a,b) {
+	    	var sum = 0;
+	    	for (var i = a; i <= b; i++) {
+	    		sum += i;
+	    	}
+	    	return sum;	    	
+	    }
+
+        re = getSum(1,100);
+        console.log(re);
+
+
+	</script>
+</head>
+
+<body>
+		(1)函数：封装一段可被 重复调用执行 的代码块
+
+		   1.声明
+
+		      	function 函数名() {
+		            <!-- 函数体 -->
+		      	}
+
+		   2.调用
+
+		      	函数名();
+
+		   3. 
+		      function为关键字，函数名是一般是动词
+
+		      代码看到声明不执行，看到调用才怪回去执行声明
+
+
+		(2).函数的封装： 把一个或多个功能 通过函数的方式封装起来，
+		                对外只提供简单的函数接口
+
+		(3).函数的参数：
+					   形参：声明的时候   (形式的) 
+		               实参：调用的时候   (实际的)
+
+
+		       		js中形参和实参个数可以不匹配
+
+		        	1). 实参 > 形参  
+		        	    按顺序传递，多的就不传了，依然正常运算
+
+		        	2). 实参 < 形参    ————  NaN
+		        	    缺省的那个记undefined，任何数 + undefined = NaN
+
+		(4).函数的返回值：
+
+               <!-- console.log这类打印输出 应该写在函数外部好一些 -->
+		      return 需要的结果
+		      一般设一个变量 接收return的值
+
+		      		1).函数遇到return即停止，后面不执行。
+		      		2).return只能返回一个值
+		      		  多个值用数组
+		      		3).没有return会返回undefined
+		      
+
+		    
+
+	 
+</body>
+</html>

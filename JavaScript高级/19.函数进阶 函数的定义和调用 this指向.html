@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+		一、函数的定义:
+
+			1.function关键字 ———— 命名函数
+
+			2.函数表达式 ————匿名函数
+
+			3.new Function()   这里F大写，Function()是构造函数
+								   ()里写'形参'、'函数体'，必须都是字符串格式
+
+	  <!-- --------------------------------------------------------------------->
+
+				所有函数都是Function的实例(对象)，都有__proto__
+
+
+				所以 					 <!-- Function.prototype -->
+				Function构造函数 —————————————————— Function.prototype原型对象
+				<!-- Function.prototype.constructor -->
+											
+											    <!-- f.__proto__ -->
+
+									实例化对象f    
+
+
+		二、函数的调用 以及this指向
+
+																			this一般指向
+
+			1.普通函数			fn()  或  fn.call() 							   window
+
+			2.对象的方法			obj.sayHi() 								 调用该方法的对象
+
+			3.构造函数			new Star()  								   实例对象
+						   <!-- 调用构造函数，创建实例对象 --> 		 prototype里的this也指向实例对象
+
+			4.绑定事件函数		触发事件 比如单击了按钮就可以调用 				 绑定事件的元素
+
+			5.定时器函数			按时间自动调用									window
+
+			6.立即执行函数		(function() {})() 不需要调用，立即执行			window
+								<!-- 声明即执行 -->
+
+		三、改变函数内部this指向
+
+								1.call()
+
+								2.bing()
+
+								3.apply()
+
+	<script type="text/javascript">
+
+
+		// 1)命名函数
+		function nameIt() {
+			console.log(this);
+		};
+		nameIt();   // 其实是window.nameIt()
+
+		// 2)匿名函数
+		var i = function() {
+
+		};
+
+		// 3)new Function构造函数
+		var f = new Function('a','b','console.log(a + b )');   // 麻烦，系统还要字符串转换
+		f(2,4);
+
+		console.dir(f);
+		console.log(f.__proto__);
+		console.log(nameIt.__proto__);
+
+
+
+	</script>
+</body>
+</html>

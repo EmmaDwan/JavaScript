@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+			(1).jQuery入口函数:  
+					第一种:  DOM加载完<!-- 常用 -->
+
+							$(function () {
+								
+
+							});
+			
+								等DOM结构渲染完 即可执行其内部代码
+								<!-- 相当于js中 DOMContentLoaded -->
+
+
+					第二种:  页面加载完
+
+							$(document).ready(function() {
+
+					  		
+							});
+
+
+			(2).$符号:  
+				   		1.是jQuery的别称(即$可以替换成jQuery)
+
+				   		2.是jQuery中的顶级对象，相当于js中的window
+
+				     	  把元素利用$包装成jQuery对象，就可以用它的方法
+
+
+
+			(3).jQuery对象 和 DOM对象区别:
+
+						1.利用原生js获得来的对象 是DOM对象             var div = document.querySelector('')
+
+						  利用jQuery方式获得来的对象 是jQuery对象      $(' ')是一个jQuery对象
+																     利用$ 对DOM对象包装后 产生的对象
+
+					 	2.jQuery对象 和 DOM对象 不能用对方的属性方法
+
+			(4).jQuery对象 和 DOM对象 相互转换:
+
+						原生js 比 jQuery更大，所以一些原生属性方法jQuery没有封装
+
+						DOM转$ ————  $(  )    <!-- 直接获取jQ需要'' -->
+											  <!-- 本来就是DOM，再转jQ不带'' -->
+						$转DOM ————  $('') [索引] 
+									 $('').get(索引)
+
+
+
+
+
+    <div></div>
+    <video src="../4移动端网页特效/07.案例 插入视频插件/mov.mp4"></video>
+	<script type="text/javascript">
+
+// 1 入口函数
+		//DOM加载完
+		$(function () {
+					
+		});
+
+
+		//页面加载完 
+		$(document).ready(function() {
+
+		})
+// 2 jQuery对象 和 DOM对象区别 
+		var div = document.querySelector('div');
+		console.log(div);
+		console.dir(div);
+
+		console.log($('div'));   //伪数组形式
+		console.dir($('div'));   //这俩打印一样
+
+      	//方法
+		div.style.display = 'none';
+		$('div').hide();         //不能混着用
+
+// 3 jQuery对象 和 DOM对象 相互转换 
+
+        // jQ对象
+		$('video');     // 直接获取视频标签               // jQ 
+		// DOM对象
+		var DOMvideo = document.querySelector('video'); // DOM
+
+
+		// DOM转jQ
+		$(DOMvideo);    //  不带''               		// jQ 
+
+
+        // jQ转DOM
+		DOMvideo.play();   //video的play方法  原生js才有 但是chrome禁用这个方法
+		$('video')[0].play();
+
+		console.log('jQ转DOM')
+		console.log($('div')[0]);      					// DOM
+		console.log($('div').get(0));  					// DOM
+        
+
+	
+				  
+
+	</script> 
+	
+</body>
+
+
+</html>

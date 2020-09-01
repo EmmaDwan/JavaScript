@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		节流阀目的:
+				当上一个动画函数 内容完全执行完毕，再执行下一个函数(让事件无法连续触发)
+
+						e.g. 比如轮播图，两侧按钮一直戳，它刷刷刷播
+
+		核心思路: 利用回调函数，添加一个变量，用来 锁住和解锁函数
+                
+               1. 开始先声明一个变量flag
+					var flag = true;
+
+			   2.关闭水龙头
+					if(flag) {
+
+						flag = false;       关闭水龙龙
+						do sth...
+					}
+
+				2.利用回调函数，当动画执行完毕，打开水龙头，flag = true
+	
+</body>
+</html>

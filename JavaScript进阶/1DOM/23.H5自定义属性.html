@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+
+<body>
+
+	    (1).有的属性不好确定是 自定义属性 还是 自带属性，不确定要不要用getAttribute
+
+		  所以H5规定：
+				所有自定义属性以 data- 开头命名并赋值
+
+
+		(2).H5新增获取方式(ie11才开始支持)
+
+					元素.dataset.属性
+
+					元素.dataset['属性']
+
+				1.dataset是一个集合，里面存放了所有 以data开头的自定义属性
+
+				2.如果命名里有多个短横线连字符- ，用此方法获取时，转化驼峰命名法
+
+
+
+
+	<div getTime = "10"></div>
+
+	<script type="text/javascript">
+
+
+//1.自定义属性 和 自带属性
+		var div = document.querySelector('div');
+		// console.log(div.getTime);                //这个不行
+		console.log(div.getAttribute('getTime'));   //自定义属性必须通过getAttribute获取
+
+
+		div.setAttribute('data-gettime', 20);          //set来设，命名加data-
+		console.log(div.getAttribute('data-gettime')); 
+
+
+
+
+//2.H5新增获取方法
+		console.log(div.dataset);      //DOMStringMap {gettime: "20"}
+
+		console.log(div.dataset.gettime);
+		console.log(div.dataset['gettime']);
+
+
+		div.setAttribute('data-list-name','Gabriell');
+		console.log(div.dataset);      //DOMStringMap {gettime: "20", listName: "Gabriell"}
+
+		console.log(div.getAttribute('data-list-name')); //正常用
+		console.log(div.dataset.listName);               //后面部分必须把 连字符转化为————驼峰命名法
+
+
+	</script>
+	
+</body>
+</html>

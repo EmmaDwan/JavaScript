@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+// 打车价格:
+// 			起步价11元(3km内)，之后每多1km加5元，拥堵情况收10元堵车费
+// 			输入km数即可计算价格
+
+// 核心思路: 1 一个函数里return了两个函数
+// 			2 反正函数要立刻调用，不如写成立即执行函数
+		
+		var car = (function() {         	// 接收立即执行函数的return
+			var start = 11;
+			var total = 0;
+
+			return {  				   		// return一个对象，里面两个函数
+				// 1.正常计费 
+				price: function(dis) {     				
+					if (dis <= 3) {
+						total = start;
+					} else {
+						total = start + (dis - 3) * 5;
+					}
+					return total;			//return计算的total
+				},
+  				// 2.拥堵情况
+				yd: function(flag) { 
+
+					return flag ? total + 10 : total;    
+
+				}
+			}		
+		})();
+
+		// 立即执行函数的start和total都是局部变量(私有变量)，price和yd都用了这两个变量
+		// 所以匿名的立即执行函数是个闭包
+
+
+		// 没堵车，只需要调用不堵车的计费法
+		console.log(car.price(6));    // 26  执行var car = 立即执行函数 里面的price函数，return了total
+		console.log(car.price(1));    // 11
+		// 堵车
+		console.log(car.yd(true));    // 11 + 10 
+
+		
+	</script>
+	
+</body>
+</html>

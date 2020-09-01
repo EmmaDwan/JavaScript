@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+		<ul class="nav">
+			<li>榴莲</li>
+			<li>臭豆腐</li>
+			<li>鲱鱼罐头</li>
+			<li>大猪蹄子</li>
+		</ul>
+
+	<script type="text/javascript">
+
+// 想要输出每个li对应的索引号
+
+ 		var li = document.querySelector('.nav').querySelectorAll('li');
+
+// 1.以前的方法 ———— 给li动态添加索引号
+
+		for (var i = 0; i < li.length; i++) {
+			li[i].index = i;			 // 2 循环添加索引
+			li[i].onclick = function() {
+				console.log(i);          // 1 click事件function是异步任务，for循环是同步任务
+									     //   所以单击任何一个li打印的都是4
+				console.log(this.index); // 3 打印对应(this)索引
+			}
+		}
+
+// 2.新方法 ———— 利用闭包
+ 				// 利用for循环，创建了4个立即执行函数，把for循环里的i传递进来
+				// 					   每个立即执行函数存放的都是当前这次循环的i
+				// 只要不点击，这4个i就一直不销毁，占用内存(内存泄漏)
+		
+		for (var i = 0; i < li.length; i++) {
+
+			(function(i) {  // 2.接收参数
+
+				li[i].onclick = function() {      
+
+					console.log(i); // 立即执行函数是闭包，click事件function访问了立即执行函数里的i
+				}
+
+			})(i); 			// 1.立即执行函数的第二个()，表示调用，自然也可以传递参数
+
+		}
+
+
+		// 相比较来说，第一种方法更简单，节省内存。第二种应用麻烦，存在内存泄漏问题
+	</script>
+	
+</body>
+</html>

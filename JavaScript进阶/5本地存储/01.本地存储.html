@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		本地存储:  <!-- 针对有些数据没必要放数据库、数据库存取麻烦 -->
+
+				1.数据存在用户浏览器中  <!-- 设置、读取方便，刷新不丢失 -->
+
+				2.容量大，sessionStorage约5M  <!-- 5M能存几百万字 -->
+						 localStorage约20M
+
+				3.只能存储字符串
+				  想用对象方式，需要将JSON.stringify()编码后存储
+
+
+		(1) window.sessionStorage
+
+				1.生命周期为 关闭浏览器窗口
+
+				2.同一窗口(页面)下，数据可以共享
+
+				3.键值对形式
+          
+							存储 sessionStorage.setItem( '键名' ,值)
+
+							获取 sessionStorage.getItem('键名')
+
+							单个删除 sessionStorage.removetItem('键名')
+
+							清空页面所有数据 sessionStorage.clear()
+
+		(2) window.localStorage
+
+				1.生命周期为 永久    (除非手动删除数据)
+
+				2.多窗口下，数据可以共享    (只要是同一浏览器 就可共享)
+
+				3.键值对形式
+          
+							存储 localStorage.setItem( '键名' ,值)
+
+							获取 localStorage.getItem('键名')
+
+							单个删除 localStorage.removetItem('键名')
+
+							清空页面所有数据 localStorage.clear()
+
+
+
+
+
+
+
+
+
+
+	
+</body>
+</html>

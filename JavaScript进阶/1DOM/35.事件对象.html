@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		 div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+
+	</style>
+</head>
+<body>
+	    一.事件对象：事件函数()里写的那个,是事件一系列相关数据的集合
+
+				1.有事件，才会有事件对象的存在
+
+				2.当做形参理解，但系统会自动传递，不需要我们真的传递参数
+
+
+							(e.g.鼠标点击：包括鼠标坐标之类的相关信息)
+
+				3.事件对象也有兼容性问题
+						ie 678，不能直接打事件对象名查看，必须用window.event
+ 
+ 		
+
+				
+
+        <div></div>
+
+
+	<script type="text/javascript">
+			var div = document.querySelector('div');
+			div.onclick = function(e) {
+
+				e = e || window.event;   //兼容性写法，认识第一种写法，真，就要第一个变量
+										 //           不认识第一种，假，就用后面的windows
+				var target = e.target || e.srcElement;
+
+				console.log(e);
+				//MouseEvent {isTrusted: true, screenX: 52, screenY: 152, clientX: 52, clientY: 82, …}
+
+			}
+
+
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+
+		(1).固有属性:
+					获取  element.prop(" ")   <!-- e.g.  a里的href，input里的type -->
+					设置  element.prop( "属性","属性值" ) 
+
+
+
+		(2).自定义属性  
+					获取  element.attr(" ")           		<!-- 类似原生getAttribute() -->
+					设置  element.attr( "属性","属性值" )    <!--         set.........() -->
+
+
+
+		(3).数据缓存data()
+				1.data()方法可以在指定元素上存储数据，不会修改DOM元素结构。
+				  页面刷新，之前存放数据 将移除。
+
+				2.获取H5属性，data()括号里可以不加data-
+
+
+
+
+		
+		<br>
+
+		<a href="https://cn.bing.com/" title="美景">必应</a>
+		<input type="checkbox" name="" id="checked">
+		<div index="1" data-index="2"></div>  		<!-- date-xxx是H5自定义属性 -->
+		<span>1234567890</span>
+
+
+		<script type="text/javascript">
+
+
+	// 固有属性
+			console.log($("a").prop("href"));
+			$("a").prop("title","花好月圆");
+
+
+			$("input").change(function() {
+				console.log($(this).prop("checked"));
+			});
+
+	// 自定义属性	
+			console.log($("div").attr("index"));
+			console.log($("div").attr("data-index"));
+
+			
+			$("div").attr("index",666);
+			console.log($("div").attr("index"));
+
+	//data()
+			$("span").data("uname", "Gabrielle");    // uname属性存在span这个标签上了， 
+			console.log($("span").data("uname"));	 // 但审查元素里span并没有变化
+													 // 是存在内存里了
+													 // // 同样可以用data进行读取
+
+
+			console.log($("div").data("index"));     // 获取H5的data-xxx属性(不加data-)，得到数字型
+
+
+
+		</script>
+	
+</body>
+</html>

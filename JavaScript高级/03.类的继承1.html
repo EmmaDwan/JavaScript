@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>
+
+</head>
+<body>
+			(1)继承： 子类可以继承父类的属性和方法
+						 可以扩展自己的属性和方法
+
+					class 子类 extends 父类 {
+
+			     	}
+
+			     	子类就近原则调用属性和方法，自己有用自己的，自己没有用父类的。
+
+
+
+			(2)super关键字： 可以访问和调用 父类的函数(构造函数、普通函数)
+										    <!-- super(x,y)  super.laugh() -->
+
+			  	在子类的constructor函数里：
+
+						super(参数1，参数2，....);
+				   <!-- 并且super优先于子类自己的变量定义，必须写在最前面 -->
+
+		  
+
+	<script type="text/javascript">
+		
+//(1)继承
+		//1.父类
+		class Old{
+			constructor(x,y){
+				this.x = x;
+				this.y = y;
+			}
+			money() {
+				console.log('有100');
+			}
+		}
+        //2.子类继承
+		class Young extends Old{
+
+		}
+        //3.实例化
+		var Tom = new Young();
+
+
+//子类可以用父类的方法了		
+		Tom.money();		     
+		
+
+//(2)super()让子类 访问调用 父类的函数方法
+
+        //父类
+		class Bro1{
+			constructor(x,y){
+				this.x = x;
+				this.y = y;
+			}
+			sum() {
+				console.log(this.x + this.y);  //必须要加this，加了this才是类的外部传进来的
+				                               //sum内部是没有x和y的
+			}
+			say() {
+				console.log('我是老子呀');  //console.log
+			}
+		}
+
+        //子类继承
+		class Bro2 extends Bro1 {
+			constructor(x,y) {
+				super(x,y);   //super()必须在最前面(父类的东西第一位)，这里是调用父类的构造函数
+							  //从首位super()传递进来的x、y，传递给了父类的this.x和this.y，this指向父类
+				this.x = x;   //这里this指向子类，这x、y属于子类自己的
+				this.y = y;	
+			}
+			say() {
+				console.log('我是儿子呀');
+			}
+		}
+		// 实例化
+		var son2 = new Bro2(6,3);
+		var son3 = new Bro2(10,20);
+
+// 父有子无
+		son2.sum();
+		son3.sum();
+
+// 父子都有，就近原则
+		son2.say();   //子类Bro2里面有say，就显示子类say
+					  //子类Bro2里面没有say，就显示父类say
+					  
+
+		
+	</script>
+
+
+
+
+
+	
+</body>
+</html>

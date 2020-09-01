@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+		1.普通元素内容  
+
+						
+				html()     				获取————带标签，带空格缩进   <!-- 相当于原生JS的innerHTML -->
+				html(赋值)   			写入————字符串加" ",变量、数值不加
+
+				text()   				获取————仅文本，带空格缩进 
+				text(赋值) 				写入
+
+
+
+		2.表单元素
+
+				val() 					获取表单内容		  <!-- 相当于原生JS的value -->
+				val(赋值)				写入
+
+	
+
+	<div>
+		<span>内容</span>
+	</div>
+
+	<script type="text/javascript">
+
+		console.log($("div").html());       // <span>内容</span>
+											//	带span标签
+
+		console.log($("div").text());  		// 只有文本，没有span标签
+
+
+		$("div").html("修改过的内容");        //修改
+		$("div").text("再修改"); 
+	</script>
+</body>
+</html>

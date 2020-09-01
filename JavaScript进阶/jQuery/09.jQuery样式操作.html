@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+
+		div{
+			transition: all 0.5s;
+		}
+		.div1 {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .div2{
+        	width: 100px;
+        	height: 100px;
+        	background-color: pink;
+        }
+
+        .current {
+            background-color: red;
+            transform: rotate(360deg);
+        }
+	</style>
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+		jQuery样式操作:
+				可以用css方法 修改简单元素样式、操作类、修改多个样式
+
+				<!-- 属性  相对css采用驼峰命名法 -->
+
+			(1).修改元素样式
+
+				$(this).css("color");           参数 只写属性名，      返回属性值   <!-- 读 -->
+
+				$(this).css("width","300px");   参数 写属性名、属性值， 修改属性值  <!-- 写 -->
+				 								     <!-- 数字可以不加"" -->
+
+				$(this).css( {"color":"pink", "font-size":"20px"} )  参数为 对象形式，设置多组样式
+							<!-- 键:值，键:值 -->   	<!-- 每组逗号, 隔开 -->
+							<!-- 对象形式不用加引号 -->
+
+
+			(2).操作类
+				<!-- 类似classList，操作 类样式 -->
+
+				$("div").addClass(" 类名 ")   这列类名不加.    添加类名
+				$("div").removeClass(    )   				  移除
+				$("div").toggleClass(    )					  切换
+
+
+						1 原生JS中: className会 覆盖原先的类名
+						2 jQ中:     类操作只对指定类名操作(追加类名)，不影响原类名
+								 <!-- $(".one").removeClass("two"); -->
+
+
+
+
+
+
+
+
+	<div class="div1"></div>
+	<div class="div2"></div>
+
+	<script type="text/javascript">
+		$('.div1').css({
+			width: 500,                 // 以对象形式，属性可以 不加""
+			height: 500,				// 			  数字可以 不加""
+			backgroundColor: "yellowgreen"   //			 字符串需要 加""
+		})
+
+		// 增加类名
+		$(".div2").mouseover(function() {
+			$(this).addClass("current");
+		});
+
+		
+		// 删除类名
+		$(".div2").mouseout(function() {
+			$(this).removeClass("current");
+		});
+
+
+		// 切换类名(自动判断)
+		$(".div1").click(function() {
+			$(this).toggleClass("current");
+		});
+
+		
+	</script>
+
+
+
+
+
+	
+</body>
+</html>

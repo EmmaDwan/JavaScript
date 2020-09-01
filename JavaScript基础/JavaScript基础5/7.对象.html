@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+//创建对象
+// 1.利用对象字面量大括号 {} 
+ 
+		var gabrielle = {
+
+			uname: 'Gabrielle',
+			age: 20,
+			sex:'女',
+			sayHi: function() {
+				console.log('Hi!');
+			}
+		}
+
+
+        //调用对象
+		console.log(gabrielle.uname);
+		console.log(gabrielle['uname']);
+		gabrielle.sayHi();
+
+
+
+// 2.利用 new object()
+
+		var john = new Object();   //创建了空的对象
+
+		john.uname = 'john';       //再添加
+		john.age = '20';      
+		john.sex = '男';       
+		john.dance = function() {
+			console.log('dancing!');
+		}
+
+        //调用对象
+		console.log(john.uname);
+		console.log(john['uname']);
+		console.log(john['sex']);
+		john.dance();
+
+
+// 3.利用构造函数 批量创造对象
+    
+       // (1)构造函数       
+       function star(name, age, sex) {             //形参
+
+       		this.uname = name;
+       		this.age = age;
+       		this.sex = sex;
+
+       		this.sing = function(song) {  //方法也可以有形参
+       			console.log(song);        //方法也可以有形参
+       		}
+       } 
+
+
+ 
+       // (2)调用构造函数(返回的是一个对象) (可以批量生成对象)
+       //var 对象名 = new 构造函数名() ———————— 对象实例化 
+
+       var dlrb = new star('迪丽热巴', '26', '女');   //实参 传递给形参
+       var yz = new star('杨紫', '26', '女'); 
+       var oynn = new star('欧阳娜娜', '26', '女'); 
+       var gxt = new star('关晓彤', '26', '女'); 
+    
+
+       // (3)调用对象
+       		// 1)调用对象属性
+       		console.log(typeof dlrb);
+       		console.log(dlrb.uname);
+       		console.log(dlrb.sex);
+       		console.log(gxt.uname);
+
+       		// 2)调用对象方法
+       		gxt.sing('夏天的风');
+       		dlrb.sing('sweet');
+       		oynn.sing('倾国天下');
+       		yz.sing('可爱多');
+      
+		
+
+	</script>
+</head>
+<body>
+    (1)对象：是一个具体的事物
+		       e.g. 苹果     不是         游戏     不是
+		            这个苹果   是         绝地求生   是
+		           
+		            
+
+		 js中对象：一组无序的 相关属性和方法的集合，属于复杂数据类型object
+
+		     		 	1.所有的事物比如字符串、数值、数组，都可以是对象 
+
+		      			2.js对象令表达结构更清晰、更强大
+
+	(2)对象的组成
+
+	         属性：事物的特征  (常用名词)  ———— 和 变量 区分开
+	         方法：事物的行为  (常用动词)  ———— 和 函数 区分开
+             
+	(3)创建对象：
+
+	  	1.利用对象字面量 {}
+
+	  		    	1)属性名 配 属性值(键值对)
+
+	  		    	2)逗号,隔开
+
+	  		    	3)方法后面跟的是 匿名函数
+
+	  		    	var 对象名 = {
+
+	  		    	    属性1: 值1,             <!-- 属性 -->
+			  		    属性2: 值2,
+			  		    属性3: 值3,
+			  		    属性4: 值4,
+
+			  		    方法1:function(形参) {   <!-- 方法 -->
+
+			  		         <!-- 方法内容 -->
+			  		    }
+                    }
+ 
+	  	2.利用new Object
+
+	  		   <!--  大写O！！！！！！  -->
+
+			  		  var 对象名 = new Object();   <!-- 创建空对象 -->
+
+			  		  对象名.属性1 = 值1；             <!-- 属性 -->
+			  		  对象名.属性2 = 值2；
+			  		  对象名.属性3 = 值3；
+			  		  对象名.属性4 = 值4；
+
+			  		  对象名.方法 = function(形参) {   <!-- 方法 -->
+
+			  		         <!-- 方法内容 -->
+			  		  }
+
+	  	3.利用构造函数
+
+	  	   （前两种一次只能创建一个对象，创建很多对象是大量重复的）
+
+			把对象里一些 相同的属性和方法 抽象出来封装到函数里。
+
+	  		这个函数不一样，里面封装不是普通代码，而是对象
+
+              		(1)构造：<!-- 构造函数是一个大类，例如所有苹果，所有明星 -->
+	  		         function 构造函数名(形参1，形参2，形参4，形参4) {
+	  		         	 this.属性1 = 形参1;
+	  		         	 this.属性2 = 形参2;
+	  		         	 this.属性3 = 形参3;
+	  		         	 this.属性4 = 形参4;
+
+	  		         	 this.方法名 = function(形参5) {
+
+	  		         	      <!-- 方法内容 -->
+	  		         	}
+	  		     	 }
+
+	  		  		(2)调用：<!-- 创建对象是大类里具体的实物，比如桌子最中间的红苹果 -->
+
+	  		    	var 对象名 = new 构造函数名();
+
+	  		    	(调用构造函数，返回的是一个对象)
+
+	(4)调用对象
+	  		    1  对象名.属性名       gabrielle.uname
+	  		       对象名['属性名']    gabrielle['uname']
+
+	  		    2  对象名.方法()       gabrielle.sayHi()
+
+	
+</body>
+</html>

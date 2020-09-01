@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	//一行打印5个圆圈
+		var str1 = ''; //类似 sum = 0，字符串变量的初始化
+		for (i = 1; i <= 5; i++) {
+
+			str1 = str1 + '○'
+			//追加字符串的方式：空字符串 + 符号
+			
+		}
+		console.log(str1);
+
+//(1)双重for循环
+	//打印5行5列
+		
+		var row = prompt('请输出行数');
+		var col = prompt('请输出列数');
+
+
+		var str = '';
+		for (i = 1; i <= row; i++) {  //每行
+			for (j = 1; j <= col; j++) {  //一行5个
+               str = str + '○';
+			}
+			str = str + '\n';    //每打印完一行，换行
+		}
+        console.log(str);
+
+
+
+    //打印倒三角
+    
+        //第一种 j=9-i, j>=1, j--  每行打印j个
+        var num = prompt('请输入维数');
+        var str2 = '';
+        for (i = 1; i <= num; i++) {
+         	for (j = num-i; j >= 0; j--) {
+         		str2 = str2 + '○';
+         	}
+         	str2 = str2 + '\n';
+        }
+        console.log(str2);
+
+
+        //第二种 j=i, j<=9, j++  每行打印j个
+        var str3 = '';
+        for (i = 1; i <= num; i++) {
+         	for (j = i; j <= num; j++) {
+         		str3 = str3 + '○';
+         	}
+         	str3 = str3 + '\n';
+        }
+        console.log(str3);
+    
+    
+    
+        
+		
+	</script>
+</head>
+
+
+<body>
+
+
+
+
+</body>
+</html>

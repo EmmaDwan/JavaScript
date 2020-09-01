@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+<!-- 1.头部添加禁止缩放 -->
+
+	<!-- <meta name="viewport" content="user-scalable=no,width=device-width,initial-scaled=1.0"> -->
+
+	<title>Document</title>
+	<style type="text/css">
+        div {
+            width: 50px;
+            height: 50px;
+            background-color: pink;
+        }
+	</style>
+	<script src="05.fastclick插件.js"></script>
+</head>
+
+
+<body>
+		移动端click事件: 有300ms延迟，
+						原因: 移动端屏幕双击会缩放页面 (double tap to zoom)
+							  所以移动端在click之后会等待300ms，看看有没有第2下click
+
+		解决方案: 
+				1.禁止缩放  <!-- <meta name="viewport" content="user-scalable=no"> -->
+
+				2.利用touch封装函数
+					触摸时，记录时间;  离开屏幕，离开时间-触摸时间<150ms，定义为click点击
+
+				3.利用插件
+							JS插件是js文件，遵循一定规范编写，功能单一，较小。
+							e.g. 轮播图 瀑布流
+
+							(1) 引入js文件
+							(2) 按文件规矩调用
+		<div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript">
+
+
+// 2.封装函数tap 这个函数一次只能解决一个元素
+		// function tap (obj,callback) {
+
+		// 	var isMove = false;
+		// 	var startTime = 0;
+
+		// 	//触摸屏幕
+		// 	obj.addEventListener('touchstart', function(e) {
+		// 		startTime = Data.now();   			 //记录触摸时间
+		// 	});
+
+		// 	//是否滑动
+		// 	obj.addEventListener('touchmove', function(e) {
+		// 		isMove = true;  					 //看是否有滑动，有滑动不算点击
+		// 	});
+
+		// 	//间距是否 < 150ms
+		// 	obj.addEventListener('touchend', function(e) {
+		// 		if (!isMove && (Date.now() - startTime) < 150) {    //离开时间 - 按下时间 < 150ms
+
+		// 			callback && callback();   						//执行回调函数
+		// 		}
+
+		// 		isMove = false;     								//条件里取反，这里重置
+		// 		startTime = 0;
+		// 	});
+
+		// 	}
+
+	//调用
+		// tap(div,function() {
+			
+
+// 3.插件		
+		if ('addEventListener' in document) {      //in是个操作符，如果document里有addEL这个事件
+
+            document.addEventListener('DOMContentLoaded', function() {  //等页面DOM元素加载完成
+            															//比load优先，因为不需要加载图片
+                FastClick.attach(document.body);    //这个函数已经把页面所有元素解决了
+
+            }, false);
+        }
+
+        //验证 正常代码
+        var div = document.querySelector('div');
+        div.addEventListener('click', function() {
+            alert(11);
+        })
+    </script
+
+
+
+
+		
+	</script>
+</body>
+</html>

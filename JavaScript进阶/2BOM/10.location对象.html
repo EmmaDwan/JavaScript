@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	(1).<!-- window对象下的 -->
+
+		location属性:    用于获取或设置窗体的URL，并解析URL。
+
+				    <!-- 这个属性返回的是一个对象，所以也称为location对象 -->
+
+			    location对象下的属性:
+						    location.href        获取设置 "整个"url
+
+						    location.host        返回 主机(域名)
+						    location.port        返回 端口号 <!-- 没写返回空字符串 -->
+						    location.pathname    返回 路径
+						    location.search      返回 参数
+						    location.hash        返回 片段<!-- #后内容 -->
+
+
+				location对象下的方法:
+							location.assign()    类似href属性，可以跳转页面(重定向)
+
+							location.replace()   替换当前页面，不能后退页面  <!-- 不记录历史页面 -->
+
+							location.reload()    重新加载页面，相当于刷新/F5
+							                     参数为true，则为强制刷新ctrl+F5
+
+
+
+
+	(2).URL:
+		    uniform resource locator
+
+		    1.统一资源定位符，是互联网上标准资源的地址
+
+		    2.互联网上每个文件都有一个唯一的URL，它包含的信息指出了 文件的位置以及浏览器该怎么处理它
+
+		    3.组成部分并不是每次都写全
+
+			    protocol  ://  host[:port]  /  path  /  [?query]   #fragment
+
+			    http://www.itcast.cn/index.html?name=andy&age=18#link
+	    <!--   	    ://             /          ?                # -->
+
+
+		    	protocol: 通信协议，http,ftp,maito
+
+		    	host:     域名(主机),   www.itheima.com
+
+		    	port:     端口号,  <!-- 可省略，省略是为默认端口，比如http的默认端口为80 -->
+
+		    	path:     路径, index.html <!-- 由零或多个/ 隔开的字符串，表示主机上的一个目录或文件地址 -->
+
+		    	query:    参数, name=andy&age=18  <!-- 键值对形式，用&分隔 -->
+
+		    	fragment: 片段, #link  <!-- #内容常见于锚链接 -->
+
+
+
+
+
+
+		    
+	
+</body>
+</html>

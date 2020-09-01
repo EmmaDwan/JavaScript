@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+// 1.求1 ~ n阶乘
+ 		function fn(n) {
+ 			if (n == 1) {
+ 				return 1;
+ 			}
+ 			return n * fn(n - 1);    // 从大往小了的调用，直到fn(1)为止，返回1退出
+ 		}
+
+ 		console.log(fn(4));
+ 		// 3!
+ 		// return 3 * fn(2)
+ 		// return 3 * (2 * fn(1))
+ 		// return 3 * (2 * 1)
+ 		// return 3 * (2)
+ 		// return 6
+
+// 2.求斐波那契序列 1,1,2,3,5,8,13,21,34,55,89
+// 			输入n，求斐波那契数列的第n个值
+		
+		function feb(n) {
+			if (n ===1 || n===2) {
+				return 1;
+			}
+			return feb(n - 1) + feb(n - 2);
+
+		}
+		console.log(feb(10));
+
+
+	</script>
+	
+
+</body>
+</html>

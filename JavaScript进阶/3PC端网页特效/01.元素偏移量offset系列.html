@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+
+		* {
+            margin: 0;
+            padding: 0;
+        }
+        
+
+        .father {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin: 150px;
+
+            position: relative;       /* 定位 */
+
+
+        }
+        
+        .son {
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+            margin-left: 45px;
+        }
+        
+        .w {
+            height: 200px;
+            background-color: skyblue;
+            margin: 0 auto 200px;
+            padding: 10px;
+            border: 15px solid red;
+        }
+
+	</style>
+</head>
+
+<body>
+
+		<div class="father">
+	        <div class="son"></div>
+	    </div>
+
+	    <div class="w"></div>
+
+
+		offset: 
+			offset表示偏移量，利用相关属性可以'动态'得到元素的  偏移、大小等等
+		                                 				<!-- 位置  宽 高 -->
+			
+
+               1.
+					element.offsetParent   返回带定位的父元素
+
+
+               2.<!-- 获得 元素 相对带有定位的父元素 的位置 -->
+					element.offsetTop      返回元素相对于 带有定位父元素的上边框 的偏移
+					element.offsetLeft     返回元素相对于 带有定位父元素的左边框 的偏移
+
+
+               3.<!-- 获得元素自身的大小 -->
+					element.offsetWidth    就算没设宽度 或者 浏览器窗口变化，也可以精准获得
+					element.offsetHeight
+
+
+			以上，返回的数值都 不带单位
+
+			
+
+
+
+
+		<script type="text/javascript">
+
+			var div1 = document.querySelector('.father');
+			var div2 = document.querySelector('.son');
+			var div3 = document.querySelector('.w');
+
+// element.offsetTop   
+// element.offsetLeft
+			console.log(div1.offsetTop);
+			console.log(div1.offsetLeft);
+
+			console.log(div2.offsetTop);    //父盒子不定位，返回到浏览器body的距离
+			console.log(div2.offsetLeft);   //父盒子定位，返回到到父盒子的距离
+
+// element.offsetWidth 
+// element.offsetHeight
+			console.log(div3.offsetWidth);
+			console.log(div3.offsetHeight);
+
+
+// element.offsetParent
+			console.log(div2.offsetParent);  //父盒子不定位，就返回body
+
+							// offsetParent  返回带定位的父元素，没有定位就一级一级往上找，直到body
+							// parentNode    返回最近的父元素(不管定位)
+
+
+		</script>
+		
+
+
+	
+</body>
+</html>

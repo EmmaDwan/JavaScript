@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+		对象方法:
+
+			1.Object.keys(obj)       获取对象所有属性 <!-- 遍历自己 -->
+									 类似for...in...
+									 返回属性名组成的 数组
+
+			2.Object.defineProperty()  新增或修改属性
+
+					.defineProperty(哪个对象，'属性名'，属性特性)   3个参数不能缺省
+											    <!-- 对象形式书写 -->
+												{			  
+													value	     属性值  <!-- 默认undefined -->
+													writable	 允许重写?              <!-- 默认false -->
+													enumerable	 可以被枚举吗?          <!-- 默认false -->
+													configurable 允许删除或再次修改特性? <!-- 默认false -->
+												}			  
+
+
+	<script type="text/javascript">
+		var obj = {
+			id: 1,
+			pname: '小米',
+			price: 1999,
+		}
+		obj.price = 999;     // 原 修改属性
+		obj.color = 'yellow';  // 原 新增属性
+
+//1 遍历对象的属性
+		var arr = Object.keys(obj);
+		console.log(arr);					// 不一定用了.keys()，就要当下like用这些数据啊
+											// 所以.keys()返回的数组，很好地储存了数据
+											 
+		arr.forEach(function(value) {
+			console.log(value);
+		} )
+
+//2 给对象添加属性
+		
+	// 1)属性值，value
+	
+		Object.defineProperty(obj, 'num', {		//加 num
+			value: 1000
+		});
+		Object.defineProperty(obj, 'color', {   //改 color
+			value: 'lightblue'
+		});
+
+
+
+	// 2)不许修改的属性，writable
+	 
+		Object.defineProperty(obj, 'id', {  // id
+			writable: false   		//不允许修改这个属性值，编号不能随便修改
+									//默认false
+		});
+		obj.id = 2;
+		obj.num = 2000;
+		obj.color = 'purple';
+
+
+
+	// 3)不许遍历出来 unumerable
+	// 4)不许删、再次修改特性
+	
+		Object.defineProperty(obj, 'addr', { // addr
+			value: 'xx区xx街道xxxx号',
+			writable: false,
+			enumerable: false,      // 地址隐私，不许遍历显示出来
+			configurable: false 	// 1 属性不许删,
+									// 2 再用defineProperty对addr操作，第三个参数里的特性都没法改了
+		});
+
+		console.log(obj);
+
+		delete obj.addr;                 // 并删不了
+		delete obj.color;                 // 能删
+		console.log(Object.keys(obj));   // 压根拿不到addr和num属性
+										 // num属性也是通过defineProperty新增的，enumerable不写也默认是false
+		
+		
+	</script>
+	
+</body>
+</html>

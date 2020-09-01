@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		递归:
+			 1.一个函数内部 可以调用 其本身   (类似循环，怕无限循环栈溢出)
+			 <!-- 函数内部自己调用自己 -->
+
+			 2.必须要加退出条件return (防止栈溢出 stack overflow)
+
+
+
+	<script type="text/javascript">
+
+		var num = 1;
+		function fn() {
+			//执行内容
+			console.log('打印6句话');
+
+			// 退出条件
+			if (num == 6) {
+				return;
+			}
+			num++;
+			//递归
+			fn();
+		}
+
+		fn();
+	</script>
+	
+</body>
+</html>

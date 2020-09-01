@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+
+		jQuery筛选方法: 
+
+				1		$("li").parent()             <!-- 最近一级 父元素 -->
+                1       $("li").parents()            <!-- 返回指定祖先元素 -->
+
+				1		$("ul").children( "li" )     <!-- 最近一级 子元素 ——— ul>li -->
+				1		$("li").find( "li" )		 <!--     所有 子元素 ——— ul li -->
+
+				1		$("li").siblings(" li ")     <!-- 找兄弟们，不包括自身-->
+						$("li").nextAll()     		 <!-- 当前元素之后的 所有同辈元素 -->
+						$("li").prevAll()     		 <!-- 当前元素之前的 所有同辈元素 -->
+
+						$("li").hasClass("  ")      <!-- 检查当前元素，是否有某个特定类，有返回true -->
+
+				1		$("li").eq(2)    			<!-- 相当于 $( "li:eq(2" )  -->
+
+
+
+					这些都是方法(函数)！！！
+
+					
+
+	<ol>
+        <li>我是ol 的li</li>
+        <li>我是ol 的li</li>
+        <li class="item">我是ol 的li</li>
+        <li>我是ol 的li</li>
+        <li>我是ol 的li</li>
+        <li>我是ol 的li</li>
+    </ol>
+
+    <ul>
+        <li>我是ul 的li</li>
+        <li>我是ul 的li</li>
+        <li class="item">我是ul 的li</li>
+        <li>我是ul 的li</li>
+        <li>我是ul 的li</li>
+        <li>我是ul 的li</li>
+    </ul>
+
+    <div class="current">有current</div>
+    <div>没有current</div>
+
+
+    <div class="one">
+        <div class="two">
+            <div class="three">
+                <div class="four">
+                    <div class="five"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+
+		// 除了自身，其他兄弟
+    	$("ol .item").siblings('li').css("color","yellow");     //$("ol .item") 表示 ol下所有的.item
+    														    //除了它以外的所有兄弟都变色
+		// 自身之后的所有兄弟												    
+    	$("ul .item").nextAll().css("color","pink"); 
+
+
+		// 索引号筛选
+    	$("ul li:eq(0)").css('background','purple');   //是个筛选选择器   替换变量需要  +''+
+    	$("ul li").eq(2).css('background','pink');     //是个筛选方法     推荐，可以直接用变量替换
+
+
+
+		// 判断是否有某个类     
+		console.log($("div:first").hasClass('current'));    //筛选选择器 + hasClass()方法
+		console.log($("div:last").hasClass('current'));   
+
+        // 返回指定祖先元素
+        
+        console.log($(".five").parents());          // 伪数组，所有父级的集合
+        console.log($(".five").parents(".two"));    // 指定找到第二级
+    	
+    </script>
+	  
+</body>
+</html>

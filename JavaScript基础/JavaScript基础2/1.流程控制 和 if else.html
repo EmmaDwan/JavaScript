@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+    //if else双分支
+        var age = prompt('请输入你的年龄');
+		if (age >= 18) {
+			alert('你可以进来');
+		} else{
+			alert('你不能进来');
+		}
+
+	// 判断闰年
+		// 能被4整除且不能被100整除的 为闰年，即能被400整除的湿润年
+		var year = prompt('请输入年份');
+		if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+			alert('你输入的年份是闰年');
+		} else{
+			alert('你输入的年份是平年');
+		}
+    //if   else if 多分支
+         var score = prompt('请你输出分数');
+         if (score >= 90) {
+         	alert('棒！');         //没有执行1自然是<90，所以这里不需要写明上界
+         } else if (score >= 80) {
+            alert('不错');
+         } else if (score >=70) {
+         	alert('凑合');
+         } else if (score >=60) {
+         	alert('勉强');
+         } else {
+         	alert('不行');
+         }
+	</script>
+
+</head>
+
+<body>
+	流程控制：控制代码按什么顺序来执行
+	         			
+	         			1 顺序结构
+	         			2 分支结构(多选一): 根据不同条件执行不同代码 
+	         			                  if
+	         			                  switch
+	         			3 循环结构
+
+			(1).if分支语句
+
+	     		if(表达式){
+	     		<!-- if真 执行的语句 -->
+	     		}
+
+
+
+
+			(2).if else 双分支语句
+
+			   if(表达式){
+	     		<!-- if真 执行的语句 -->
+	     	   } else{
+	     	    <!-- if假 执行的语句 -->
+	     	   }
+
+
+
+	     	(3).多分支语句 if   else if  
+
+	     	        多选一
+                    else if可以任意多
+                    else if不是elseif
+	     	   
+	     	   if(条件1){
+                 <!-- 1真 执行 -->
+	     	 } else if(条件2){
+                 <!-- 2真 执行 -->
+	         } else if(条件3){
+                 <!-- 3真 执行 -->
+	         }  else
+	
+</body>
+</html>

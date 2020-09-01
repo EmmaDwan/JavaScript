@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+	(1)操作元素：DOM可以改变网页布局 (内容、结构、样式)
+	                可以利用DOM操作元素来改变元素里面的内容、属性等
+
+
+	                操作元素内容 ——————   innerText  innerHTML
+
+	                操作常见元素属性 ———— src href title alt
+
+	                操作表单元素属性 ———— type value disabled
+
+	                操作元素样式 ——————   元素.style  className
+
+	            一.改变元素内容
+
+	                DOM中提供了2种方法：
+	                	1.元素.innerText
+	                		读或修改 起始——终止位置内 的内容，       同时去除html标签、空格、换行
+	                	2.元素.innerHRML
+	                	    读或修改 起始——终止位置内 的全部内容，   可读可添加html标签，保留空格、换行
+
+
+
+	                    这二者都是可读：获取内容
+	                			 可写：修改内容
+
+
+
+		<button id = "time" class="time">显示当前系统时间</button>
+	    <div>系统时间</div>
+	    <p>也显示系统时间</p>
+
+
+	    <script type="text/javascript">
+	    	
+// 一、改变元素内容
+	//1.案例 当点击button按钮，div中的文字发生变化
+	
+		// (1) 获取元素
+			// var btn = document.getElementById('time');
+			var btn = document.getElementsByClassName('time');	
+			console.log(btn);
+			console.log(btn[0]);     //通过 "类" 选元素，返回对象数组，变量要加[]
+
+
+
+			var divTime = document.querySelector('div');
+
+
+
+			var pTime = document.getElementsByTagName('p');
+			console.log(pTime);
+			console.log(pTime[0]);  //通过 "标签" 选元素，返回对象数组，变量要加[]
+
+
+		// (2) 注册事件
+			
+			//给btn元素添加onclick事件
+			btn[0].onclick = function() {
+				divTime.innerText = getDate();
+			}
+            //不给p元素添加事件，刷新后该元素标签的内容会直接改变
+			pTime[0].innerText = getDate();   
+
+
+
+			function getDate() {
+				var date1 = new Date();
+
+				var year = date1.getFullYear();  //年
+				var month = date1.getMonth()+1;  //月
+				var dates = date1.getDate();     //日
+
+				var arr = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+				var day = date1.getDay();        //星期几
+
+				return '今天是' + year + '年' + month + '月' + dates + '日' + arr[day];
+			}
+	    </script>
+	
+</body>
+</html>

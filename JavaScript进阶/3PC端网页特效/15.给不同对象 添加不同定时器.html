@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		 div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+
+            position: absolute;          /* 动画必须加定位才能动！ */
+            left: 0;
+        }
+        span {
+            display: block;
+            width: 150px;
+            height: 150px;
+            background-color: purple;
+
+            position: absolute;          /* 动画必须加定位才能动！ */
+            left: 0;
+            top: 200px;
+        }
+
+
+	</style>
+</head>
+<body>
+		
+        <button>单击紫色盒子才走</button>
+		<div></div>
+		<span></span>
+
+
+		<script type="text/javascript">
+
+
+			var div = document.querySelector('div');
+			var span = document.querySelector('span');
+			var btn = document.querySelector('button');
+
+
+		// 1.函数封装
+			function animate(obj,target) {
+
+				    clearInterval(obj.timer);  //先清除以前的定时器，只让有一个定时器再执行
+
+
+					obj.timer = setInterval(function() {               //var去掉，把timer变成obj.timer
+									                                   //相当于给对象obj添加了timer属性
+									                                   //谁传递进来就是谁的timer属性,div.timer
+									                                   //						   clear.timer
+
+		 			if (obj.offsetLeft >= target) {  
+
+		 				clearInterval(obj.timer);                      //这里也要改
+
+		 			} 
+
+		 			obj.style.left = obj.offsetLeft + 1 + 'px';        
+
+	 			}, 10);
+
+			}
+
+       // 2.调用
+			animate(div,400);
+
+			//不断单击按钮，盒子速度会越来越快(开启太多定时器)
+			btn.addEventListener('click', function() {
+
+				animate(span,200);
+
+			})
+			
+
+
+
+			
+			
+	 		
+		</script>
+	
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.login-header {
+            width: 100%;
+            text-align: center;
+            height: 30px;
+            font-size: 24px;
+            line-height: 30px;
+        }
+        
+        ul,
+        li,
+        ol,
+        dl,
+        dt,
+        dd,
+        div,
+        p,
+        span,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        a {
+            padding: 0px;
+            margin: 0px;
+        }
+        
+        .login {
+            display: none;
+
+            width: 512px;
+            height: 280px;
+            border: #ebebeb solid 1px;
+            background: #ffffff;
+            box-shadow: 0px 0px 20px #ddd;
+
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            z-index: 9999;
+            transform: translate(-50%, -50%);           /* 登录框始终居中显示，用固定定位 */
+        }
+        
+        .login-title {
+            width: 100%;
+            margin: 10px 0px 0px 0px;
+            text-align: center;
+            line-height: 40px;
+            height: 40px;
+            font-size: 18px;
+            position: relative;
+            cursor: move;
+        }
+        
+        .login-input-content {
+            margin-top: 20px;
+        }
+        
+        .login-button {
+            width: 50%;
+            margin: 30px auto 0px auto;
+            line-height: 40px;
+            font-size: 14px;
+            border: #ebebeb 1px solid;
+            text-align: center;
+        }
+        
+        .login-bg {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            background: rgba(0, 0, 0, .3);
+        }
+        
+        a {
+            text-decoration: none;
+            color: #000000;
+        }
+        
+        .login-button a {
+            display: block;
+        }
+        
+        .login-input input.list-input {
+            float: left;
+            line-height: 35px;
+            height: 35px;
+            width: 350px;
+            border: #ebebeb 1px solid;
+            text-indent: 5px;
+        }
+        
+        .login-input {
+            overflow: hidden;
+            margin: 0px 0px 20px 0px;
+        }
+        
+        .login-input label {
+            float: left;
+            width: 90px;
+            padding-right: 10px;
+            text-align: right;
+            line-height: 35px;
+            height: 35px;
+            font-size: 14px;
+        }
+        
+        .login-title span {
+            position: absolute;
+            font-size: 12px;
+            right: -20px;
+            top: -30px;
+            background: #ffffff;
+            border: #ebebeb solid 1px;
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+        }
+
+	</style>
+</head>
+<body>
+
+<!-- 单击登录 -->
+		<div class="login-header">
+
+			<!-- 弹登录框，这是个链接，但弹出还是用display:block -->
+			<a id="link" href="javascript:;">单击此处，弹出登录框</a>
+
+		</div>
+
+
+<!-- login -->
+	    <div id="login" class="login">
+
+
+	        <div id="title" class="login-title">登录会员
+	            <span>
+
+	            	<!-- 关闭按钮是个链接，但关闭还是用display:none -->
+	            	<a id="closeBtn" href="javascript:void(0);" class="close-login">关闭</a> 
+
+	            </span>
+	        </div>
+
+
+	        <div class="login-input-content">
+
+	            <div class="login-input">
+	                <label>用户名：</label>
+	                <input type="text" placeholder="请输入用户名" name="info[username]" id="username" class="list-input">
+	            </div>
+
+	            <div class="login-input">
+	                <label>登录密码：</label>
+	                <input type="password" placeholder="请输入登录密码" name="info[password]" id="password" class="list-input">
+	            </div>
+
+	        </div>
+
+
+	        <div id="loginBtn" class="login-button">
+	        	<a href="javascript:void(0);" id="login-button-submit">登录会员</a>
+	        </div>
+
+	    </div>
+
+
+<!-- 遮盖层 -->
+	    <!-- 背景层是个大盒子 -->
+	    <div id="bg" class="login-bg"></div>
+
+
+	<script type="text/javascript">
+// 单击登录，弹出模态框，并显示 灰色半透明遮挡背景————单击关闭，可关闭模态框
+// 模态框上方，按住鼠标可拖动它————鼠标松开停止移动
+
+		var login = document.querySelector('.login');
+		var mask = document.querySelector('.login-bg');
+
+		var link = document.querySelector('#link');
+		var closebtn = document.querySelector('#closeBtn');
+
+		var title = document.querySelector('#title');
+
+
+
+// 1.单击弹出登录框
+		link.addEventListener('click', function() {
+			mask.style.display = 'block';
+			login.style.display = 'block';
+		})
+
+
+// 2.单击关闭，关闭登录框(隐藏)
+		closebtn.addEventListener('click',function() {
+			mask.style.display = 'none';
+			login.style.display = 'none';
+		})
+
+// 3.拖拽  
+// 按下 + 移动 + 松开
+// 如果把鼠标坐标直接给盒子，就是鼠标固定在盒子某处(比如左上角，比如中间)这样移动
+// 但我们想要的效果是，在哪按下鼠标，鼠标就固定在盒子的哪里 ———— 鼠标到盒子边缘距离不变
+// 
+
+
+		//按下
+		title.addEventListener('mousedown',function(e) {
+			var deltaX = e.pageX - login.offsetLeft;    //鼠标到body - 登录框到body
+			var deltaY = e.pageY - login.offsetTop;
+
+            //拖动
+			document.addEventListener('mousemove',movedrag)
+
+			function movedrag(e) {   //在页面中任意一个位置都可以移动鼠标(登录框)
+																 //所以给document添加
+				login.style.left = e.pageX - deltaX + 'px';//要有单位px!!!!!!
+				login.style.top = e.pageY - deltaY + 'px';		
+                //这类的login是固定定位
+			}
+
+			document.addEventListener('mouseup',function() {
+				document.removeEventListener('mousemove', movedrag);
+			})
+
+		})
+		
+
+
+
+
+	
+	</script>
+	
+</body>
+</html>

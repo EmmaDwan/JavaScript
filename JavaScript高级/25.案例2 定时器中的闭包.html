@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		<ul class="nav">
+			<li>榴莲</li>
+			<li>臭豆腐</li>
+			<li>鲱鱼罐头</li>
+			<li>大猪蹄子</li>
+		</ul>
+
+	<script type="text/javascript">
+
+// 3s后打印所有li的内容
+		var li = document.querySelector('.nav').querySelectorAll('li');
+
+		for (var i = 0; i < li.length; i++) {  
+
+			(function(i) {   // 2.立即执行函数 传递i
+				
+				setTimeout(function() {
+					console.log(li[i].innerHTML);// 1.定时器是异步任务(触发后才会执行)，2s以后 for早就执行完了
+										// 							    	   0s它也是要放进任务队列的
+				}, 2000);
+
+			})(i);			// 2.传递i
+
+		}
+		
+	</script>
+	
+</body>
+</html>
